@@ -1,0 +1,7 @@
+#/bin/bash
+
+LOVE_MAIN_LUA_DIR=src
+
+command -v love >/dev/null 2>&1 || { echo >&2 "love on the command-line is not installed. Aborting."; exit 1; }
+
+love $LOVE_MAIN_LUA_DIR
