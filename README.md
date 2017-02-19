@@ -29,3 +29,11 @@ cd flappyworld
 ```
 
 `pdrun` builds and runs our project in one step, launching `pdrun` the application in a window.
+
+## Version Requirements
+
+Love SDK and runtime:
+```bash
+love --version
+LOVE 0.10.2 (Super Toast)
+```
