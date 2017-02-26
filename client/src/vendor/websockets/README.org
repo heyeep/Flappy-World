@@ -16,7 +16,9 @@
 ** Uninstall
 *** Make Approach
     Should be able to go to the same directory and do:
+    #+begin_src sh :tangle yes
     $ make clean
+    #+end_src
 *** Brute Force
     This is the list of directories the files were installed to.
     Manually track down the files and delete them.
@@ -44,11 +46,13 @@
   this dependency up manually.
 ** Terse
    # Make sure libev is installed first.
+   #+begin_src sh :tangle yes
    $ git clone https://github.com/lipp/lua-websockets
    $ cd lua-websockets
    $ cmake .
    $ make
    $ make install
+   #+end_src
 ** Detailed
    # Make sure libev is installed first.
    #+begin_src sh :tangle yes
@@ -76,9 +80,11 @@
    #+end_src
 * Lua-websockets
   Note, you can ignore the lua-5.2 specific text in the description.
-  Use lua-5.1.
-
+  #+begin_src sh :tangle yes
+  # Use lua-5.1.
   $ luarocks-5.1 make rockspecs/lua-websockets-scm-1.rockspec
+  #+end_src
+
   #+begin_src sh :tangle yes
   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-websockets on master luarocks make rockspecs/lua-websockets-scm-1.rockspec
 
@@ -112,6 +118,6 @@
   lua-websockets scm-1 is now built and installed in /usr/local (license: MIT/X11)
   #+end_src
 * Links
-  https://github.com/lipp/lua-websockets
-  https://github.com/brimworks/lua-ev
-  http://software.schmorp.de/pkg/libev.html
+  - https://github.com/lipp/lua-websockets
+  - https://github.com/brimworks/lua-ev
+  - http://software.schmorp.de/pkg/libev.html
