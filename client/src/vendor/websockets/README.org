@@ -1,0 +1,117 @@
+* Doc
+  Websockets require a few libraries to be built.
+  They should be installed in order.
+
+  Dependency chain goes:
+  lua-websockets -> lua-ev -> libev
+* Libev
+** Install
+   #+begin_src sh :tangle yes
+   $ pwd
+   /Users/james/Code/flappyworld/client/src/vendor/websockets/libev/libev-4.24
+   $ ./configure
+   $ make
+   $ make install
+   #+end_src
+** Uninstall
+*** Make Approach
+    Should be able to go to the same directory and do:
+    $ make clean
+*** Brute Force
+    This is the list of directories the files were installed to.
+    Manually track down the files and delete them.
+    #+begin_src sh :tangle yes
+   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/libev/libev-4.24 on master make install
+   ./install-sh -c -d '/usr/local/lib'
+   /bin/sh ./libtool   --mode=install /usr/bin/install -c   libev.la '/usr/local/lib'
+   libtool: install: /usr/bin/install -c .libs/libev.4.dylib /usr/local/lib/libev.4.dylib
+   libtool: install: (cd /usr/local/lib && { ln -s -f libev.4.dylib libev.dylib || { rm -f libev.dylib && ln -s libev.4.dylib libev.dylib; }; })
+   libtool: install: /usr/bin/install -c .libs/libev.lai /usr/local/lib/libev.la
+   libtool: install: /usr/bin/install -c .libs/libev.a /usr/local/lib/libev.a
+   libtool: install: chmod 644 /usr/local/lib/libev.a
+   libtool: install: ranlib /usr/local/lib/libev.a
+   libtool: install: warning: remember to run `libtool --finish /Users/james/Code/flappyworld/client/vendor/libev/lib'
+   ./install-sh -c -d '/usr/local/include'
+   /usr/bin/install -c -m 644 ev.h ev++.h event.h '/usr/local/include'
+   ./install-sh -c -d '/usr/local/share/man/man3'
+   /usr/bin/install -c -m 644 ev.3 '/usr/local/share/man/man3'
+   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/libev/libev-4.24 on master
+    #+end_src
+* Lua-ev
+  Skip this step and go to the next one. Only come back here if the next command fails.
+  Lua-websockets should try to install Lua-ev automatically.
+  Leaving these notes here because I put in the painstaking work to figure out how to set
+  this dependency up manually.
+** Terse
+   # Make sure libev is installed first.
+   $ git clone https://github.com/lipp/lua-websockets
+   $ cd lua-websockets
+   $ cmake .
+   $ make
+   $ make install
+** Detailed
+   # Make sure libev is installed first.
+   #+begin_src sh :tangle yes
+   $ git clone https://github.com/lipp/lua-websockets
+   $ cd lua-websockets
+
+   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-ev on master cmake .
+   -- Found libev: /usr/local/lib/libev.dylib
+   -- Found Lua5X: /usr/local/lib/liblua.dylib
+   -- Configuring done
+   -- Generating done
+   -- Build files have been written to: /Users/james/Code/flappyworld/client/src/vendor/websockets/lua-ev
+
+   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-ev on master make
+   Scanning dependencies of target cmod_ev
+   [ 50%] Building C object CMakeFiles/cmod_ev.dir/lua_ev.c.o
+   [100%] Linking C shared module ev.so
+   [100%] Built target cmod_ev
+
+   james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-ev on master make install
+   [100%] Built target cmod_ev
+   Install the project...
+   -- Install configuration: ""
+   -- Installing: /usr/local/share/lua/cmod/ev.so
+   #+end_src
+* Lua-websockets
+  Note, you can ignore the lua-5.2 specific text in the description.
+  Use lua-5.1.
+
+  $ luarocks-5.1 make rockspecs/lua-websockets-scm-1.rockspec
+  #+begin_src sh :tangle yes
+  james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-websockets on master luarocks make rockspecs/lua-websockets-scm-1.rockspec
+
+  Missing dependencies for lua-websockets:
+  lua-ev
+
+  Using https://luarocks.org/lua-ev-v1.4-1.rockspec... switching to 'build' mode
+  Cloning into 'lua-ev'...
+  remote: Counting objects: 35, done.
+  remote: Compressing objects: 100% (31/31), done.
+  remote: Total 35 (delta 5), reused 18 (delta 0), pack-reused 0
+  Receiving objects: 100% (35/35), 30.13 KiB | 0 bytes/s, done.
+  Resolving deltas: 100% (5/5), done.
+  Note: checking out '458165bdfe0c6eadc788813925f11a0e6a823845'.
+
+  You are in 'detached HEAD' state. You can look around, make experimental
+  changes and commit them, and you can discard any commits you make in this
+  state without impacting any branches by performing another checkout.
+
+  If you want to create a new branch to retain commits you create, you may
+  do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+  env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -O2 -fPIC -I/usr/local/include -c lua_ev.c -o lua_ev.o
+  env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -bundle -undefined dynamic_lookup -all_load -o ev.so -L/usr/local/lib lua_ev.o -lev
+  Updating manifest for /usr/local/lib/luarocks/rocks-5.2
+  lua-ev v1.4-1 is now built and installed in /usr/local (license: MIT/X11)
+
+  Updating manifest for /usr/local/lib/luarocks/rocks-5.2
+  lua-websockets scm-1 is now built and installed in /usr/local (license: MIT/X11)
+  #+end_src
+* Links
+  https://github.com/lipp/lua-websockets
+  https://github.com/brimworks/lua-ev
+  http://software.schmorp.de/pkg/libev.html
