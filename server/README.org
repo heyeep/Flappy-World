@@ -1,0 +1,12 @@
+* Required
+** Elixir
+   james at jamesretina in ~ elixir -v
+   Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+   Elixir 1.4.2
+** Erlang
+   james at jamesretina in ~ erl -v
+   Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+   Eshell V8.2  (abort with ^G)
+   1>

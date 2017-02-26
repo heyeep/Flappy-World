@@ -1,0 +1,21 @@
+* Required
+** Lua
+   james at jamesretina in ~ brew install lua@5.1
+   https://github.com/Homebrew/homebrew-core/blob/aab30c37787da69f25f598be49cad19b2c90cf95/Formula/lua%405.1.rb
+
+   There's no way to link with homebrew so symlink it into a local bin directory.
+   #+begin_src sh :tangle yes
+   # It goes without saying, but ~/.bin will have to be in your path.
+   james at jamesretina in ~ ln -s /usr/local/bin/luarocks-5.1  ~/.bin/luarocks
+   james at jamesretina in ~ ln -s /usr/local/bin/lua-5.1 ~/.bin/lua
+   james at jamesretina in ~ ln -s /usr/local/bin/luac-5.1  ~/.bin/luac
+   james at jamesretina in ~ ln -s /usr/local/bin/luarocks-admin-5.1 ~/.bin/luarocks-admin
+   #+end_src
+** Websockets
+   [[file:src/vendor/websockets/README.org::*Doc][Websockets]]
+* Misc
+** Style
+   https://github.com/mpeterv/luacheck
+   #+begin_src sh :tangle yes
+   $ luarocks install luacheck
+   #+end_src
