@@ -40,7 +40,7 @@
    james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/libev/libev-4.24 on master
     #+end_src
 * Lua-ev
-  Skip this step and go to the next one. Only come back here if the next command fails.
+  Skip this step and go [[*Lua-websockets][here.]] Only come back here if the next command fails.
   Lua-websockets should try to install Lua-ev automatically.
   Leaving these notes here because I put in the painstaking work to figure out how to set
   this dependency up manually.
