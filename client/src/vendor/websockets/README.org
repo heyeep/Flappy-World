@@ -122,3 +122,4 @@
   - https://github.com/lipp/lua-websockets
   - https://github.com/brimworks/lua-ev
   - http://software.schmorp.de/pkg/libev.html
+  - https://github.com/Homebrew/legacy-homebrew/issues/44760 <-- libev wasn't installing for me on lua5.1. Solution to the problem.
