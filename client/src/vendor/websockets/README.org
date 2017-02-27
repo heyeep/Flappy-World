@@ -48,8 +48,8 @@
 ** Terse
    # Make sure libev is installed first.
    #+begin_src sh :tangle yes
-   $ git clone https://github.com/lipp/lua-websockets
-   $ cd lua-websockets
+   $ git clone https://github.com/brimworks/lua-ev
+   $ cd lua-ev
    $ cmake .
    $ make
    $ make install
@@ -57,8 +57,8 @@
 ** Detailed
    # Make sure libev is installed first.
    #+begin_src sh :tangle yes
-   $ git clone https://github.com/lipp/lua-websockets
-   $ cd lua-websockets
+   $ git clone https://github.com/brimworks/lua-ev
+   $ cd lua-ev
 
    james at jamesretina in ~/Code/flappyworld/client/src/vendor/websockets/lua-ev on master cmake .
    -- Found libev: /usr/local/lib/libev.dylib
@@ -122,4 +122,4 @@
   - https://github.com/lipp/lua-websockets
   - https://github.com/brimworks/lua-ev
   - http://software.schmorp.de/pkg/libev.html
-  - https://github.com/Homebrew/legacy-homebrew/issues/44760 <-- Lua-ev wasn't installing for me on lua5.1. Solution to the problem.
+  - https://github.com/Homebrew/legacy-homebrew/issues/44760#issuecomment-147253476 <-- Lua-ev wasn't installing for me on lua5.1. Solution to the problem.
