@@ -16,6 +16,10 @@
    #+end_src
 ** Websockets
    [[file:src/vendor/websockets/README.org::*Doc][Websockets]]
+** Json Library
+   #+begin_src sh :tangle yes
+   luarocks install lua-cjson
+   #+end_src
 * Misc
 ** Style
    https://github.com/mpeterv/luacheck
