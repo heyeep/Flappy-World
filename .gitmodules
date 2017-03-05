@@ -1,3 +1,6 @@
 [submodule "client/lovetoys"]
 	path = client/src/lib/lovetoys
 	url = git@github.com:lovetoys/lovetoys.git
+[submodule "client/src/vendor/logger"]
+	path = client/src/vendor/logger
+	url = https://github.com/jojojames/log.lua
