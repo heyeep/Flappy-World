@@ -87,6 +87,11 @@ function love.load(arg)
   body:setMass(1)
   bird:add(Physic(body, fixture, shape))
   engine:addEntity(bird)
+
+
+  thread = love.thread.newThread("driver.lua")
+  channel = love.thread.getChannel("test")
+  thread:start()
 end
 
 function love.draw()
