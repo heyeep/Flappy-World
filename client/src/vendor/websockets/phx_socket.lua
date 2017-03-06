@@ -1,5 +1,4 @@
 local new = function(ws_url, hb_interval)
-  -- local love = require('love')
   local log = require('vendor.logger.log')
   local ev = require('ev')
   local self = {}
@@ -42,15 +41,11 @@ local new = function(ws_url, hb_interval)
     -- Websocket Callbacks / Begin
 
     self.ws_client:on_open(function(_, on_open_arg)
-        -- local test_thread_channel = love.thread.getChannel('test')
-        -- test_thread_channel:push('hi im connected')
         log.info('on_open()', 'on_open_arg:', on_open_arg)
         self:on_conn_open()
     end)
 
     self.ws_client:on_message(function(_, on_message_arg)
-        -- local test_thread_channel = love.thread.getChannel('test')
-        -- test_thread_channel:push('hi on message')
         log.info('on_message()', 'on_message_arg:', on_message_arg)
         self:on_conn_message(on_message_arg)
     end)
