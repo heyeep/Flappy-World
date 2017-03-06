@@ -14,4 +14,9 @@ defmodule Server.RoomChannel do
     broadcast! socket, "hi", %{}
     {:noreply, socket}
   end
+
+  def handle_in(user, "coordinates", params, socket) do
+    broadcast! socket, "coordinates", params
+    {:noreply, socket}
+  end
 end

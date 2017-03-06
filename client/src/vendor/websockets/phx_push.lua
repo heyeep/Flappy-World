@@ -24,7 +24,7 @@ local new = function(channel, event, payload)
     self.sent = false
 
     self.channel:on_event(self.ref_event, function(message, _)
-                            log.trace('on_event()')
+                            log.trace('on_event()', self.ref_event)
                             self.received_resp = message
                             self:match_receive(message)
                             self:cancel_ref_event()

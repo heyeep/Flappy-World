@@ -90,7 +90,6 @@ function love.load(arg)
 
 
   thread = love.thread.newThread("driver.lua")
-  channel = love.thread.getChannel("test")
   thread:start()
 end
 
@@ -101,6 +100,10 @@ end
 function love.update(dt) 
   engine:update(dt)
   world:update(dt)
+
+  -- TODO: Figure out how to get the coordinates out.
+  local update_thread = love.thread.getChannel('update')
+  update_thread:push({type = 'coordinates', payload = {x = 10, y = 20}})
 end
 
 function love.keypressed(key, isrepeat)
