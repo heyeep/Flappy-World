@@ -295,7 +295,7 @@ local new = function(ws_url, hb_interval)
   self.make_ref = function(_)
     self.ref = self.ref + 1
     log.trace('make_ref()', self.ref)
-    return string.format('%s', self.ref)
+    return self.ref
   end
 
   -- Private Methods / End

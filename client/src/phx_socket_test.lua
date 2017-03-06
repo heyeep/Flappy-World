@@ -25,16 +25,12 @@ function test_phx_socket:test_initial_ref_is_different()
   T.assertNotEquals(my_ref, other_ref)
 end
 
+function test_phx_socket:test_make_ref__returns_number()
+  T.assertEquals(type(self.socket:make_ref()), type(1))
+end
+
 function test_phx_socket:tearDown()
   self.socket = nil
-end
-
-function test_phx_socket:testAdd()
-  T.assertEquals(1, 1)
-end
-
-function testAdd()
-  T.assertEquals(1, 1)
 end
 
 T.LuaUnit:run()
