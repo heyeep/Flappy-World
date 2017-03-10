@@ -1,9 +1,12 @@
 [submodule "client/lovetoys"]
-	path = client/src/lib/lovetoys
-	url = git@github.com:lovetoys/lovetoys.git
+    path = client/src/lib/lovetoys
+    url = git@github.com:lovetoys/lovetoys.git
 [submodule "client/src/vendor/logger"]
-	path = client/src/vendor/logger
-	url = https://github.com/jojojames/log.lua
+    path = client/src/vendor/logger
+    url = https://github.com/jojojames/log.lua
 [submodule "client/src/vendor/luaunit"]
-	path = client/src/vendor/luaunit
-	url = https://github.com/bluebird75/luaunit.git
+    path = client/src/vendor/luaunit
+    url = https://github.com/bluebird75/luaunit.git
+[submodule "client/src/vendor/websockets/lua-websockets"]
+    path = client/src/vendor/websockets/lua-websockets
+    url = https://github.com/lipp/lua-websockets
