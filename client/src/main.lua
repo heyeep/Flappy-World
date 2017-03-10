@@ -1,5 +1,4 @@
 local log = require('vendor.logger.log')
-log.info('This is a logging message. Remove me whenever.')
 
 lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
