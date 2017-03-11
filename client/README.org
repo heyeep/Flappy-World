@@ -42,3 +42,19 @@
    #+begin_src sh :tangle yes
    $ luarocks install luacheck
    #+end_src
+* Testing
+** Run all Tests
+   #+begin_src sh :tangle yes
+   lua test_suite.lua
+   #+end_src
+** Run one test
+   #+begin_src sh :tangle yes
+   lua test_file.lua
+   #+end_src
+** Run one test function
+   #+begin_src sh :tangle yes
+   lua test_file.lua test_function
+
+   # Example
+   lua phx_socket_test.lua test_phx_socket.test_make_ref__returns_number
+   #+end_src
