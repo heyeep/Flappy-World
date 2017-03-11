@@ -9,6 +9,8 @@
 *** Ubuntu
    #+begin_src sh :tangle yes
    sudo apt-get install libev4
+   # If building Lua-websockets fail, then, follow the OSX instructions.
+   sudo apt-get remove libev4
    #+end_src
 *** OSX
     #+begin_src sh :tangle yes

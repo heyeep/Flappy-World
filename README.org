@@ -1,3 +1,7 @@
+* Required
+  #+begin_src sh :tangle yes
+  $ git submodule update --init --recursive
+  #+end_src
 * Readme
   - [[file:server/README.org::*Required][Server Readme]]
   - [[file:client/README.org::*Required][Client Readme]]

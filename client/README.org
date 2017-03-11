@@ -29,7 +29,12 @@
    [[file:src/vendor/websockets/README.org::*Doc][Websockets]]
 ** Json Library
    #+begin_src sh :tangle yes
-   luarocks install lua-cjson
+   $ luarocks install lua-cjson
+   #+end_src
+** Lovetoys
+   Lovetoys module path is wrong right now.
+   #+begin_src sh :tangle yes
+   luarocks install lovetoys
    #+end_src
 * Misc
 ** Style
