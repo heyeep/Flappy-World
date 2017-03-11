@@ -6,20 +6,26 @@
   lua-websockets -> lua-ev -> libev
 * Libev
 ** Install
+*** Ubuntu
    #+begin_src sh :tangle yes
+   sudo apt-get install libev4
+   #+end_src
+*** OSX
+    #+begin_src sh :tangle yes
    $ pwd
    /Users/james/Code/flappyworld/client/src/vendor/websockets/libev/libev-4.24
    $ ./configure
    $ make
    $ make install
-   #+end_src
-** Uninstall
-*** Make Approach
-    Should be able to go to the same directory and do:
-    #+begin_src sh :tangle yes
-    $ make clean
     #+end_src
-*** Brute Force
+** Uninstall
+*** OSX
+**** Make Approach
+     Should be able to go to the same directory and do:
+     #+begin_src sh :tangle yes
+    $ make clean
+     #+end_src
+**** Brute Force
     This is the list of directories the files were installed to.
     Manually track down the files and delete them.
     #+begin_src sh :tangle yes
@@ -83,6 +89,8 @@
   Note, you can ignore the lua-5.2 specific text in the description.
   #+begin_src sh :tangle yes
   # Use lua-5.1.
+  $ pwd
+  /home/james/Code/flappyworld/client/src/vendor/websockets/lua-websockets
   $ luarocks-5.1 make rockspecs/lua-websockets-scm-1.rockspec
   #+end_src
 

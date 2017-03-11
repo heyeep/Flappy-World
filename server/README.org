@@ -1,12 +1,83 @@
 * Required
+** Postgres
+*** Ubuntu
+    #+begin_src sh :tangle yes
+   $ sudo apt-get install postgresql postgresql-contrib
+   # Ubuntu doesn't give postgres user a password by default...
+   $ sudo -u postgres psql
+   # Obvious comment. You're in the postgres=# shell.
+   postgres=# ALTER USER postgres PASSWORD 'postgres';
+    #+end_src
+*** Create the database
+    #+begin_src sh :tangle yes
+    $ pwd
+    /home/james/Code/flappyworld/server
+
+    $ mix ecto.create
+    The database for Server.Repo has been created
+    #+end_src
+** Node
+*** Ubuntu
+    #+begin_src sh :tangle yes
+    sudo apt-get install nodejs
+    sudo apt-get install npm
+
+    james@ubuntu:~$ nodejs -v
+    v4.2.6
+
+    james@ubuntu:~$ npm -v
+    3.5.2
+
+    # Ubuntu's node binary is not 'node', but 'nodejs'.
+    $ sudo ln -s /usr/bin/nodejs /usr/bin/node
+    #+end_src
+*** Install Npm dependencies
+    #+begin_src sh :tangle yes
+    # Get npm dependencies in project.
+    $ pwd
+    /home/james/Code/flappyworld/server
+    $ npm install
+    #+end_src
 ** Elixir
-   james at jamesretina in ~ elixir -v
-   Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+*** Ubuntu
+    #+begin_src sh :tangle yes
+    sudo apt-get install elixir
 
-   Elixir 1.4.2
+    james@ubuntu:~$ elixir -v
+    Erlang/OTP 19 [erts-8.2.2] [source-1ca84a4] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+    Elixir 1.4.1
+    #+end_src
+*** OSX
+    #+begin_src sh :tangle yes
+    james at jamesretina in ~ elixir -v
+    Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+    Elixir 1.4.2
+    #+end_src
 ** Erlang
-   james at jamesretina in ~ erl -v
-   Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+*** Ubuntu
+    #+begin_src sh :tangle yes
+    wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb
+    sudo apt-get update
+    sudo apt-get install esl-erlang
 
-   Eshell V8.2  (abort with ^G)
-   1>
+    james@ubuntu:~$ erl -v
+    Erlang/OTP 19 [erts-8.2.2] [source-1ca84a4] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+    Eshell V8.2.2  (abort with ^G)
+    1>
+    #+end_src
+*** OSX
+    #+begin_src sh :tangle yes
+    james at jamesretina in ~ erl -v
+    Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+    Eshell V8.2  (abort with ^G)
+    1>
+    #+end_src
+* Notes
+** Running the server
+   #+begin_src sh :tangle yes
+   ~/Code/flappyworld/server$ mix phoenix.server
+   #+end_src
