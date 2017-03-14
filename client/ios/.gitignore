@@ -1,0 +1,8 @@
+platform/xcode/Build
+platform/xcode/DerivedData
+platform/xcode/ios/include
+platform/xcode/ios/libraries
+*xcuserdata*
+*.pbxuser
+!default.pbxuser
+

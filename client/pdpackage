@@ -1,0 +1,17 @@
+#/bin/bash
+
+LOVE_MAIN_LUA_DIR=src
+
+LOVE_BUILD_DIR=build
+
+if [ ! -d "$LOVE_BUILD_DIR" ]; then
+  mkdir $LOVE_BUILD_DIR
+fi
+
+cd src
+
+zip -9 -r flappyworld.love .
+
+cd ../
+
+mv $LOVE_MAIN_LUA_DIR/flappyworld.love $LOVE_BUILD_DIR/flappyworld.love
