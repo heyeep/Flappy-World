@@ -101,8 +101,8 @@ function love.update(dt)
   world:update(dt)
 
   -- TODO: Figure out how to get the coordinates out.
-  local update_thread = love.thread.getChannel('update')
-  update_thread:push({type = 'coordinates', payload = {x = 10, y = 20}})
+  local update_luachan = love.thread.getChannel('update')
+  update_luachan:push({type = 'coordinates', payload = {x = 10, y = 20}})
 end
 
 function love.keypressed(key, isrepeat)
