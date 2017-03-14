@@ -1,7 +1,7 @@
 local love = require('love')
 local log = require('vendor.logger.log')
 
-local lovetoys = require("lovetoys.lovetoys")
+local lovetoys = require("vendor.lovetoys.lovetoys")
 lovetoys.initialize({
   globals = true,
   debug = true
