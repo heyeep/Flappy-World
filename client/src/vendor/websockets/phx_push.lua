@@ -1,5 +1,5 @@
 local new = function(channel, event, payload)
-  local log = require('vendor.logger.log')
+  local log = require('logger.log')
   local ev = require('ev')
   local self = {}
 

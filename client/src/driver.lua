@@ -1,11 +1,9 @@
 local ev = require('ev')
-local log = require('vendor.logger.log')
+local log = require('logger.log')
 local love = require('love')
-local json = require('cjson')
 
-log.info('Running driver.lua')
-local ws = require('vendor.websockets.phx_socket').new()
-local channel_factory = require('vendor.websockets.phx_channel')
+local ws = require('websockets.phx_socket').new()
+local channel_factory = require('websockets.phx_channel')
 
 -- The room will hit RoomChannel on our server.
 -- The 1 is hardcoded for now but is intended to be the room id.

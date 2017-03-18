@@ -1,7 +1,11 @@
 local love = require('love')
-local log = require('vendor.logger.log')
 
-local lovetoys = require("vendor.lovetoys.lovetoys")
+love.filesystem.setRequirePath(
+  require('loadpath') .. love.filesystem.getRequirePath())
+
+local log = require('logger.log')
+
+local lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
   globals = true,
   debug = true
@@ -16,30 +20,30 @@ local VERTICAL_GRAVITY = 9.81 * ONE_METER_IN_PIXELS
 local BIRD_SPEED = 2
 
 -- components
-require("components/graphic/DrawableTwoPipe")
+require("graphic/DrawableTwoPipe")
 local DrawableTwoPipe = lovetoys.Component.load({"DrawableTwoPipe"})
-require("components/identifier/PlayerBird")
+require("identifier/PlayerBird")
 local PlayerBird = lovetoys.Component.load({"PlayerBird"})
-require("components/graphic/DrawableBird")
+require("graphic/DrawableBird")
 local DrawableBird = lovetoys.Component.load({"DrawableBird"})
-require("components/common/Circle")
+require("common/Circle")
 local Circle = lovetoys.Component.load({"Circle"})
-require("components/common/Position")
+require("common/Position")
 local Position = lovetoys.Component.load({"Position"})
-require("components/physic/Physic")
+require("physic/Physic")
 local Physic = lovetoys.Component.load({"Physic"})
 
 -- systems
-local TwoPipeDrawSystem = require("systems/graphic/TwoPipeDrawSystem")
-local BirdDrawSystem = require("systems/graphic/BirdDrawSystem")
-local PhysicsPositionSyncSystem = require("systems/physic/PhysicsPositionSyncSystem")
-local BirdBehaviorSystem = require("systems/behavior/BirdBehaviorSystem")
-local MainKeySystem = require("systems/event/MainKeySystem")
-local BirdCameraBeginSystem = require("systems/common/BirdCameraBeginSystem")
-local BirdCameraEndSystem = require("systems/common/BirdCameraEndSystem")
+local TwoPipeDrawSystem = require("graphic/TwoPipeDrawSystem")
+local BirdDrawSystem = require("graphic/BirdDrawSystem")
+local PhysicsPositionSyncSystem = require("physic/PhysicsPositionSyncSystem")
+local BirdBehaviorSystem = require("behavior/BirdBehaviorSystem")
+local MainKeySystem = require("event/MainKeySystem")
+local BirdCameraBeginSystem = require("common/BirdCameraBeginSystem")
+local BirdCameraEndSystem = require("common/BirdCameraEndSystem")
 
 -- Events
-require("events/KeyPressed")
+require("KeyPressed")
 
 local M = {}
 

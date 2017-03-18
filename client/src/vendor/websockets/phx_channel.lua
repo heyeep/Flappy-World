@@ -1,7 +1,7 @@
 local new = function(socket, topic, params)
-  local log = require('vendor.logger.log')
+  local log = require('logger.log')
   local self = {}
-  local push_factory = require('vendor.websockets.phx_push')
+  local push_factory = require('websockets.phx_push')
   self.state = 'CHANNEL_CLOSED'
   self.topic = topic
   self.params = params or {}

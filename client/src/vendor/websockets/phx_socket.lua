@@ -1,5 +1,5 @@
 local new = function(ws_url, hb_interval)
-  local log = require('vendor.logger.log')
+  local log = require('logger.log')
   local ev = require('ev')
   local self = {}
   local json = require('cjson')
