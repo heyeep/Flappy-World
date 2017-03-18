@@ -1,6 +1,6 @@
-local Drawable = Component.create("Drawable")
+local drawable = Component.create("drawable")
 
-function Drawable:initialize(image, r, sx, sy, ox, oy)
+function drawable:initialize(image, r, sx, sy, ox, oy)
   self.image = image
   self.r = r
   if sx then self.sx = sx  end

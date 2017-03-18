@@ -1,12 +1,12 @@
-local TwoPipeDrawSystem = class("TwoPipeDrawSystem", System)
+local two_pipe_draw_system = class("two_pipe_draw_system", System)
 
 PIPE_WIDTH = 40
 PIPE_GAP = 230
 
-function TwoPipeDrawSystem:draw()
+function two_pipe_draw_system:draw()
   local world_height = 600
   for index, entity in pairs(self.targets) do
-    two_pipe = entity:get("DrawableTwoPipe")
+    two_pipe = entity:get("drawable_two_pipe")
 
     top = {
       x = two_pipe.x - (PIPE_WIDTH / 2),
@@ -28,9 +28,9 @@ function TwoPipeDrawSystem:draw()
   end
 end
 
-function TwoPipeDrawSystem:requires()
-  return {"DrawableTwoPipe"}
+function two_pipe_draw_system:requires()
+  return {"drawable_two_pipe"}
 end
 
 
-return TwoPipeDrawSystem
+return two_pipe_draw_system
