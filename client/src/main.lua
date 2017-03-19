@@ -34,13 +34,13 @@ require("physic.physic")
 local physic = lovetoys.Component.load({_G.__PHYSIC})
 
 -- systems
-local two_pipe_draw_system = require("graphic/two_pipe_draw_system")
-local bird_draw_system = require("graphic/bird_draw_system")
-local physics_position_sync_system = require("physic/physics_position_sync_system")
-local bird_behavior_system = require("behavior/bird_behavior_system")
-local main_key_system = require("event/main_key_system")
-local bird_camera_begin_system = require("common/bird_camera_begin_system")
-local bird_camera_end_system = require("common/bird_camera_end_system")
+local two_pipe_draw_system = require("graphic.two_pipe_draw_system")
+local bird_draw_system = require("graphic.bird_draw_system")
+local physics_position_sync_system = require("physic.physics_position_sync_system")
+local bird_behavior_system = require("behavior.bird_behavior_system")
+local main_key_system = require("event.main_key_system")
+local bird_camera_begin_system = require("common.bird_camera_begin_system")
+local bird_camera_end_system = require("common.bird_camera_end_system")
 
 -- Events
 require("key_pressed")
