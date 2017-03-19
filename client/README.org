@@ -44,6 +44,11 @@
    #+end_src
 * Testing
 ** Run all Tests
+   Two ways:
+   #+begin_src sh :tangle yes
+   make test
+   #+end_src
+
    #+begin_src sh :tangle yes
    lua test_suite.lua
    #+end_src
