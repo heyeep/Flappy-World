@@ -45,26 +45,24 @@ local bird_camera_end_system = require("common/bird_camera_end_system")
 -- Events
 require("key_pressed")
 
-local M = {}
-
 function love.load(_)
   love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {fullscreen=false, vsync=true, resizable=false})
   love.physics.setMeter(ONE_METER_IN_PIXELS)
-  M.world = love.physics.newWorld(HORIZONTAL_GRAVITY, VERTICAL_GRAVITY, true)
-  M.world:setCallbacks(beginContact, endContact)
+  _G.world = love.physics.newWorld(HORIZONTAL_GRAVITY, VERTICAL_GRAVITY, true)
+  _G.world:setCallbacks(beginContact, endContact)
 
-  M.engine = lovetoys.Engine()
-  M.eventmanager = lovetoys.EventManager()
+  _G.engine = lovetoys.Engine()
+  _G.eventmanager = lovetoys.EventManager()
 
   local mainkeysystem = main_key_system()
-  M.eventmanager:addListener("key_pressed", mainkeysystem, mainkeysystem .fireEvent)
+  _G.eventmanager:addListener("key_pressed", mainkeysystem, mainkeysystem .fireEvent)
 
-  M.engine:addSystem(bird_camera_begin_system())
-  M.engine:addSystem(bird_draw_system())
-  M.engine:addSystem(two_pipe_draw_system())
-  M.engine:addSystem(bird_camera_end_system())
-  M.engine:addSystem(physics_position_sync_system())
-  M.engine:addSystem(bird_behavior_system(WINDOW_HEIGHT, BIRD_SPEED))
+  _G.engine:addSystem(bird_camera_begin_system())
+  _G.engine:addSystem(bird_draw_system())
+  _G.engine:addSystem(two_pipe_draw_system())
+  _G.engine:addSystem(bird_camera_end_system())
+  _G.engine:addSystem(physics_position_sync_system())
+  _G.engine:addSystem(bird_behavior_system(WINDOW_HEIGHT, BIRD_SPEED))
 
   --generate some pipes
   local PIPE_SPACING_BETWEEN_SETS = 200
@@ -74,7 +72,7 @@ function love.load(_)
     local x = x_last_pipe + PIPE_SPACING_BETWEEN_SETS
     local y = love.math.random(0, WINDOW_HEIGHT)
     two_pipe:add(drawable_two_pipe(x, y))
-    M.engine:addEntity(two_pipe)
+    _G.engine:addEntity(two_pipe)
     x_last_pipe = x
   end
 
@@ -86,30 +84,30 @@ function love.load(_)
   local r_bird = 40
   bird:add(position(x_bird, y_bird))
   bird:add(circle(r_bird))
-  local body = love.physics.newBody(M.world, x_bird, y_bird, "dynamic")
+  local body = love.physics.newBody(_G.world, x_bird, y_bird, "dynamic")
   local shape = love.physics.newCircleShape(r_bird)
   local fixture = love.physics.newFixture(body, shape, 0)
   body:setMass(1)
   bird:add(physic(body, fixture, shape))
-  M.engine:addEntity(bird)
+  _G.engine:addEntity(bird)
 
   local thread = love.thread.newThread("driver.lua")
   thread:start()
 end
 
 function love.draw()
-  M.engine:draw()
+  _G.engine:draw()
 end
 
 function love.update(dt)
-  M.engine:update(dt)
-  M.world:update(dt)
+  _G.engine:update(dt)
+  _G.world:update(dt)
 
   -- TODO: Figure out how to get the coordinates out.
   local update_luachan = love.thread.getChannel('update')
-  -- update_luachan:push({type = 'coordinates', payload = {x = 10, y = 20}})
+  update_luachan:push({type = 'coordinates', payload = {x = 10, y = 20}})
 end
 
 function love.keypressed(key, isrepeat)
-  M.eventmanager:fireEvent(key_pressed(key, isrepeat))
+  _G.eventmanager:fireEvent(key_pressed(key, isrepeat))
 end
