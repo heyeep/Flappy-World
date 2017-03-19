@@ -1,7 +1,7 @@
 package.path = '../?.lua;' .. package.path
 package.path = require('loadpath') .. package.path
 
-local T = require('/vendor.luaunit.luaunit')
+local T = require('luaunit.luaunit')
 
 test_phx_socket = {}
 
