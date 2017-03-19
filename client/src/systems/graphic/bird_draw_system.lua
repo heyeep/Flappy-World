@@ -7,9 +7,9 @@ local bird_image = love.graphics.newImage('assets/flappybird.png')
 function bird_draw_system:draw()
   love.graphics.setColor(255, 255, 255)
   for _, entity in pairs(self.targets) do
-    local r = entity:get("circle").r
-    local x = entity:get("position").x
-    local y = entity:get("position").y
+    local r = entity:get(_G.__CIRCLE).r
+    local x = entity:get(_G.__POSITION).x
+    local y = entity:get(_G.__POSITION).y
 
     local rect = {}
     rect.x = x - r
@@ -25,7 +25,7 @@ function bird_draw_system:draw()
 end
 
 function bird_draw_system:requires()
-  return {"drawable_bird", "position", "circle"}
+  return {_G.__DRAWABLE_BIRD, _G.__POSITION, _G.__CIRCLE}
 end
 
 return bird_draw_system

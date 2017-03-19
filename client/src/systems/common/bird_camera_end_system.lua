@@ -7,7 +7,7 @@ function bird_camera_end_system:draw()
 end
 
 function bird_camera_end_system:requires()
-  return {"player_bird", "position"}
+  return {_G.__PLAYER_BIRD, _G.__POSITION}
 end
 
 return bird_camera_end_system

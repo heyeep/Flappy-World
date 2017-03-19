@@ -6,7 +6,7 @@ PIPE_GAP = 230
 function two_pipe_draw_system:draw()
   local world_height = 600
   for index, entity in pairs(self.targets) do
-    two_pipe = entity:get("drawable_two_pipe")
+    two_pipe = entity:get(_G.__DRAWABLE_TWO_PIPE)
 
     top = {
       x = two_pipe.x - (PIPE_WIDTH / 2),
@@ -29,7 +29,7 @@ function two_pipe_draw_system:draw()
 end
 
 function two_pipe_draw_system:requires()
-  return {"drawable_two_pipe"}
+  return {_G.__DRAWABLE_TWO_PIPE}
 end
 
 

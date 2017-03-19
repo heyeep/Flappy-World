@@ -8,7 +8,7 @@ end
 
 function bird_behavior_system:draw()
   for _, entity in pairs(self.targets) do
-    local body = entity:get("physic").body
+    local body = entity:get(_G.__PHYSIC).body
     body:setX(body:getX() + self.bird_speed)
 
     if body:getY() > self.world_height then
@@ -18,7 +18,7 @@ function bird_behavior_system:draw()
 end
 
 function bird_behavior_system:requires()
-  return {"player_bird", "physic"}
+  return {_G.__PLAYER_BIRD, _G.__PHYSIC}
 end
 
 return bird_behavior_system

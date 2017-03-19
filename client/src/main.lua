@@ -20,18 +20,18 @@ local VERTICAL_GRAVITY = 9.81 * ONE_METER_IN_PIXELS
 local BIRD_SPEED = 2
 
 -- components
-require("graphic/drawable_two_pipe")
-local drawable_two_pipe = lovetoys.Component.load({"drawable_two_pipe"})
-require("identifier/player_bird")
-local player_bird = lovetoys.Component.load({"player_bird"})
-require("graphic/drawable_bird")
-local drawable_bird = lovetoys.Component.load({"drawable_bird"})
-require("common/circle")
-local circle = lovetoys.Component.load({"circle"})
-require("common/position")
-local position = lovetoys.Component.load({"position"})
-require("physic/physic")
-local physic = lovetoys.Component.load({"physic"})
+require("graphic.drawable_two_pipe")
+local drawable_two_pipe = lovetoys.Component.load({_G.__DRAWABLE_TWO_PIPE})
+require("identifier.player_bird")
+local player_bird = lovetoys.Component.load({_G.__PLAYER_BIRD})
+require("graphic.drawable_bird")
+local drawable_bird = lovetoys.Component.load({_G.__DRAWABLE_BIRD})
+require("common.circle")
+local circle = lovetoys.Component.load({_G.__CIRCLE})
+require("common.position")
+local position = lovetoys.Component.load({_G.__POSITION})
+require("physic.physic")
+local physic = lovetoys.Component.load({_G.__PHYSIC})
 
 -- systems
 local two_pipe_draw_system = require("graphic/two_pipe_draw_system")
