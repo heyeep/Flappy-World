@@ -28,6 +28,7 @@ local new = function(ws_url, hb_interval)
   -- Instance Variables / End
 
   self.connect = function(_, parameters)
+    log.trace(string.format('connect(), parameters : %s', parameters))
     local url = self.url
     local params = parameters or self.parameters
     if (params) then
@@ -65,17 +66,20 @@ local new = function(ws_url, hb_interval)
   end
 
   self.disconnect = function(_)
+    log.trace('disconnect()')
     self:discard_heartbeat_timer()
     self:discard_reconnect_timer()
     self:disconnect_socket()
   end
 
   self.reconnect = function(_)
+    log.trace('reconnect()')
     self:disconnect_socket()
     self:connect(self.params)
   end
 
   self.is_connected = function(_)
+    log.trace('is_connected()')
     return self.ws_client.state == 'OPEN'
   end
 
@@ -87,11 +91,14 @@ local new = function(ws_url, hb_interval)
   end
 
   self.add_channel = function(_, phx_channel)
+    log.trace(string.format('add_channel(), phx_channel: %s', phx_channel))
     -- Remember, indices start at 1.
     self.channels[#self.channels + 1] = phx_channel
   end
 
   self.remove_channel = function(_, phx_channel)
+    log.trace(string.format('remove_channel(), phx_channel: %s', phx_channel))
+
     local channels = self.channels
     local index_of_channel = 0
     -- Just iterating through and finding the index of the channel.
@@ -145,6 +152,7 @@ local new = function(ws_url, hb_interval)
   -- Private Methods / Begin
 
   self.trigger_channel_error = function(_, error)
+    log.trace(string.format('trigger_channel_error(), error: %s', error))
     for i = 1, #self.channels do
       local phx_channel = self.channels[i]
       phx_channel:trigger_event('phx_error', error, nil)
@@ -176,6 +184,7 @@ local new = function(ws_url, hb_interval)
   end
 
   self.discard_heartbeat_timer = function(_)
+    log.trace('discard_heartbeat_timer()')
     if (self.heartbeat_timer) then
       self.heartbeat_timer:stop(ev.Loop.default)
       self.heartbeat_timer = nil
@@ -183,6 +192,7 @@ local new = function(ws_url, hb_interval)
   end
 
   self.discard_reconnect_timer = function(_)
+    log.trace('discard_reconnect_timer()')
     if (self.reconnect_timer) then
       self.reconnect_timer:stop(ev.Loop.default)
       self.reconnect_timer = nil
@@ -241,7 +251,7 @@ local new = function(ws_url, hb_interval)
   end
 
   self.on_conn_error = function(_, error)
-    log.error('on_conn_error():', error)
+    log.error('on_conn_error(): ', error)
     --     [self.queue setSuspended:YES];
     if (self.heartbeat_timer) then
       self:discard_heartbeat_timer()
