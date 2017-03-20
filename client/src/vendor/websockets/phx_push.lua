@@ -60,7 +60,7 @@ local new = function(channel, event, payload)
 
     self.after_timer = ev.Timer.new(
       function(_, _)
-        log.trace('after_time()')
+        log.trace('after_timer()')
       end, ms, ms)
     self.after_timer:start(ev.Loop.default)
 
