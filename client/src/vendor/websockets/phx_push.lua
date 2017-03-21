@@ -43,6 +43,7 @@ local new = function(channel, event, payload)
   end
 
   self.on_receive = function(_, status, callback)
+    log.trace(string.format('on_receive(), status: %s', status))
     if (self.received_resp and self.received_resp.status == status) then
       callback(self.received_resp)
     end
@@ -52,6 +53,7 @@ local new = function(channel, event, payload)
   end
 
   self.after = function(_, ms, callback)
+    log.trace(string.format('after(), ms: %s', ms))
     if (self.after_hook) then
       log.error("self.after_hook is non null.")
     end
@@ -68,10 +70,12 @@ local new = function(channel, event, payload)
   end
 
   self.cancel_ref_event = function(_)
+    log.trace('cancel_ref_event()')
     self.channel:off_event(self.ref_event)
   end
 
   self.cancel_after = function(_)
+    log.trace('cancel_after()')
     if (self.after_hook) then
       return
     end
@@ -83,6 +87,7 @@ local new = function(channel, event, payload)
   end
 
   self.start_after = function(_)
+    log.trace('start_after()')
     if not self.after_hook then
       return
     end
@@ -99,6 +104,8 @@ local new = function(channel, event, payload)
   end
 
   self.match_receive = function(_, p_payload)
+    log.trace(string.format('match_receive(), p_payload: %s', p_payload))
+
     for i = 1, #self.rec_hooks do
       local rc_hook = self.rec_hooks[i]
       if (rc_hook.status == p_payload.status) then
