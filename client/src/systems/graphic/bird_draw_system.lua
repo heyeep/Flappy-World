@@ -5,7 +5,7 @@ local _ = require('logger.log')
 local bird_image = love.graphics.newImage('assets/sprites/birds/bird_blue.png')
 
 function bird_draw_system:draw()
- -- love.graphics.setColor(255, 255, 255)q
+ -- love.graphics.setColor(255, 255, 255)
   for _, entity in pairs(self.targets) do
     local r = entity:get(_G.__CIRCLE).r
     local x = entity:get(_G.__POSITION).x
