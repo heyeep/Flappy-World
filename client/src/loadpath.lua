@@ -20,4 +20,5 @@ require_path = 'components/?.lua;' .. require_path
 require_path = 'events/?.lua;' .. require_path
 require_path = 'systems/?.lua;' .. require_path
 require_path = 'vendor/?.lua;' .. require_path
+require_path = 'util/?.lua;' .. require_path
 return require_path
