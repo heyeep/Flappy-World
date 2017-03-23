@@ -5,6 +5,8 @@ love.filesystem.setRequirePath(
 
 local log = require('logger.log')
 
+require('constants')
+
 local lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
     globals = true,
@@ -35,6 +37,9 @@ local main_key_system = require("event.main_key_system")
 local bird_camera_begin_system = require("common.bird_camera_begin_system")
 local bird_camera_end_system = require("common.bird_camera_end_system")
 
+local update_push_system = require('network.update_push_system')
+local update_pop_system = require('network.update_pop_system')
+
 -- Events
 require("key_pressed")
 
@@ -62,6 +67,9 @@ function love.load(_)
   _G.engine:addSystem(bird_camera_end_system())
   _G.engine:addSystem(physics_position_sync_system())
   _G.engine:addSystem(bird_behavior_system(_G.__WINDOW_HEIGHT, _G.__BIRD_SPEED))
+
+  _G.engine:addSystem(update_push_system())
+  _G.engine:addSystem(update_pop_system())
 
   --generate some pipes
   local PIPE_SPACING_BETWEEN_SETS = 200
@@ -93,10 +101,6 @@ end
 function love.update(dt)
   _G.engine:update(dt)
   _G.world:update(dt)
-
-  -- TODO: Figure out how to get the coordinates out.
-  local update_luachan = love.thread.getChannel('update')
-  update_luachan:push({type = 'coordinates', payload = {x = 10, y = 20}})
 end
 
 function love.keypressed(key, isrepeat)

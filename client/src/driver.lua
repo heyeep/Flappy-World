@@ -5,11 +5,13 @@ local love = require('love')
 local ws = require('websockets.phx_socket').new()
 local channel_factory = require('websockets.phx_channel')
 
+require('constants')
+local push_update_luachan = love.thread.getChannel(_G.__CHANNEL_PUSH_UPDATE)
+local receive_update_luachan = love.thread.getChannel(_G.__CHANNEL_RECEIVE_UPDATE)
+
 -- The room will hit RoomChannel on our server.
 -- The 1 is hardcoded for now but is intended to be the room id.
 local room_phxchan = channel_factory.new(ws, "room:1", nil)
-
-local update_luachan = love.thread.getChannel('update')
 
 ev.Idle.new(function(loop, idol_event)
     -- We have "bootstapped" into the event loop and therefore do not
@@ -50,7 +52,7 @@ ev.Idle.new(function(loop, idol_event)
     timer:start(loop)
 
     local update_callback = function(_, _)
-      local update = update_luachan:pop()
+      local update = push_update_luachan:pop()
       if not update then
         return
       end
@@ -60,15 +62,12 @@ ev.Idle.new(function(loop, idol_event)
 
     room_phxchan:on_event(
       'coordinates', function(message, _)
-        local x_coordinate = message.x
-        local y_coordinate = message.y
-        -- TODO: We hardcoded the payload in main.lua.
-        -- to x = 10, y = 20.
-        -- If the payload prints out here properly, than 'sync'
-        -- can be considered to be working.
-        log.info('on_event(coordinates): payload: x:', x_coordinate, 'y:', y_coordinate)
+        log.trace('phxchan on_event (coordinates)', message)
+        receive_update_luachan:push(message)
     end)
 
+    -- TODO: This controls how often the update_callback triggers.
+    -- As of right now, it's a 3 second poll which is too long.
     local update_timer = ev.Timer.new(update_callback, 3, 3)
     update_timer:start(loop)
 end):start(ev.Loop.default)
