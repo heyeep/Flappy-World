@@ -91,6 +91,22 @@ function love.load(_)
   bird:add(physic(body, fixture, shape))
   _G.engine:addEntity(bird)
 
+  -- This is intended to be a copy pasta of the above so that it's easy to
+  -- refactor into a bird factory class later.
+  local npc_bird = lovetoys.Entity()
+  npc_bird:add(player_bird())
+  npc_bird:add(drawable_bird())
+  local x_npc_bird, y_npc_bird = 100, WINDOW_HEIGHT / 3
+  local r_npc_bird = 40
+  npc_bird:add(position(x_npc_bird, y_npc_bird))
+  npc_bird:add(circle(r_npc_bird))
+  local npc_body = love.physics.newBody(_G.world, x_npc_bird, y_npc_bird, "dynamic")
+  local npc_shape = love.physics.newCircleShape(r_npc_bird)
+  local npc_fixture = love.physics.newFixture(npc_body, npc_shape, 0)
+  body:setMass(1)
+  npc_bird:add(physic(npc_body, npc_fixture, npc_shape))
+  _G.engine:addEntity(npc_bird)
+
   local thread = love.thread.newThread("driver.lua")
   thread:start()
 end
