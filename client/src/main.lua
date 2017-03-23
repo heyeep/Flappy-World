@@ -39,9 +39,15 @@ local bird_camera_end_system = require("common.bird_camera_end_system")
 require("key_pressed")
 
 function love.load(_)
-  love.window.setMode(_G.__WINDOW_WIDTH, _G.__WINDOW_HEIGHT, {fullscreen=false, vsync=true, resizable=false})
+  love.window.setMode(_G.__WINDOW_WIDTH,
+                      _G.__WINDOW_HEIGHT,
+                      {fullscreen=false, vsync=true, resizable=false})
+
   love.physics.setMeter(_G.__ONE_METER_IN_PIXELS)
-  _G.world = love.physics.newWorld(_G.__HORIZONTAL_GRAVITY, _G.__VERTICAL_GRAVITY, true)
+  _G.world = love.physics.newWorld(_G.__HORIZONTAL_GRAVITY,
+                                   _G.__VERTICAL_GRAVITY,
+                                   true)
+
   _G.world:setCallbacks(beginContact, endContact)
 
   _G.engine = lovetoys.Engine()
