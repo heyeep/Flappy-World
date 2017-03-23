@@ -7,8 +7,8 @@ local log = require('logger.log')
 
 local lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
-  globals = true,
-  debug = true
+    globals = true,
+    debug = true
 })
 
 -- Constants
