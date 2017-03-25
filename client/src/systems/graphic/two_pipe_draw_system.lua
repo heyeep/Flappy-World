@@ -12,7 +12,7 @@ function two_pipe_draw_system:draw()
       x = two_pipe.x - (PIPE_WIDTH / 2),
       y = 0,
       w = PIPE_WIDTH,
-      h = two_pipe.y - PIPE_GAP / 2,
+      h = two_pipe.y - PIPE_GAP / 2
     }
 
     bot = {
