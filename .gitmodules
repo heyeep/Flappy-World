@@ -10,3 +10,6 @@
 [submodule "client/src/vendor/lovetoys"]
 	path = client/src/vendor/lovetoys
 	url = https://github.com/lovetoys/lovetoys
+[submodule "client/src/vendor/inspect"]
+	path = client/src/vendor/inspect
+	url = git@github.com:kikito/inspect.lua.git

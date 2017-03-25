@@ -1,6 +1,7 @@
 local ev = require('ev')
 local log = require('logger.log')
 local love = require('love')
+local inspect = require('inspect.inspect')
 
 local ws = require('websockets.phx_socket').new()
 local channel_factory = require('websockets.phx_channel')
@@ -38,13 +39,13 @@ ev.Idle.new(function(loop, idol_event)
       local room_push = room_phxchan:join()
       room_push:on_receive(
         'ok', function(message)
-          log.info('Received OK, message:', message)
+          log.info('Received OK, message:', inspect(message))
           room_phxchan:push_event('hi', {})
       end)
 
       room_push:on_receive(
         'error', function(reason)
-          log.error('Couldn\'t join channel, reason:', reason)
+          log.error('Couldn\'t join channel, reason:', inspect(reason))
       end)
     end
 
