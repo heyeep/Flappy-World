@@ -2,13 +2,7 @@ _G.__DRAWABLE_BACKGROUND = 'drawable_background'
 
 local drawable_background = Component.create(_G.__DRAWABLE_BACKGROUND)
 
-function drawable_background:initialize(x, y)
+drawable_background.initialize = function(self, x, y)
   self.x = x
   self.y  = y
 end
-
-function drawable_background:requires()
-  return {_G.__POSITION}
-end
-
-return drawable_background
