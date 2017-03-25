@@ -28,7 +28,11 @@ local bird_factory = require('bird_factory')
 require("graphic.drawable_two_pipe")
 local drawable_two_pipe = lovetoys.Component.load({_G.__DRAWABLE_TWO_PIPE})
 
+require("graphic.drawable_background")
+local drawable_background = lovetoys.Component.load({_G.__DRAWABLE_BACKGROUND})
+
 -- systems
+local background_draw_system = require("graphic.background_draw_system")
 local two_pipe_draw_system = require("graphic.two_pipe_draw_system")
 local bird_draw_system = require("graphic.bird_draw_system")
 local physics_position_sync_system = require("physic.physics_position_sync_system")
@@ -62,8 +66,9 @@ function love.load(_)
   _G.eventmanager:addListener("key_pressed", mainkeysystem, mainkeysystem .fireEvent)
 
   _G.engine:addSystem(bird_camera_begin_system())
-  _G.engine:addSystem(bird_draw_system())
+  _G.engine:addSystem(background_draw_system())
   _G.engine:addSystem(two_pipe_draw_system())
+  _G.engine:addSystem(bird_draw_system())
   _G.engine:addSystem(bird_camera_end_system())
   _G.engine:addSystem(physics_position_sync_system())
   _G.engine:addSystem(bird_behavior_system(_G.__WINDOW_HEIGHT, _G.__BIRD_SPEED))
@@ -71,7 +76,19 @@ function love.load(_)
   _G.engine:addSystem(update_push_system())
   _G.engine:addSystem(update_pop_system())
 
-  --generate some pipes
+  -- Generate background
+  -- All background images are 144 x 256
+  local BACKGROUND_SPACING = 144
+  local x_last_bg = -288 -- Creates two background images before the game "begins", covers the black empty space.
+  for _ = 1, 1000, 1 do
+    local background = lovetoys.Entity()
+    local x = x_last_bg + BACKGROUND_SPACING
+    background:add(drawable_background(x, 0))
+    _G.engine: addEntity(background)
+    x_last_bg = x
+  end
+  
+  -- Generate some pipes
   local PIPE_SPACING_BETWEEN_SETS = 200
   local x_last_pipe = 0
   for _ = 1, 20, 1 do
