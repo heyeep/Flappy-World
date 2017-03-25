@@ -37,14 +37,14 @@ ev.Idle.new(function(loop, idol_event)
 
       local room_push = room_phxchan:join()
       room_push:on_receive(
-        'ok', function(id, message)
-          log.info('Received OK, id:', id, 'message:', message)
+        'ok', function(message)
+          log.info('Received OK, message:', message)
           room_phxchan:push_event('hi', {})
       end)
 
       room_push:on_receive(
-        'error', function(id, reason)
-          log.error('Couldn\'t join channel id:', id, 'reason:', reason)
+        'error', function(reason)
+          log.error('Couldn\'t join channel, reason:', reason)
       end)
     end
 
