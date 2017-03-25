@@ -78,8 +78,8 @@ function love.load(_)
 
   -- Generate background
   -- All background images are 144 x 256
-  -- Creates two background images before the game "begins", covers the black empty space.
   local BACKGROUND_SPACING = 144
+  -- Creates two background images before the game "begins", covers the black empty space.
   local x_last_bg = -288
   for _ = 1, 1000, 1 do
     local background = lovetoys.Entity()

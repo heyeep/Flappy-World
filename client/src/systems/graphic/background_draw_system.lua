@@ -18,5 +18,4 @@ function background_draw_system:requires()
   return {_G.__DRAWABLE_BACKGROUND}
 end
 
-
 return background_draw_system
