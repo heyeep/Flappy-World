@@ -4,7 +4,6 @@ love.filesystem.setRequirePath(
   require('loadpath') .. love.filesystem.getRequirePath())
 
 local log = require('logger.log')
-
 require('constants')
 
 local lovetoys = require("lovetoys.lovetoys")
@@ -23,17 +22,18 @@ _G.__BIRD_SPEED = 2
 
 -- Factory
 local bird_factory = require('bird_factory')
+local pipe_factory = require('pipe_factory')
 
--- components
-require("graphic.drawable_two_pipe")
-local drawable_two_pipe = lovetoys.Component.load({_G.__DRAWABLE_TWO_PIPE})
+-- Components
+--require("graphic.drawable_pipe")
+--local drawable_pipe = lovetoys.Component.load({_G.__DRAWABLE_PIPE})
 
 require("graphic.drawable_background")
 local drawable_background = lovetoys.Component.load({_G.__DRAWABLE_BACKGROUND})
 
--- systems
+-- Systems
 local background_draw_system = require("graphic.background_draw_system")
-local two_pipe_draw_system = require("graphic.two_pipe_draw_system")
+local pipe_draw_system = require("graphic.pipe_draw_system")
 local bird_draw_system = require("graphic.bird_draw_system")
 local physics_position_sync_system = require("physic.physics_position_sync_system")
 local bird_behavior_system = require("behavior.bird_behavior_system")
@@ -67,7 +67,7 @@ function love.load(_)
 
   _G.engine:addSystem(bird_camera_begin_system())
   _G.engine:addSystem(background_draw_system())
-  _G.engine:addSystem(two_pipe_draw_system())
+  _G.engine:addSystem(pipe_draw_system())
   _G.engine:addSystem(bird_draw_system())
   _G.engine:addSystem(bird_camera_end_system())
   _G.engine:addSystem(physics_position_sync_system())
@@ -89,18 +89,10 @@ function love.load(_)
     x_last_bg = x
   end
   
-  -- Generate some pipes
-  local PIPE_SPACING_BETWEEN_SETS = 200
-  local x_last_pipe = 0
-  for _ = 1, 20, 1 do
-    local two_pipe = lovetoys.Entity()
-    local x = x_last_pipe + PIPE_SPACING_BETWEEN_SETS
-    local y = love.math.random(0, _G.__WINDOW_HEIGHT)
-    two_pipe:add(drawable_two_pipe(x, y))
-    _G.engine:addEntity(two_pipe)
-    x_last_pipe = x
-  end
-
+  -- Generate pipes
+  pipe_factory.new(100)
+ -- pipe_factory.update(dt)
+  
   -- Generate the bird.
   local bird = bird_factory.new(40, 200, _G.__WINDOW_HEIGHT / 4)
   _G.engine:addEntity(bird)
@@ -119,6 +111,7 @@ end
 function love.update(dt)
   _G.engine:update(dt)
   _G.world:update(dt)
+
 end
 
 function love.keypressed(key, isrepeat)
