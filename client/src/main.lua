@@ -19,14 +19,12 @@ _G.__ONE_METER_IN_PIXELS = 64
 _G.__HORIZONTAL_GRAVITY = 0
 _G.__VERTICAL_GRAVITY = 9.81 * _G.__ONE_METER_IN_PIXELS
 _G.__BIRD_SPEED = 2
+_G.__PIPE_PART = 0
+
 
 -- Factory
 local bird_factory = require('bird_factory')
 local pipe_factory = require('pipe_factory')
-
--- Components
---require("graphic.drawable_pipe")
---local drawable_pipe = lovetoys.Component.load({_G.__DRAWABLE_PIPE})
 
 require("graphic.drawable_background")
 local drawable_background = lovetoys.Component.load({_G.__DRAWABLE_BACKGROUND})
@@ -91,7 +89,6 @@ function love.load(_)
   
   -- Generate pipes
   pipe_factory.new(100)
- -- pipe_factory.update(dt)
   
   -- Generate the bird.
   local bird = bird_factory.new(40, 200, _G.__WINDOW_HEIGHT / 4)
