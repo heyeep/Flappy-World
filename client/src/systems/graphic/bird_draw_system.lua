@@ -22,9 +22,9 @@ function bird_draw_system:draw()
     imageSize.height = -(r - (bird_image:getHeight() / 2))
     
     -- Leaving this here to look at the border around the bird.
-    love.graphics.rectangle("fill", rect.x, rect.y, rect.w, rect.h)
+    --love.graphics.rectangle("fill", rect.x, rect.y, rect.w, rect.h)
 
-    love.graphics.draw(bird_image, rect.x, rect.y, 0, 1, 1, imageSize.width, imageSize.height)
+    love.graphics.draw(bird_image, rect.x, rect.y, 0, 1.5, 1.5, imageSize.width, imageSize.height)
   end
 end
 
