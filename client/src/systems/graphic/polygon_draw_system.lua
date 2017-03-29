@@ -1,6 +1,6 @@
 local polygon_draw_system = class("polygon_draw_system", System)
 
-function polygon_draw_system:draw()
+polygon_draw_system.draw = function()
   love.graphics.setColor(255, 255, 255)
   for index, entity in pairs(self.targets) do
     love.graphics.polygon("fill", entity:get("drawable_polygon").body:getWorldPoints(
@@ -8,7 +8,7 @@ function polygon_draw_system:draw()
   end
 end
 
-function polygon_draw_system:requires()
+polygon_draw_system.requires = function()
   return {"drawable_polygon"}
 end
 

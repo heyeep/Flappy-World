@@ -7,14 +7,14 @@ local pipe_images = {
   [_G.__PIPE_PART_BOTTOM] = love.graphics.newImage('assets/sprites/pipes/pipe_green_bottom.png'),
 }
 
-function pipe_draw_system:draw()
+pipe_draw_system.draw = function(self)
   for index, entity in pairs(self.targets) do
     pipe = entity:get(_G.__DRAWABLE_PIPE)
     love.graphics.draw(pipe_images[pipe.part], pipe.x, pipe.y, 0, 1.5, 1.5)
   end
 end
 
-function pipe_draw_system:requires()
+pipe_draw_system.requires = function()
   return {_G.__DRAWABLE_PIPE}
 end
 

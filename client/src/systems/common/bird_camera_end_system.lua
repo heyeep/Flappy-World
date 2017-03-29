@@ -1,7 +1,7 @@
 local love = require('love')
 local bird_camera_end_system = class("bird_camera_end_system", System)
 
-function bird_camera_end_system:draw()
+bird_camera_end_system.draw = function(self)
   for _, entity in pairs(self.targets) do
   end
 
@@ -9,7 +9,7 @@ function bird_camera_end_system:draw()
   love.graphics.pop()
 end
 
-function bird_camera_end_system:requires()
+bird_camera_end_system.requires = function()
   return {_G.__PLAYER_BIRD, _G.__POSITION}
 end
 

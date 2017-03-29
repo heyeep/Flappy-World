@@ -1,12 +1,12 @@
 local bird_behavior_system = class("bird_behavior_system", System)
 
-function bird_behavior_system:initialize(world_height, bird_speed)
+bird_behavior_system.initialize = function(self, world_height, bird_speed)
   System.initialize(self)
   self.world_height = world_height
   self.bird_speed = bird_speed
 end
 
-function bird_behavior_system:draw()
+bird_behavior_system.draw = function(self)
   for _, entity in pairs(self.targets) do
     local body = entity:get(_G.__PHYSIC).body
     body:setX(body:getX() + self.bird_speed)
@@ -17,7 +17,7 @@ function bird_behavior_system:draw()
   end
 end
 
-function bird_behavior_system:requires()
+bird_behavior_system.requires = function()
   return {_G.__PLAYER_BIRD, _G.__PHYSIC}
 end
 

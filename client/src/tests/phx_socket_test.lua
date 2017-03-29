@@ -5,17 +5,17 @@ local T = require('luaunit.luaunit')
 
 test_phx_socket = {}
 
-function test_phx_socket:setUp()
+test_phx_socket.setUp = function(self)
   self.socket = require('vendor/websockets/phx_socket').new()
 end
 
-function test_phx_socket:test_make_ref__different_values()
+test_phx_socket.test_make_ref__different_values = function(self)
   local a = self.socket:make_ref()
   local b = self.socket:make_ref()
   T.assertNotEquals(a, b)
 end
 
-function test_phx_socket:test_initial_ref_is_different()
+test_phx_socket.test_initial_ref_is_different = function(self)
   local my_ref = self.socket.ref
 
   -- This is a ghetto way to ensure the ref is seeded with a different time.
@@ -28,11 +28,11 @@ function test_phx_socket:test_initial_ref_is_different()
   T.assertNotEquals(my_ref, other_ref)
 end
 
-function test_phx_socket:test_make_ref__returns_number()
+test_phx_socket.test_make_ref__returns_number = function(self)
   T.assertEquals(type(self.socket:make_ref()), type(1))
 end
 
-function test_phx_socket:tearDown()
+test_phx_socket.tearDown = function(self)
   self.socket = nil
 end
 

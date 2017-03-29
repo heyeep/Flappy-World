@@ -3,7 +3,7 @@ local background_draw_system = class("background_draw_system", System)
 
 local background_image = love.graphics.newImage('assets/sprites/backgrounds/basic_day.png')
 
-function background_draw_system:draw()
+background_draw_system.draw = function(self)
   for index, entity in pairs(self.targets) do
     local bg = entity:get(_G.__DRAWABLE_BACKGROUND)
     local coords = {}
@@ -14,7 +14,7 @@ function background_draw_system:draw()
   end
 end
 
-function background_draw_system:requires()
+background_draw_system.requires = function()
   return {_G.__DRAWABLE_BACKGROUND}
 end
 

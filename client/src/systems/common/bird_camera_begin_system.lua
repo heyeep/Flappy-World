@@ -1,7 +1,7 @@
 local love = require('love')
 local bird_camera_begin_system = class("bird_camera_begin_system", System)
 
-function bird_camera_begin_system:draw()
+bird_camera_begin_system.draw = function(self)
   -- Iterate through the list of player_birds we have and grab the position of
   -- one of them. We use that position to set up the x offset of the bird
   -- relative to the left side of the screen
@@ -15,7 +15,7 @@ function bird_camera_begin_system:draw()
   love.graphics.translate(-player_bird_x + 200, 0)
 end
 
-function bird_camera_begin_system:requires()
+bird_camera_begin_system.requires = function()
   return {_G.__PLAYER_BIRD, _G.__POSITION}
 end
 
