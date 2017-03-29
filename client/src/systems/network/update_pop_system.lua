@@ -1,6 +1,7 @@
 local love = require('love')
 -- local class = require('middleclass')
 local log = require('logger.log')
+log.outfile = 'log.txt'
 
 local self = class('update_pop_system', System)
 

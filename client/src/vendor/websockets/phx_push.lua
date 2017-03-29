@@ -2,6 +2,7 @@ local new = function(channel, event, payload)
   local log = require('logger.log')
   local ev = require('ev')
   local self = {}
+  log.outfile = 'log.txt'
 
   self.channel = channel
   self.event = event
