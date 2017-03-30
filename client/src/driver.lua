@@ -1,5 +1,6 @@
 local ev = require('ev')
 local log = require('logger.log')
+log.outfile = 'log.txt'
 local love = require('love')
 local inspect = require('inspect.inspect')
 
