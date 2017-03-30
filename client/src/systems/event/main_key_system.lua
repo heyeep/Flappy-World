@@ -1,6 +1,5 @@
 local main_key_system = class("main_key_system", System)
 local log = require('logger.log')
-log.outfile = 'log.txt'
 
 main_key_system.fireEvent = function(self, event)
   log.trace('fireEvent', event, event.key)

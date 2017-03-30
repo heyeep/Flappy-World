@@ -2,7 +2,6 @@ local new = function(socket, topic, params)
   local log = require('logger.log')
   local self = {}
   local push_factory = require('websockets.phx_push')
-  log.outfile = 'log.txt'
 
   self.state = 'CHANNEL_CLOSED'
   self.topic = topic

@@ -1,7 +1,6 @@
 local love = require('love')
 local lovetoys = require("lovetoys.lovetoys")
 local log = require('logger.log')
-log.outfile = 'log.txt'
 
 require("identifier.player_bird")
 local player_bird = lovetoys.Component.load({_G.__PLAYER_BIRD})

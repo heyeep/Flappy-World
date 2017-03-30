@@ -3,7 +3,6 @@ local new = function(ws_url, hb_interval)
   local ev = require('ev')
   local self = {}
   local json = require('cjson')
-  log.outfile = 'log.txt'
   
   -- Instance Variables / Begin
 
