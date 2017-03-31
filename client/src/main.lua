@@ -5,6 +5,7 @@ love.filesystem.setRequirePath(
 
 local log = require('logger.log')
 require('constants')
+log.outfile = 'log.txt'
 
 local lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
