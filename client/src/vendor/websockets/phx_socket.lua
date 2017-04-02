@@ -1,10 +1,11 @@
-local new = function(ws_url, hb_interval)
+local new = function(ws_url, hb_interval, delegate)
   local log = require('logger.log')
   local ev = require('ev')
   local self = {}
   local json = require('cjson')
 
   -- Instance Variables / Begin
+  self.delegate = delegate
 
   self.url = ws_url or 'ws://localhost:4000/socket/websocket'
   self.heart_beat_interval = hb_interval or 5
@@ -214,9 +215,9 @@ local new = function(ws_url, hb_interval)
       on_open_callback()
     end
 
-    --     if ([self.delegate respondsToSelector:@selector(phxSocketDidOpen)]) {
-    --         [self.delegate phxSocketDidOpen];
-    --     }
+    if self.delegate then
+      self.delegate:on_socket_open()
+    end
   end
 
   self.on_conn_close = function(_, event)
@@ -245,9 +246,9 @@ local new = function(ws_url, hb_interval)
       on_close_callback(event)
     end
 
-    --     if ([self.delegate respondsToSelector:@selector(phxSocketDidClose:)]) {
-    --         [self.delegate phxSocketDidClose:event];
-    --     }
+    if self.delegate then
+      self.delegate:on_socket_close(event)
+    end
   end
 
   self.on_conn_error = function(_, error)
@@ -263,9 +264,9 @@ local new = function(ws_url, hb_interval)
       on_error_callback(error)
     end
 
-    --     if ([self.delegate respondsToSelector:@selector(phxSocketDidReceiveError:)]) {
-    --         [self.delegate phxSocketDidReceiveError:error];
-    --     }
+    if self.delegate then
+      self.delegate:on_socket_error(error)
+    end
 
     self:on_conn_close(error)
   end
