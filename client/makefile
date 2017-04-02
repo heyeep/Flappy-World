@@ -31,3 +31,10 @@ run: all
 
 test:
 	cd $(LOVE_MAIN_SRC_DIR) && $(LUA) $(LOVE_TEST_DIR)/test_suite.lua
+
+check:
+	cd $(LOVE_MAIN_SRC_DIR) && luacheck . && cd ..
+
+syntax: check
+
+style: check
