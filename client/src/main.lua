@@ -13,17 +13,6 @@ lovetoys.initialize({
     debug = true
 })
 
--- Constants
-_G.__WINDOW_WIDTH = 1000
-_G.__WINDOW_HEIGHT = 600
-_G.__ONE_METER_IN_PIXELS = 64
-_G.__HORIZONTAL_GRAVITY = 0
-_G.__VERTICAL_GRAVITY = 9.81 * _G.__ONE_METER_IN_PIXELS
-_G.__BIRD_SPEED = 2
-_G.__PIPE_PART_BASE = 0
-_G.__PIPE_PART_TOP = 1
-_G.__PIPE_PART_BOTTOM = 2
-
 -- Factory
 local bird_factory = require("bird_factory")
 local pipe_factory = require("pipe_factory")
@@ -113,7 +102,6 @@ end
 function love.update(dt)
   _G.engine:update(dt)
   _G.world:update(dt)
-
 end
 
 function love.keypressed(key, isrepeat)
