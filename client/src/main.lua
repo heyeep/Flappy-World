@@ -49,7 +49,7 @@ local update_server_system = require("network.update_server_system")
 local update_client_system = require("network.update_client_system")
 
 -- Events
-require("key_pressed")
+local key_pressed = require("key_pressed")
 
 function love.load(_)
   love.window.setMode(_G.__WINDOW_WIDTH,
