@@ -1,11 +1,14 @@
 local love = require("love")
-local bird_draw_system = class("bird_draw_system", System)
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
+local bird_draw_system =
+  middleclass.class("bird_draw_system", lovetoys.System)
 local _ = require("logger.log")
 
 local bird_image = love.graphics.newImage("assets/sprites/birds/bird_blue.png")
 
 bird_draw_system.draw = function(self)
- -- love.graphics.setColor(255, 255, 255)
+  -- love.graphics.setColor(255, 255, 255)
   for _, entity in pairs(self.targets) do
     local r = entity:get(_G.__CIRCLE).r
     local x = entity:get(_G.__POSITION).x
@@ -20,7 +23,7 @@ bird_draw_system.draw = function(self)
     local imageSize = {}
     imageSize.width = -(r - (bird_image:getWidth() / 2))
     imageSize.height = -(r - (bird_image:getHeight() / 2))
-    
+
     -- Leaving this here to look at the border around the bird.
     --love.graphics.rectangle("fill", rect.x, rect.y, rect.w, rect.h)
 

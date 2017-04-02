@@ -3,10 +3,12 @@ local inspect = require("inspect.inspect")
 -- local class = require("middleclass")
 local log = require("logger.log")
 
-local self = class("update_client_system", System)
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
+local self =
+  middleclass.class("update_client_system", lovetoys.System)
 
 -- Modules used for creating new Birds.
-local lovetoys = require("lovetoys.lovetoys")
 local bird_factory = require("bird_factory")
 
 require("identifier.other_bird")

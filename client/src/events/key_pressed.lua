@@ -1,4 +1,5 @@
-key_pressed = class("key_pressed")
+local middleclass = require("lovetoys.lib.middleclass")
+key_pressed = middleclass.class("key_pressed")
 
 key_pressed.initialize = function(self, key, isrepeat)
   self.key = key

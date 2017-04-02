@@ -1,8 +1,11 @@
 local love = require("love")
-local bird_camera_end_system = class("bird_camera_end_system", System)
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
+local bird_camera_end_system =
+  middleclass.class("bird_camera_end_system", lovetoys.System)
 
 bird_camera_end_system.draw = function(self)
-  for _, entity in pairs(self.targets) do
+  for _, _ in pairs(self.targets) do
   end
 
   -- This module parallels bird_camera_begin_system so we only need to pop once.

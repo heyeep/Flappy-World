@@ -1,6 +1,8 @@
 _G.__DRAWABLE_BACKGROUND = "drawable_background"
 
-local drawable_background = Component.create(_G.__DRAWABLE_BACKGROUND)
+local lovetoys = require("lovetoys.lovetoys")
+local drawable_background =
+  lovetoys.Component.create(_G.__DRAWABLE_BACKGROUND)
 
 drawable_background.initialize = function(self, x, y)
   self.x = x

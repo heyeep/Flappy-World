@@ -1,6 +1,7 @@
 _G.__PHYSIC = "physic"
 
-local physic = Component.create(_G.__PHYSIC)
+local lovetoys = require("lovetoys.lovetoys")
+local physic = lovetoys.Component.create(_G.__PHYSIC)
 
 physic.initialize = function(self, body, fixture, shape)
   self.body = body

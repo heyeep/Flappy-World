@@ -93,10 +93,10 @@ function love.load(_)
     _G.engine:addEntity(background)
     x_last_bg = x
   end
-  
+
   -- Generate pipes
   pipe_factory.new()
-  
+
   -- Generate the bird.
   local bird = bird_factory.new(40, 200, _G.__WINDOW_HEIGHT / 4)
   bird:add(my_bird())

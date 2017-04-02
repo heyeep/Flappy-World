@@ -1,9 +1,12 @@
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
 -- Synchronizes the Position Component with the Position of the Body Component, if an Entity has both.
-local physics_position_sync_system = class("physics_position_sync_system", System)
+local physics_position_sync_system =
+  middleclass.class("physics_position_sync_system", lovetoys.System)
 
-physics_position_sync_system.update = function(self, dt)
+physics_position_sync_system.update = function(self, _)
   -- Syncs the Position with the Physic. Physic is the primary component.
-  for k, entity in pairs(self.targets) do
+  for _, entity in pairs(self.targets) do
     entity:get(_G.__POSITION).x = entity:get(_G.__PHYSIC).body:getX()
     entity:get(_G.__POSITION).y = entity:get(_G.__PHYSIC).body:getY()
   end

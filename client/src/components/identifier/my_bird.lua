@@ -1,5 +1,6 @@
 _G.__MY_BIRD = "my_bird"
-local my_bird = Component.create(_G.__MY_BIRD)
+local lovetoys = require("lovetoys.lovetoys")
+local my_bird = lovetoys.Component.create(_G.__MY_BIRD)
 
 my_bird.initialize = function(_)
 end

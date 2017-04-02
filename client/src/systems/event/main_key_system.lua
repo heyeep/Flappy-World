@@ -1,7 +1,10 @@
-local main_key_system = class("main_key_system", System)
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
+local main_key_system =
+  middleclass.class("main_key_system", lovetoys.System)
 local log = require("logger.log")
 
-main_key_system.fireEvent = function(self, event)
+main_key_system.fireEvent = function(_, event)
   log.trace("fireEvent", event, event.key)
 
   if event.key == "space" then

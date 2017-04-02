@@ -1,7 +1,10 @@
-local bird_behavior_system = class("bird_behavior_system", System)
+local lovetoys = require("lovetoys.lovetoys")
+local middleclass = require("lovetoys.lib.middleclass")
+local bird_behavior_system =
+  middleclass.class("bird_behavior_system", lovetoys.System)
 
 bird_behavior_system.initialize = function(self, world_height, bird_speed)
-  System.initialize(self)
+  lovetoys.System.initialize(self)
   self.world_height = world_height
   self.bird_speed = bird_speed
 end

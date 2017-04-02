@@ -1,4 +1,5 @@
-local drawable = Component.create("drawable")
+local lovetoys = require("lovetoys.lovetoys")
+local drawable = lovetoys.Component.create("drawable")
 
 drawable.initialize = function(self, image, r, sx, sy, ox, oy)
   self.image = image
