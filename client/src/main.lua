@@ -50,7 +50,7 @@ function love.load(_)
                                    _G.__VERTICAL_GRAVITY,
                                    true)
 
-  _G.world:setCallbacks(beginContact, endContact)
+  -- _G.world:setCallbacks(beginContact, endContact)
 
   _G.engine = lovetoys.Engine()
   _G.eventmanager = lovetoys.EventManager()
