@@ -1,8 +1,8 @@
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 -- Synchronizes the Position Component with the Position of the Body Component, if an Entity has both.
 local physics_position_sync_system =
-  middleclass.class("physics_position_sync_system", lovetoys.System)
+  class("physics_position_sync_system", lovetoys.System)
 
 physics_position_sync_system.update = function(self, _)
   -- Syncs the Position with the Physic. Physic is the primary component.

@@ -1,7 +1,7 @@
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local main_key_system =
-  middleclass.class("main_key_system", lovetoys.System)
+  class("main_key_system", lovetoys.System)
 local log = require("logger.log")
 
 main_key_system.fireEvent = function(_, event)

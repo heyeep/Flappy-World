@@ -1,8 +1,8 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local background_draw_system =
-  middleclass.class("background_draw_system", lovetoys.System)
+  class("background_draw_system", lovetoys.System)
 
 local background_image = love.graphics.newImage("assets/sprites/backgrounds/basic_day.png")
 

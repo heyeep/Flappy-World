@@ -1,8 +1,8 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local polygon_draw_system =
-  middleclass.class("polygon_draw_system", lovetoys.System)
+  class("polygon_draw_system", lovetoys.System)
 
 polygon_draw_system.draw = function(self)
   love.graphics.setColor(255, 255, 255)

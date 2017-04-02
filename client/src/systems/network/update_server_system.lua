@@ -1,10 +1,9 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local _ = require("logger.log")
 
-local self =
-  middleclass.class("update_server_system", lovetoys.System)
+local self = class("update_server_system", lovetoys.System)
 
 local push_update_luachan = love.thread.getChannel(_G.__CHANNEL_PUSH_UPDATE)
 

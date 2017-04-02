@@ -1,8 +1,8 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local bird_draw_system =
-  middleclass.class("bird_draw_system", lovetoys.System)
+  class("bird_draw_system", lovetoys.System)
 local _ = require("logger.log")
 
 local bird_image = love.graphics.newImage("assets/sprites/birds/bird_blue.png")

@@ -1,8 +1,7 @@
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 -- Quick system to make sure birds always "bounce" back up instead of falling.
-local sync_system =
-  middleclass.class("bird_autojump_system", lovetoys.System)
+local sync_system = class("bird_autojump_system", lovetoys.System)
 
 sync_system.update = function(self, _)
   for _, entity in pairs(self.targets) do

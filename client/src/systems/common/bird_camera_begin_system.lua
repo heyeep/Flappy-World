@@ -1,8 +1,8 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local bird_camera_begin_system =
-  middleclass.class("bird_camera_begin_system", lovetoys.System)
+  class("bird_camera_begin_system", lovetoys.System)
 
 bird_camera_begin_system.draw = function(self)
   -- Iterate through the list of player_birds we have and grab the position of

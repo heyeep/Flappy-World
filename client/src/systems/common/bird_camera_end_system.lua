@@ -1,8 +1,8 @@
 local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local middleclass = require("lovetoys.lib.middleclass")
+local class = require("lovetoys.lib.middleclass")
 local bird_camera_end_system =
-  middleclass.class("bird_camera_end_system", lovetoys.System)
+  class("bird_camera_end_system", lovetoys.System)
 
 bird_camera_end_system.draw = function(self)
   for _, _ in pairs(self.targets) do
