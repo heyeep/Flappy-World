@@ -1,4 +1,4 @@
-_G.__POSITION = 'position'
+_G.__POSITION = "position"
 
 local position  = Component.create(_G.__POSITION)
 

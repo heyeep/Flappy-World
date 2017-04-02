@@ -1,15 +1,15 @@
-local love = require('love')
-local inspect = require('inspect.inspect')
--- local class = require('middleclass')
-local log = require('logger.log')
+local love = require("love")
+local inspect = require("inspect.inspect")
+-- local class = require("middleclass")
+local log = require("logger.log")
 
-local self = class('update_pop_system', System)
+local self = class("update_client_system", System)
 
 -- Modules used for creating new Birds.
 local lovetoys = require("lovetoys.lovetoys")
-local bird_factory = require('bird_factory')
+local bird_factory = require("bird_factory")
 
-require('identifier.other_bird')
+require("identifier.other_bird")
 local other_bird = lovetoys.Component.load({_G.__OTHER_BIRD})
 
 -- Hold on to table of Birds. This serves a few purposes.
@@ -77,7 +77,7 @@ self.handle_new_player_joined_update = function(new_player)
     return
   end
 
-  log.trace('update.new_player_joined:', inspect(new_player))
+  log.trace("update.new_player_joined:", inspect(new_player))
 
   self.update_or_create_bird(new_player)
 end

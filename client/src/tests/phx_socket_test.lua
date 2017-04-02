@@ -1,12 +1,12 @@
-package.path = '../?.lua;' .. package.path
-package.path = require('loadpath') .. package.path
+package.path = "../?.lua;" .. package.path
+package.path = require("loadpath") .. package.path
 
-local T = require('luaunit.luaunit')
+local T = require("luaunit.luaunit")
 
 test_phx_socket = {}
 
 test_phx_socket.setUp = function(self)
-  self.socket = require('vendor/websockets/phx_socket').new()
+  self.socket = require("vendor/websockets/phx_socket").new()
 end
 
 test_phx_socket.test_make_ref__different_values = function(self)
@@ -24,7 +24,7 @@ test_phx_socket.test_initial_ref_is_different = function(self)
     -- Do nothing
   end
 
-  local other_ref = require('vendor/websockets/phx_socket').new().ref
+  local other_ref = require("vendor/websockets/phx_socket").new().ref
   T.assertNotEquals(my_ref, other_ref)
 end
 

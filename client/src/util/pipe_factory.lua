@@ -1,4 +1,4 @@
-local love = require('love')
+local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
 
 require("graphic.drawable_pipe")

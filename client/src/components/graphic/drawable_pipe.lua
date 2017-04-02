@@ -1,4 +1,4 @@
-_G.__DRAWABLE_PIPE = 'drawable_pipe'
+_G.__DRAWABLE_PIPE = "drawable_pipe"
 
 local drawable_pipe = Component.create(_G.__DRAWABLE_PIPE)
 

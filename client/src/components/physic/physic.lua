@@ -1,4 +1,4 @@
-_G.__PHYSIC = 'physic'
+_G.__PHYSIC = "physic"
 
 local physic = Component.create(_G.__PHYSIC)
 

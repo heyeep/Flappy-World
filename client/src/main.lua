@@ -1,11 +1,11 @@
-local love = require('love')
+local love = require("love")
 
 love.filesystem.setRequirePath(
-  require('loadpath') .. love.filesystem.getRequirePath())
+  require("loadpath") .. love.filesystem.getRequirePath())
 
-local log = require('logger.log')
-require('constants')
-log.outfile = 'log.txt'
+local log = require("logger.log")
+require("constants")
+log.outfile = "log.txt"
 
 local lovetoys = require("lovetoys.lovetoys")
 lovetoys.initialize({
@@ -25,14 +25,14 @@ _G.__PIPE_PART_TOP = 1
 _G.__PIPE_PART_BOTTOM = 2
 
 -- Factory
-local bird_factory = require('bird_factory')
-local pipe_factory = require('pipe_factory')
+local bird_factory = require("bird_factory")
+local pipe_factory = require("pipe_factory")
 
 require("graphic.drawable_background")
 local drawable_background = lovetoys.Component.load({_G.__DRAWABLE_BACKGROUND})
 
 -- Systems
-require('identifier.my_bird')
+require("identifier.my_bird")
 local my_bird = lovetoys.Component.load({_G.__MY_BIRD})
 
 local background_draw_system = require("graphic.background_draw_system")
@@ -43,10 +43,10 @@ local bird_behavior_system = require("behavior.bird_behavior_system")
 local main_key_system = require("event.main_key_system")
 local bird_camera_begin_system = require("common.bird_camera_begin_system")
 local bird_camera_end_system = require("common.bird_camera_end_system")
-local bird_autojump_system = require('physic.bird_autojump_system')
+local bird_autojump_system = require("physic.bird_autojump_system")
 
-local update_server_system = require('network.update_server_system')
-local update_client_system = require('network.update_client_system')
+local update_server_system = require("network.update_server_system")
+local update_client_system = require("network.update_client_system")
 
 -- Events
 require("key_pressed")

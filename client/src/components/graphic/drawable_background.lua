@@ -1,4 +1,4 @@
-_G.__DRAWABLE_BACKGROUND = 'drawable_background'
+_G.__DRAWABLE_BACKGROUND = "drawable_background"
 
 local drawable_background = Component.create(_G.__DRAWABLE_BACKGROUND)
 

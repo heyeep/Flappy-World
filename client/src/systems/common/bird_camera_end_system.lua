@@ -1,4 +1,4 @@
-local love = require('love')
+local love = require("love")
 local bird_camera_end_system = class("bird_camera_end_system", System)
 
 bird_camera_end_system.draw = function(self)

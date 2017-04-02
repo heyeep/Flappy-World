@@ -1,7 +1,7 @@
-local love = require('love')
+local love = require("love")
 local background_draw_system = class("background_draw_system", System)
 
-local background_image = love.graphics.newImage('assets/sprites/backgrounds/basic_day.png')
+local background_image = love.graphics.newImage("assets/sprites/backgrounds/basic_day.png")
 
 background_draw_system.draw = function(self)
   for index, entity in pairs(self.targets) do

@@ -1,8 +1,8 @@
-local love = require('love')
+local love = require("love")
 local bird_draw_system = class("bird_draw_system", System)
-local _ = require('logger.log')
+local _ = require("logger.log")
 
-local bird_image = love.graphics.newImage('assets/sprites/birds/bird_blue.png')
+local bird_image = love.graphics.newImage("assets/sprites/birds/bird_blue.png")
 
 bird_draw_system.draw = function(self)
  -- love.graphics.setColor(255, 255, 255)

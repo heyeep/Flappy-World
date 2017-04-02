@@ -1,6 +1,6 @@
-local love = require('love')
+local love = require("love")
 local lovetoys = require("lovetoys.lovetoys")
-local log = require('logger.log')
+local log = require("logger.log")
 
 require("identifier.player_bird")
 local player_bird = lovetoys.Component.load({_G.__PLAYER_BIRD})
@@ -19,7 +19,7 @@ local default_size = 40
 
 local new = function(size, x, y)
   log.info(
-    'Creating a bird with', '[size:', size, ']', '[x:', x, ']', '[y:', y, ']')
+    "Creating a bird with", "[size:", size, "]", "[x:", x, "]", "[y:", y, "]")
   local bird = lovetoys.Entity()
   bird:add(player_bird())
   bird:add(drawable_bird())

@@ -1,4 +1,4 @@
--- Quick system to make sure birds always 'bounce' back up instead of falling.
+-- Quick system to make sure birds always "bounce" back up instead of falling.
 local sync_system = class("bird_autojump_system", System)
 
 sync_system.update = function(self, _)

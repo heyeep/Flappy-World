@@ -1,10 +1,10 @@
-local love = require('love')
+local love = require("love")
 local pipe_draw_system = class("pipe_draw_system", System)
 
 local pipe_images = {
-  [_G.__PIPE_PART_BASE] = love.graphics.newImage('assets/sprites/pipes/pipe_green_base.png'),
-  [_G.__PIPE_PART_TOP] = love.graphics.newImage('assets/sprites/pipes/pipe_green_top.png'),
-  [_G.__PIPE_PART_BOTTOM] = love.graphics.newImage('assets/sprites/pipes/pipe_green_bottom.png'),
+  [_G.__PIPE_PART_BASE] = love.graphics.newImage("assets/sprites/pipes/pipe_green_base.png"),
+  [_G.__PIPE_PART_TOP] = love.graphics.newImage("assets/sprites/pipes/pipe_green_top.png"),
+  [_G.__PIPE_PART_BOTTOM] = love.graphics.newImage("assets/sprites/pipes/pipe_green_bottom.png"),
 }
 
 pipe_draw_system.draw = function(self)

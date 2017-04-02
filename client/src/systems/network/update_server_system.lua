@@ -1,8 +1,8 @@
-local love = require('love')
--- local class = require('lovetoys.middleclass')
-local log = require('logger.log')
+local love = require("love")
+-- local class = require("lovetoys.middleclass")
+local log = require("logger.log")
 
-local self = class('update_server_system', System)
+local self = class("update_server_system", System)
 
 local push_update_luachan = love.thread.getChannel(_G.__CHANNEL_PUSH_UPDATE)
 
@@ -18,7 +18,7 @@ self.update = function(_, dt)
 
   self.time = self.time - _G.__TIME_TILL_NEXT_UPDATE
 
-  -- log.trace('update: elapsed:', self.elapsed_time)
+  -- log.trace("update: elapsed:", self.elapsed_time)
 
   for _, entity in pairs(_G.engine:getEntitiesWithComponent(_G.__MY_BIRD)) do
     local my_bird = entity
@@ -32,7 +32,7 @@ self.update = function(_, dt)
     -- Only push coordinate updates if bird has server_id set.
     if server_id then
       push_update_luachan:push(
-        {type = 'coordinates',
+        {type = "coordinates",
          payload = {server_id = server_id,
                     x = x,
                     y = y,
