@@ -8,8 +8,8 @@ local pipe_images = {
 }
 
 pipe_draw_system.draw = function(self)
-  for index, entity in pairs(self.targets) do
-    pipe = entity:get(_G.__DRAWABLE_PIPE)
+  for _, entity in pairs(self.targets) do
+    local pipe = entity:get(_G.__DRAWABLE_PIPE)
     love.graphics.draw(pipe_images[pipe.part], pipe.x, pipe.y, 0, 1.5, 1.5)
   end
 end
