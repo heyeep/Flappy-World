@@ -2,7 +2,7 @@ local love = require('love')
 -- local class = require('lovetoys.middleclass')
 local log = require('logger.log')
 
-local self = class('update_push_system', System)
+local self = class('update_server_system', System)
 
 local push_update_luachan = love.thread.getChannel(_G.__CHANNEL_PUSH_UPDATE)
 

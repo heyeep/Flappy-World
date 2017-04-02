@@ -45,8 +45,8 @@ local bird_camera_begin_system = require("common.bird_camera_begin_system")
 local bird_camera_end_system = require("common.bird_camera_end_system")
 local bird_autojump_system = require('physic.bird_autojump_system')
 
-local update_push_system = require('network.update_push_system')
-local update_pop_system = require('network.update_pop_system')
+local update_server_system = require('network.update_server_system')
+local update_client_system = require('network.update_client_system')
 
 -- Events
 require("key_pressed")
@@ -78,8 +78,8 @@ function love.load(_)
   _G.engine:addSystem(physics_position_sync_system())
   _G.engine:addSystem(bird_behavior_system(_G.__WINDOW_HEIGHT, _G.__BIRD_SPEED))
 
-  _G.engine:addSystem(update_push_system())
-  _G.engine:addSystem(update_pop_system())
+  _G.engine:addSystem(update_server_system())
+  _G.engine:addSystem(update_client_system())
 
   -- Generate background
   -- All background images are 144 x 256
