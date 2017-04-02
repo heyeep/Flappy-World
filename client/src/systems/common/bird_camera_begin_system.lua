@@ -6,17 +6,17 @@ bird_camera_begin_system.draw = function(self)
   -- one of them. We use that position to set up the x offset of the bird
   -- relative to the left side of the screen
   -- (e.g. How far away is the bird from the left side of the screen?)
-  local player_bird_x = 0
+  local my_bird_x = 0
   for _, entity in pairs(self.targets) do
-    player_bird_x = entity:get(_G.__POSITION).x
+    my_bird_x = entity:get(_G.__POSITION).x
   end
 
   love.graphics.push()
-  love.graphics.translate(-player_bird_x + 200, 0)
+  love.graphics.translate(-my_bird_x + 200, 0)
 end
 
 bird_camera_begin_system.requires = function()
-  return {_G.__PLAYER_BIRD, _G.__POSITION}
+  return {_G.__MY_BIRD, _G.__POSITION}
 end
 
 return bird_camera_begin_system

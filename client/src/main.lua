@@ -32,6 +32,9 @@ require("graphic.drawable_background")
 local drawable_background = lovetoys.Component.load({_G.__DRAWABLE_BACKGROUND})
 
 -- Systems
+require('identifier.my_bird')
+local my_bird = lovetoys.Component.load({_G.__MY_BIRD})
+
 local background_draw_system = require("graphic.background_draw_system")
 local pipe_draw_system = require("graphic.pipe_draw_system")
 local bird_draw_system = require("graphic.bird_draw_system")
@@ -40,6 +43,7 @@ local bird_behavior_system = require("behavior.bird_behavior_system")
 local main_key_system = require("event.main_key_system")
 local bird_camera_begin_system = require("common.bird_camera_begin_system")
 local bird_camera_end_system = require("common.bird_camera_end_system")
+local bird_autojump_system = require('physic.bird_autojump_system')
 
 local update_push_system = require('network.update_push_system')
 local update_pop_system = require('network.update_pop_system')
@@ -70,6 +74,7 @@ function love.load(_)
   _G.engine:addSystem(pipe_draw_system())
   _G.engine:addSystem(bird_draw_system())
   _G.engine:addSystem(bird_camera_end_system())
+  _G.engine:addSystem(bird_autojump_system())
   _G.engine:addSystem(physics_position_sync_system())
   _G.engine:addSystem(bird_behavior_system(_G.__WINDOW_HEIGHT, _G.__BIRD_SPEED))
 
@@ -94,10 +99,8 @@ function love.load(_)
   
   -- Generate the bird.
   local bird = bird_factory.new(40, 200, _G.__WINDOW_HEIGHT / 4)
+  bird:add(my_bird())
   _G.engine:addEntity(bird)
-
-  local npc_bird = bird_factory.new(40, 100, _G.__WINDOW_HEIGHT / 3)
-  _G.engine:addEntity(npc_bird)
 
   local thread = love.thread.newThread("driver.lua")
   thread:start()
