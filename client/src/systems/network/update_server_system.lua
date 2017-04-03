@@ -33,13 +33,16 @@ self.update = function(_, dt)
     -- Only push coordinate updates if bird has server_id set.
     if server_id then
       push_update_luachan:push(
-        {type = "coordinates",
-         payload = {server_id = server_id,
-                    x = x,
-                    y = y,
-                    lv_x = lv_x,
-                    lv_y = lv_y
-      }})
+        {
+          type = "coordinates",
+          payload = {
+            server_id = server_id,
+            x = x,
+            y = y,
+            lv_x = lv_x,
+            lv_y = lv_y
+          }
+      })
     end
   end
 end
