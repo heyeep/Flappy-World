@@ -63,3 +63,21 @@
    # Example
    lua phx_socket_test.lua test_phx_socket.test_make_ref__returns_number
    #+end_src
+* Merging
+** Emacs
+*** Magit
+    Make sure Magit is your active buffer.
+    1. Fetch (f)
+    2. Branch and Checkout (META-X -> magit-branch-and-checkout)
+    3. Stage Changes (s)
+    4. Commit (CTRL-C CTRL-C)
+    5. Rebase (r)
+    6. Push (P)
+       a. elsewhere (e)
+       b. Your branch
+    7. GitLab
+       a. Repository
+       b. Branches  (http://gitlab.com/parrottdrive/flappyworld/branches
+       c. Your Branch
+       d. Merge Request
+    8. Delete Branch (META-X -> magit-branch-and-delete)
