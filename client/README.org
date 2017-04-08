@@ -86,4 +86,3 @@
    # Example
    lua phx_socket_test.lua test_phx_socket.test_make_ref__returns_number
    #+end_src
-
