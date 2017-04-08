@@ -25,7 +25,7 @@ defmodule Server.RoomState do
         {:reply, room_states[room_id], room_states}
       _ ->
         {:ok, player_list} = PlayerList.start_link(%{})
-        room_state = %{player_list: player_list}
+        room_state = %{player_list: player_list, room_id: room_id}
         new_room_states = Map.put(room_states, room_id, room_state)
         {:reply, room_state, new_room_states}
     end
