@@ -7,7 +7,7 @@ defmodule Server.Backends.RoomStateTest do
     assert room_state
   end
 
-  test "Room state contains player list." do
+  test "Roomg state contains player list." do
     room_state = RoomState.get_or_create_room_state(2)
     assert room_state[:player_list]
   end
@@ -18,10 +18,8 @@ defmodule Server.Backends.RoomStateTest do
     refute room_state_one == room_state_two
   end
 
-  # This test is commented out for now as it is my intention someone else
-  # implements the code that will fix this test.
-  # test "Room state contains room id." do
-  #   room_state = RoomState.get_or_create_room_state(3)
-  #   assert room_state[:room_id] == 3
-  # end
+  test "Room state contains room id." do
+    room_state = RoomState.get_or_create_room_state(3)
+    assert room_state[:room_id] == 3
+  end
 end
