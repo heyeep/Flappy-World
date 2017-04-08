@@ -36,6 +36,29 @@
    #+begin_src sh :tangle yes
    luarocks install lovetoys
    #+end_src
+* Building and Running
+** Install Love2D SDK
+   Download SDK from Love2D (https://love2d.org/) and follow instructions for your development machine. 
+** Command `love`
+   Check whether `love` is available on your command-line.
+   > DEFINITION: `which N` return the path to command `N`.
+     # Return path to Love
+     $ which love
+** Download
+   Clone the repository folder
+   $ git clone git@gitlab.com:parrottdrive/flappyworld.git
+** Build for Desktop
+   `pdrun` builds and runs our project in one step, launching the application in a window.
+   $ cd flappyworld
+   $ pdrun
+** Build for iOS
+   Get iOS source code from love2d.org. (https://bitbucket.org/rude/love/downloads/love-0.10.2-ios-source.zip)
+   Open platform/xcode/love.xcodeproj with Xcode.
+   Select love-ios target (not love-macosx)
+   Select Build Phases of the 'love-ios' target and add your 'game.love' file into Copy Bundle Resources.
+   Build the project.
+   Your game should appear on your iOS device as an app.
+   If you can't find the relevant XCode UI elements, you can refer to video tutorial on YouTube.
 * Misc
 ** Style
    https://github.com/mpeterv/luacheck
