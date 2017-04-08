@@ -7,7 +7,7 @@ defmodule Server.Backends.RoomStateTest do
     assert room_state
   end
 
-  test "Roomg state contains player list." do
+  test "Room state contains player list." do
     room_state = RoomState.get_or_create_room_state(2)
     assert room_state[:player_list]
   end
