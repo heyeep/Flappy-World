@@ -20,6 +20,10 @@ _G.__TIME_TILL_NEXT_UPDATE = 0.1
 -- I set it to 200 myself when testing.
 _G.__DELAY_COMPENSATION_X = 0
 
+-- Testing Flags
+_G.__TESTING_DEATH_FLAG = false
+_G.__TESTING_AUTOJUMP = false
+
 -- World
 _G.__WINDOW_WIDTH = 1000
 _G.__WINDOW_HEIGHT = 600

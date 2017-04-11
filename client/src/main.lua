@@ -63,12 +63,16 @@ function love.load(_)
   _G.engine:addSystem(pipe_draw_system())
   _G.engine:addSystem(bird_draw_system())
   _G.engine:addSystem(bird_camera_end_system())
-  _G.engine:addSystem(bird_autojump_system())
+ -- _G.engine:addSystem(bird_autojump_system())
   _G.engine:addSystem(physics_position_sync_system())
   _G.engine:addSystem(bird_behavior_system(_G.__WINDOW_HEIGHT, _G.__BIRD_SPEED))
 
   _G.engine:addSystem(update_server_system())
   _G.engine:addSystem(update_client_system())
+
+  if _G.__TESTING_AUTOJUMP == true then
+    _G.engine:addSystem(bird_autojump_system())
+  end
 
   -- Generate background
   -- All background images are 144 x 256
