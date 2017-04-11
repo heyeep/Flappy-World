@@ -21,7 +21,7 @@ _G.__TIME_TILL_NEXT_UPDATE = 0.1
 _G.__DELAY_COMPENSATION_X = 0
 
 -- Testing Flags
-_G.__TESTING_DEATH_FLAG = false
+_G.__TESTING_DEATH = false
 _G.__TESTING_AUTOJUMP = false
 
 -- World

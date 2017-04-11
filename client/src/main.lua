@@ -70,10 +70,14 @@ function love.load(_)
   _G.engine:addSystem(update_server_system())
   _G.engine:addSystem(update_client_system())
 
-  if _G.__TESTING_AUTOJUMP == true then
-    _G.engine:addSystem(bird_autojump_system())
+  -- Testing Flags
+  if _G.__TESTING_DEATH == false then
+    _G.__TESTING_AUTOJUMP = true
   end
-
+  if (_G.__TESTING_AUTOJUMP == true) then
+     _G.engine:addSystem(bird_autojump_system())
+  end
+  
   -- Generate background
   -- All background images are 144 x 256
   local BACKGROUND_SPACING = 144
