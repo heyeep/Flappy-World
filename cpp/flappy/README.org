@@ -1,0 +1,26 @@
+* iOS/Mac
+** Checking for configuration
+   #+begin_src sh_ :tangle yes
+james:proj.ios_mac/ (master) $ xcodebuild -list
+Information about project "flappy":
+    Targets:
+        flappy-mobile
+        flappy-desktop
+
+    Build Configurations:
+        Debug
+        Release
+
+    If no build configuration is specified and -scheme is not passed then "Debug" is used.
+
+    Schemes:
+        flappy-mobile
+        flappy-desktop
+        libcocos2d Mac
+        libcocos2d iOS
+        libcocos2d tvOS
+   #+end_src
+** Debugging with LLDB
+   #+begin_src  :tangle yes
+lldb attach -n 'flappy-mobile' --wait-for
+   #+end_src
