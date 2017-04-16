@@ -1,1 +1,5 @@
+# Cmake directory
 build/
+
+# Build output
+bin/
