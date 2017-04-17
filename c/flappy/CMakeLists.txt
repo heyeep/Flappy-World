@@ -125,6 +125,12 @@ if ( WIN32 )
 )
 endif( WIN32 )
 
+if ( MACOSX )
+  include_directories(
+  ${COCOS2D_ROOT}/external/glfw3/include/mac
+  )
+endif ( MACOSX )
+
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/HelloWorldScene.cpp
