@@ -1,9 +1,14 @@
 # Cmake directory
-build/
+/build/
+
+# Build directory in cocos2d directory
+cocos2d/build/build/
 
 # Build output
-bin/
+/bin/
 
 # Xcode Workspace files
 proj.ios_mac/flappy.xcodeproj/project.xcworkspace/
 proj.ios_mac/flappy.xcodeproj/xcuserdata/
+proj.ios_mac/build/
+proj.tizen/Build/
