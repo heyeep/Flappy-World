@@ -3,3 +3,7 @@ build/
 
 # Build output
 bin/
+
+# Xcode Workspace files
+proj.ios_mac/flappy.xcodeproj/project.xcworkspace/
+proj.ios_mac/flappy.xcodeproj/xcuserdata/
