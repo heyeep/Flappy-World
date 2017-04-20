@@ -133,14 +133,12 @@ endif ( MACOSX )
 
 set(GAME_SRC
   Classes/AppDelegate.cpp
-  Classes/HelloWorldScene.cpp
   Classes/MainMenuScene.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
-  Classes/HelloWorldScene.h
   Classes/MainMenuScene.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
