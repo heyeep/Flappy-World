@@ -135,6 +135,7 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/MainMenuScene.cpp
   Classes/SinglePlayerScene.cpp
+  Classes/MultiPlayerScene.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -142,6 +143,7 @@ set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
   Classes/SinglePlayerScene.h
+  Classes/MultiPlayerScene.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

@@ -29,7 +29,6 @@ bool SinglePlayerGame::init()
     gameTitle->setPosition(Vec2(visibleSize.width/2,
                                 visibleSize.height - gameTitle->getContentSize().height));
     
-
     this->addChild(gameTitle, 1);
     
     return true;
