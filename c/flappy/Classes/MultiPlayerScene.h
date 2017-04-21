@@ -1,14 +1,15 @@
-//
-//  MultiPlayerScene.hpp
-//  flappy
-//
-//  Created by Hiep Nguyen on 4/21/17.
-//
-//
-
-#ifndef MultiPlayerScene_hpp
-#define MultiPlayerScene_hpp
+#ifndef MultiPlayerScene_h
+#define MultiPlayerScene_h
 
 #include <stdio.h>
+#include "cocos2d.h"
 
-#endif /* MultiPlayerScene_hpp */
+class MultiPlayerGame : public cocos2d::Layer {
+public:
+    static cocos2d::Scene* createScene();
+    virtual bool init();
+    
+    CREATE_FUNC(MultiPlayerGame);
+};
+
+#endif /* MultiPlayerScene_h */
