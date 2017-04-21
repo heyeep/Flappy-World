@@ -1,4 +1,5 @@
 #include "MainMenuScene.h"
+#include "SinglePlayerScene.h"
 
 USING_NS_CC;
 
@@ -52,9 +53,14 @@ bool MainMenu::init()
     return true;
 }
 
-// Call new scenes from here
+// Call new scenes from here
 void MainMenu::callSinglePlayer(Ref* pSender)
 {
+    auto director = Director::getInstance();
+    auto scene = SinglePlayerGame::createScene();
+    
+    director->replaceScene(scene);
+
 }
 
 void MainMenu::callMultiPlayer(Ref* pSender)
