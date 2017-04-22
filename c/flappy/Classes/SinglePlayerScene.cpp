@@ -4,8 +4,8 @@ USING_NS_CC;
 
 Scene* SinglePlayerGame::createScene()
 {
-    auto scene = Scene::create();
-    auto layer = SinglePlayerGame::create();
+    Scene* scene = Scene::create();
+    Layer* layer = SinglePlayerGame::create();
     
     scene->addChild(layer);
     
@@ -18,10 +18,10 @@ bool SinglePlayerGame::init()
         return false;
     }
     
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    auto gameTitle = Label::createWithSystemFont("SINGLE PLAYER", "Arial", 100);
+    Label* gameTitle = Label::createWithSystemFont("SINGLE PLAYER", "Arial", 100);
     
     // To position a sprite using it's mid point
     gameTitle->setAnchorPoint(Vec2(0.5, 0.5));

@@ -7,8 +7,8 @@ USING_NS_CC;
 Scene* MainMenu::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
-    auto layer = MainMenu::create();
+    Scene* scene = Scene::create();
+    Layer* layer = MainMenu::create();
     
     scene->addChild(layer);
     
@@ -21,10 +21,10 @@ bool MainMenu::init()
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    auto gameTitle = Label::createWithSystemFont("FLAPPY WORLD", "Arial", 100);
+    Label* gameTitle = Label::createWithSystemFont("FLAPPY WORLD", "Arial", 100);
 
     // To position a sprite using it's mid point
     gameTitle->setAnchorPoint(Vec2(0.5, 0.5));
@@ -32,19 +32,19 @@ bool MainMenu::init()
     gameTitle->setPosition(Vec2(visibleSize.width/2,
                             visibleSize.height - gameTitle->getContentSize().height));
 
-    auto singlePlayerButton = MenuItemImage::create("singleplayerbutton.png",
+    MenuItemImage* singlePlayerButton = MenuItemImage::create("singleplayerbutton.png",
                                                     "singleplayerbutton-s.png",
                                                     CC_CALLBACK_1(MainMenu::callSinglePlayer, this));
     singlePlayerButton->setPosition(Vec2(gameTitle->getPositionX(),
                                          gameTitle->getPositionY() -
                                          singlePlayerButton->getContentSize().height));
-    auto multiPlayerButton = MenuItemImage::create("multiplayerbutton.png",
+    MenuItemImage* multiPlayerButton = MenuItemImage::create("multiplayerbutton.png",
                                                    "multiplayerbutton-s.png",
                                                    CC_CALLBACK_1(MainMenu::callMultiPlayer, this));
     multiPlayerButton->setPosition(Vec2(gameTitle->getPositionX(),
                                         gameTitle->getPositionY() - 
                                         multiPlayerButton->getContentSize().height * 2));
-    auto menu = Menu::create(singlePlayerButton, multiPlayerButton, NULL);
+    Menu* menu = Menu::create(singlePlayerButton, multiPlayerButton, NULL);
     
     menu->setPosition(Vec2::ZERO);
 
@@ -57,8 +57,8 @@ bool MainMenu::init()
 // Call new scenes from here
 void MainMenu::callSinglePlayer(Ref* pSender)
 {
-    auto director = Director::getInstance();
-    auto scene = SinglePlayerGame::createScene();
+    Director* director = Director::getInstance();
+    Scene* scene = SinglePlayerGame::createScene();
     
     director->replaceScene(scene);
 }
