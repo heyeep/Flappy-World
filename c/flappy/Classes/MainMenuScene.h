@@ -9,8 +9,7 @@ public:
     static cocos2d::Scene* createScene();
     virtual bool init();
 
-    void callSinglePlayer(cocos2d::Ref* pSender);
-    void callMultiPlayer(cocos2d::Ref* pSender);
+    void startGameCall(cocos2d::Ref* pSender);
     
     CREATE_FUNC(MainMenu);
 };

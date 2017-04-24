@@ -1,18 +1,18 @@
-#include "MultiPlayerScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
-Scene* MultiPlayerGame::createScene()
+Scene* FlappyGame::createScene()
 {
     Scene* scene = Scene::create();
-    Layer* layer = MultiPlayerGame::create();
+    Layer* layer = FlappyGame::create();
     
     scene->addChild(layer);
     
     return scene;
 }
 
-bool MultiPlayerGame::init()
+bool FlappyGame::init()
 {
     if (!Layer::init()) {
         return false;
@@ -21,7 +21,7 @@ bool MultiPlayerGame::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    Label* gameTitle = Label::createWithSystemFont("MULTI PLAYER", "Arial", 100);
+    Label* gameTitle = Label::createWithSystemFont("Starting...", "Arial", 100);
     
     // To position a sprite using it's mid point
     gameTitle->setAnchorPoint(Vec2(0.5, 0.5));
