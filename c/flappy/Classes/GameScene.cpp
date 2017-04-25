@@ -6,7 +6,7 @@ Scene* FlappyGame::createScene()
 {
     Scene* scene = Scene::create();
     Layer* layer = FlappyGame::create();
-    
+
     scene->addChild(layer);
     
     return scene;
@@ -18,20 +18,33 @@ bool FlappyGame::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    windowSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    Label* gameTitle = Label::createWithSystemFont("Starting...", "Arial", 100);
-    
-    // To position a sprite using it's mid point
-    gameTitle->setAnchorPoint(Vec2(0.5, 0.5));
-    
-    gameTitle->setPosition(Vec2(visibleSize.width/2,
-                                visibleSize.height - gameTitle->getContentSize().height));
-    
-    this->addChild(gameTitle, 1);
-    
+    generateWorld();
     return true;
 }
 
+void FlappyGame::generateWorld()
+{
+    _parallaxNode = ParallaxNode::create();
+    _parallaxNode->setAnchorPoint(Point::ZERO);
 
+    generateBottomLayer();
+
+    _parallaxNode->addChild(_bottomLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
+    
+    this->addChild(_parallaxNode, 0);
+}
+
+void FlappyGame::generateBottomLayer()
+{
+    _bottomLayer = Layer::create();
+    for (int i = 0; i < 100; i++) {
+        backgroundImg = Sprite::create("basic_day.png");
+        backgroundImg->setAnchorPoint(Point::ZERO);
+        backgroundImg->setPosition(i * backgroundImg->getContentSize().width, 0);
+        backgroundImg->setScale(SCALE_FACTOR);
+        _bottomLayer->addChild(backgroundImg, Z_BOTTOM_LAYER);
+    }
+}
