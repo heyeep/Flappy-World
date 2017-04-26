@@ -19,9 +19,8 @@ bool FlappyGame::init()
     }
     
     windowSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
     generateWorld();
+
     return true;
 }
 
