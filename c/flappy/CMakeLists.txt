@@ -135,13 +135,16 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/MainMenuScene.cpp
   Classes/GameScene.cpp
+  Classes/PlayerBird.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
+  Constants.h
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
   Classes/GameScene.h
+  Classes/PlayerBird.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

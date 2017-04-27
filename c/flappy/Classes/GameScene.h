@@ -3,15 +3,14 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "Constants.h"
+#include "PlayerBird.h"
 
-#define SCALE_FACTOR 2.5
-#define Z_BOTTOM_LAYER 0
-#define Z_MIDDLE_LAYER 1
-#define Z_TOP_LAYER 2
-#define Z_HUD_LAYER 3
 
 class FlappyGame : public cocos2d::Layer {
 public:
+    PlayerBird* player;
+    
     cocos2d::Size windowSize;
     /*
     _bottomLayer = background
