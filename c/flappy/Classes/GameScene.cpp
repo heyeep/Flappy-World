@@ -35,8 +35,10 @@ void FlappyGame::generateWorld()
     _parallaxNode->addChild(_middleLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
 
     addPlayer();
+    setCameraTarget();
     
     this->addChild(_parallaxNode, 1);
+    this->runAction(cameraTarget);
 }
 
 void FlappyGame::generateBottomLayer()
@@ -60,7 +62,14 @@ void FlappyGame::addPlayer()
 {
     player = PlayerBird::create();
     player->retain();
-    player->setPosition(Vec2(windowSize.width/2,
+    player->setPosition(Vec2(windowSize.width/2 - player->getContentSize().width,
                              windowSize.height/2));
     _middleLayer->addChild(player, Z_MIDDLE_LAYER);
+    for (int i = 0; i < 10000;)
+}
+
+void FlappyGame::setCameraTarget()
+{
+    cameraTarget = Follow::create(player, Rect::ZERO);
+    cameraTarget->retain();
 }

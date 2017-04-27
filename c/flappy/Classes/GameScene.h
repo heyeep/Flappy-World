@@ -10,7 +10,7 @@
 class FlappyGame : public cocos2d::Layer {
 public:
     PlayerBird* player;
-    
+   
     cocos2d::Size windowSize;
     /*
     _bottomLayer = background
@@ -25,7 +25,8 @@ public:
 
     cocos2d::ParallaxNode* _parallaxNode;
     cocos2d::Sprite* backgroundImg;
-    
+    cocos2d::Follow* cameraTarget;
+
     static cocos2d::Scene* createScene();
     virtual bool init();
 
@@ -34,6 +35,7 @@ public:
     void generateMiddleLayer();
 
     void addPlayer();
+    void setCameraTarget();
     
     CREATE_FUNC(FlappyGame);
 };
