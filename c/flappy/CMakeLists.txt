@@ -140,7 +140,7 @@ set(GAME_SRC
 )
 
 set(GAME_HEADERS
-  Constants.h
+  Classes/Constants.h
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
   Classes/GameScene.h
