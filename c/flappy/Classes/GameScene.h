@@ -33,6 +33,8 @@ public:
     void generateBottomLayer();
     void generateMiddleLayer();
 
+    void addPlayer();
+    
     CREATE_FUNC(FlappyGame);
 };
 

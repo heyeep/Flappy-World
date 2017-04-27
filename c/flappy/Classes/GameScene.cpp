@@ -20,7 +20,7 @@ bool FlappyGame::init()
     
     windowSize = Director::getInstance()->getVisibleSize();
     generateWorld();
-
+    addPlayer();
     return true;
 }
 
@@ -30,10 +30,13 @@ void FlappyGame::generateWorld()
     _parallaxNode->setAnchorPoint(Point::ZERO);
 
     generateBottomLayer();
-
+    generateMiddleLayer();
     _parallaxNode->addChild(_bottomLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
+    _parallaxNode->addChild(_middleLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
+
+    addPlayer();
     
-    this->addChild(_parallaxNode, 0);
+    this->addChild(_parallaxNode, 1);
 }
 
 void FlappyGame::generateBottomLayer()
@@ -46,4 +49,18 @@ void FlappyGame::generateBottomLayer()
         backgroundImg->setScale(SCALE_FACTOR);
         _bottomLayer->addChild(backgroundImg, Z_BOTTOM_LAYER);
     }
+}
+
+void FlappyGame::generateMiddleLayer()
+{
+    _middleLayer = Layer::create();
+}
+
+void FlappyGame::addPlayer()
+{
+    player = PlayerBird::create();
+    player->retain();
+    player->setPosition(Vec2(windowSize.width/2,
+                             windowSize.height/2));
+    _middleLayer->addChild(player, Z_MIDDLE_LAYER);
 }
