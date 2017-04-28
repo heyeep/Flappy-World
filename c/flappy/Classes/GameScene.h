@@ -18,12 +18,11 @@ public:
     _topLayer = objects
     _hudLayer = hud/gui/etc
      */
-    cocos2d::Layer* _bottomLayer;
-    cocos2d::Layer* _middleLayer;
-    cocos2d::Layer* _topLayer;
-    cocos2d::Layer* _hudLayer;
-
-    cocos2d::ParallaxNode* _parallaxNode;
+    cocos2d::Layer* bottomLayer;
+    cocos2d::Layer* middleLayer;
+    cocos2d::Layer* topLayer;
+    cocos2d::Layer* hudLayer;
+    cocos2d::ParallaxNode* parallaxNode;
     cocos2d::Sprite* backgroundImg;
     cocos2d::Follow* cameraTarget;
 
