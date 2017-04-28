@@ -9,8 +9,9 @@ class PlayerBird : public cocos2d::Sprite
 {
 public:
     int speed;
-    static PlayerBird* create();
 
+    static PlayerBird* create();
+    static cocos2d::PhysicsBody* createPhysicsBody(PlayerBird* player);
     void update(float dt);
     
     PlayerBird();

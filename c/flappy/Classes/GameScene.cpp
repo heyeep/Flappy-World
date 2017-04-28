@@ -4,9 +4,15 @@ USING_NS_CC;
 
 Scene* FlappyGame::createScene()
 {
-    Scene* scene = Scene::create();
-    Layer* layer = FlappyGame::create();
+    // Creates a scene with built in physics.
+    Scene* scene = Scene::createWithPhysics();
 
+    // Retrieves the physics world, and gives any object with Physics Enabled a red out. USEFUL
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
+    Layer* layer = FlappyGame::create();
+    //layer->sceneWorld->getPhysicsWorld());
+    
     scene->addChild(layer);
     
     return scene;
@@ -101,6 +107,13 @@ void FlappyGame::setCameraTarget()
     this->runAction(this->cameraTarget);
 }
 
+Point FlappyGame::getStartingLocation()
+{
+    Size wSize = Director::getInstance()->getVisibleSize();
+    Point start = Vec2(wSize.width/2, wSize.height/2);
+    return start;
+}
+
 void FlappyGame::updateScene(float dt)
 {
     this->updatePlayer(dt);
@@ -109,11 +122,4 @@ void FlappyGame::updateScene(float dt)
 void FlappyGame::updatePlayer(float dt)
 {
     this->player->update(dt);
-}
-
-Point FlappyGame::getStartingLocation()
-{
-    Size wSize = Director::getInstance()->getVisibleSize();
-    Point start = Vec2(wSize.width/2, wSize.height/2);
-    return start;
 }

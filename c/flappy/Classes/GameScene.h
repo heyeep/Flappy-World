@@ -6,12 +6,19 @@
 #include "Constants.h"
 #include "PlayerBird.h"
 
-
 class FlappyGame : public cocos2d::Layer {
 public:
+    static cocos2d::Scene* createScene();
+    
+    virtual bool init();
+
+    CREATE_FUNC(FlappyGame);
+
+private:
     PlayerBird* player;
-   
+    
     cocos2d::Size windowSize;
+    cocos2d::PhysicsWorld* sceneWorld;
     cocos2d::Layer* bottomLayer;
     cocos2d::Layer* middleLayer;
     cocos2d::Layer* topLayer;
@@ -19,11 +26,7 @@ public:
     cocos2d::ParallaxNode* parallaxNode;
     cocos2d::Sprite* backgroundImg;
     cocos2d::Follow* cameraTarget;
-
-    static cocos2d::Scene* createScene();
     static cocos2d::Point getStartingLocation();
-    
-    virtual bool init();
 
     void generateWorld();
     void generateBottomLayer();
@@ -34,8 +37,6 @@ public:
 
     void updateScene(float dt);
     void updatePlayer(float dt);
-
-    CREATE_FUNC(FlappyGame);
 };
 
-#endif /* SinglePlayerScene_h */
+#endif /* GameScene_h */
