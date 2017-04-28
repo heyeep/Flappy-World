@@ -30,10 +30,23 @@ PlayerBird* PlayerBird::create()
     return NULL;
 }
 
+/*
+  Creates a body with physics enabled.
+ */
+cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player)
+{
+    cocos2d::PhysicsBody* pBody = PhysicsBody::createCircle(player->getContentSize().width/2,
+                                                            PhysicsMaterial(0, 1, 0));
+    return pBody;
+}
 /* 
    Called from FlappyGame::updatePlayer(dt). Get's the player's position and moves them right.
  */
 void PlayerBird::update(float dt)
 {
-    this->setPositionX(getPositionX() + speed);
+    Size wSize = Director::getInstance()->getVisibleSize();
+    this->setPositionX(this->getPositionX() + speed);
+    if (this->getPositionY() < 1) {
+        this->setPositionY(wSize.height);
+    }
 }
