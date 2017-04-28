@@ -86,7 +86,7 @@ void FlappyGame::addPlayer()
 {
     this->player = PlayerBird::create();
     this->player->retain();
-    this->player->setPosition(getStartingLocation());
+    this->player->setPosition(this->getStartingLocation());
     this->middleLayer->addChild(this->player, Z_MIDDLE_LAYER);
 }
 
