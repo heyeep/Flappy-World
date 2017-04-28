@@ -21,6 +21,7 @@ bool FlappyGame::init()
     windowSize = Director::getInstance()->getVisibleSize();
     generateWorld();
     addPlayer();
+    setCameraTarget();
     return true;
 }
 
@@ -33,12 +34,9 @@ void FlappyGame::generateWorld()
     generateMiddleLayer();
     _parallaxNode->addChild(_bottomLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
     _parallaxNode->addChild(_middleLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
-
-    addPlayer();
-    setCameraTarget();
-    
+  
     this->addChild(_parallaxNode, 1);
-    this->runAction(cameraTarget);
+    this->schedule(schedule_selector(FlappyGame::updateScene));
 }
 
 void FlappyGame::generateBottomLayer()
@@ -65,11 +63,22 @@ void FlappyGame::addPlayer()
     player->setPosition(Vec2(windowSize.width/2 - player->getContentSize().width,
                              windowSize.height/2));
     _middleLayer->addChild(player, Z_MIDDLE_LAYER);
-    for (int i = 0; i < 10000;)
 }
 
 void FlappyGame::setCameraTarget()
 {
     cameraTarget = Follow::create(player, Rect::ZERO);
     cameraTarget->retain();
+    this->runAction(cameraTarget);
+
+}
+
+void FlappyGame::updateScene(float dt)
+{
+    this->updatePlayer(dt);
+}
+
+void FlappyGame::updatePlayer(float dt)
+{
+    player->update(dt);
 }

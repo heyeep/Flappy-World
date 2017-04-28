@@ -36,6 +36,9 @@ public:
 
     void addPlayer();
     void setCameraTarget();
+
+    void updateScene(float dt);
+    void updatePlayer(float dt);
     
     CREATE_FUNC(FlappyGame);
 };

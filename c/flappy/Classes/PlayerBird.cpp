@@ -4,6 +4,7 @@ USING_NS_CC;
 
 PlayerBird::PlayerBird()
 {
+    speed = BIRD_SPEED;
 }
 
 PlayerBird::~PlayerBird()
@@ -19,4 +20,9 @@ PlayerBird* PlayerBird::create()
         return player;
     }
     return NULL;
+}
+
+void PlayerBird::update(float dt)
+{
+    setPositionX(getPositionX() + speed);
 }

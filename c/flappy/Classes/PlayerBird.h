@@ -8,7 +8,10 @@
 class PlayerBird : public cocos2d::Sprite
 {
 public:
+    int speed;
     static PlayerBird* create();
+
+    void update(float dt);
     
     PlayerBird();
     virtual ~PlayerBird();
