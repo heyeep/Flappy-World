@@ -86,8 +86,7 @@ void FlappyGame::addPlayer()
 {
     this->player = PlayerBird::create();
     this->player->retain();
-    this->player->setPosition(Vec2(this->windowSize.width/2 - this->player->getContentSize().width,
-                             this->windowSize.height/2));
+    this->player->setPosition(getStartingLocation());
     this->middleLayer->addChild(this->player, Z_MIDDLE_LAYER);
 }
 
@@ -110,4 +109,11 @@ void FlappyGame::updateScene(float dt)
 void FlappyGame::updatePlayer(float dt)
 {
     this->player->update(dt);
+}
+
+Point FlappyGame::getStartingLocation()
+{
+    Size wSize = Director::getInstance()->getVisibleSize();
+    Point start = Vec2(wSize.width/2, wSize.height/2);
+    return start;
 }

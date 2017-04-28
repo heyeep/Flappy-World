@@ -27,6 +27,8 @@ public:
     cocos2d::Follow* cameraTarget;
 
     static cocos2d::Scene* createScene();
+    static cocos2d::Point getStartingLocation();
+    
     virtual bool init();
 
     void generateWorld();
@@ -38,7 +40,7 @@ public:
 
     void updateScene(float dt);
     void updatePlayer(float dt);
-    
+
     CREATE_FUNC(FlappyGame);
 };
 
