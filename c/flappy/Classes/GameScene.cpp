@@ -45,7 +45,6 @@ void FlappyGame::generateWorld()
 
     // Create each layer separately, add it to the ParallaxNode. The Z level is automatically set to 0.0,
     // It doesn't matter because each layer will be part of the Node.
-
     this->generateBottomLayer();
     this->generateMiddleLayer();
     this->parallaxNode->addChild(this->bottomLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
@@ -54,7 +53,8 @@ void FlappyGame::generateWorld()
     // Adds parallaxNode to the Scene
     this->addChild(this->parallaxNode, 1);
 
-    // use ->schedule to call different functions while the game is running. 
+    // use ->schedule to call different functions while the game is running. Starts the update game loop.
+    // schedule() is a built in Cocos2d module
     this->schedule(schedule_selector(FlappyGame::updateScene));
 }
 

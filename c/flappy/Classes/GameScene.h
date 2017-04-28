@@ -12,12 +12,6 @@ public:
     PlayerBird* player;
    
     cocos2d::Size windowSize;
-    /*
-    _bottomLayer = background
-    _middleLayer = pipes/obstacles
-    _topLayer = objects
-    _hudLayer = hud/gui/etc
-     */
     cocos2d::Layer* bottomLayer;
     cocos2d::Layer* middleLayer;
     cocos2d::Layer* topLayer;

@@ -45,7 +45,6 @@ bool MainMenu::init()
     return true;
 }
 
-// Call new scenes from here
 void MainMenu::startGameCall(Ref* pSender)
 {
     Director* director = Director::getInstance();
