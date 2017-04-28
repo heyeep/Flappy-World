@@ -4,7 +4,7 @@ USING_NS_CC;
 
 PlayerBird::PlayerBird()
 {
-    speed = BIRD_SPEED;
+    this->speed = BIRD_SPEED;
 }
 
 PlayerBird::~PlayerBird()
@@ -24,5 +24,5 @@ PlayerBird* PlayerBird::create()
 
 void PlayerBird::update(float dt)
 {
-    setPositionX(getPositionX() + speed);
+    this->setPositionX(getPositionX() + speed);
 }
