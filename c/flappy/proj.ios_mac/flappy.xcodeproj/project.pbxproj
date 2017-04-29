@@ -47,6 +47,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		5133892D1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */; };
+		5133892E1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */; };
 		5147D5561EAADCBD00CE79E6 /* basic_day.png in Resources */ = {isa = PBXBuildFile; fileRef = 5147D5541EAADCBD00CE79E6 /* basic_day.png */; };
 		5147D5571EAADCBD00CE79E6 /* basic_day.png in Resources */ = {isa = PBXBuildFile; fileRef = 5147D5541EAADCBD00CE79E6 /* basic_day.png */; };
 		5147D5581EAADCBD00CE79E6 /* basic_night.png in Resources */ = {isa = PBXBuildFile; fileRef = 5147D5551EAADCBD00CE79E6 /* basic_night.png */; };
@@ -171,6 +173,9 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBird.cpp; sourceTree = "<group>"; };
+		5133892C1EB27B0500FF5E49 /* PlayerBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBird.h; sourceTree = "<group>"; };
+		513389351EB280BB00FF5E49 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		5147D5541EAADCBD00CE79E6 /* basic_day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basic_day.png; sourceTree = "<group>"; };
 		5147D5551EAADCBD00CE79E6 /* basic_night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basic_night.png; sourceTree = "<group>"; };
 		5147D55C1EAADCF200CE79E6 /* bird_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_blue.png; sourceTree = "<group>"; };
@@ -283,6 +288,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				513389351EB280BB00FF5E49 /* Constants.h */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -339,6 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				51EB6C551EA82DDD00FC11BC /* MainMenuScene.cpp */,
+				5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */,
+				5133892C1EB27B0500FF5E49 /* PlayerBird.h */,
 				51EB6C561EA82DDD00FC11BC /* MainMenuScene.h */,
 				51EB6C681EA8440900FC11BC /* GameScene.cpp */,
 				51EB6C691EA8440900FC11BC /* GameScene.h */,
@@ -613,6 +621,7 @@
 				51EB6C571EA82DDD00FC11BC /* MainMenuScene.cpp in Sources */,
 				51EB6C6A1EA8440900FC11BC /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				5133892D1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +633,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				51EB6C6B1EA8440900FC11BC /* GameScene.cpp in Sources */,
 				51EB6C581EA82DDD00FC11BC /* MainMenuScene.cpp in Sources */,
+				5133892E1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

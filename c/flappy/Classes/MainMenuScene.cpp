@@ -22,12 +22,10 @@ bool MainMenu::init()
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
     Label* gameTitle = Label::createWithSystemFont("Flappy World", "Arial", 100);
 
     // To position a sprite using it's mid point
     gameTitle->setAnchorPoint(Vec2(0.5, 0.5));
-    
     gameTitle->setPosition(Vec2(visibleSize.width/2,
                             visibleSize.height - gameTitle->getContentSize().height));
 
@@ -38,8 +36,7 @@ bool MainMenu::init()
                                          gameTitle->getPositionY() -
                                         startButton->getContentSize().height));
 
-    Menu* menu = Menu::create(startButton, NULL);
-    
+    Menu* menu = Menu::create(startButton, NULL);    
     menu->setPosition(Vec2::ZERO);
 
     this->addChild(menu, 1);
@@ -48,7 +45,6 @@ bool MainMenu::init()
     return true;
 }
 
-// Call new scenes from here
 void MainMenu::startGameCall(Ref* pSender)
 {
     Director* director = Director::getInstance();
