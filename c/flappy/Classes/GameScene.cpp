@@ -11,7 +11,6 @@ Scene* FlappyGame::createScene()
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
     Layer* layer = FlappyGame::create();
-    //layer->sceneWorld->getPhysicsWorld());
     
     scene->addChild(layer);
     
