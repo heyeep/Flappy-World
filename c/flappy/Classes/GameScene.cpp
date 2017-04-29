@@ -30,6 +30,7 @@ bool FlappyGame::init()
 
     return true;
 }
+
 /*
   Makes each individual layer and adds it to a ParallaxNode. The node is then added to the Scene. 
  */
@@ -55,16 +56,14 @@ void FlappyGame::generateWorld()
     this->parallaxNode->addChild(this->bottomLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
     this->parallaxNode->addChild(this->middleLayer, 0.0, Vec2(1, 1), Vec2::ZERO);
 
-    // Adds parallaxNode to the Scene
     this->addChild(this->parallaxNode, 1);
 
-    // use ->schedule to call different functions while the game is running. Starts the update game loop.
-    // schedule() is a built in Cocos2d module
+    // Start update loop
     this->schedule(schedule_selector(FlappyGame::updateScene));
 }
 
 /*
-  Creates a basic background.
+  Creates the bottom layer (background).
  */
 void FlappyGame::generateBottomLayer()
 {
@@ -78,6 +77,9 @@ void FlappyGame::generateBottomLayer()
     }
 }
 
+/*
+  Generates the middle layer. Birds/Objects must be in this layer.
+ */
 void FlappyGame::generateMiddleLayer()
 {
     this->middleLayer = Layer::create();
@@ -85,7 +87,6 @@ void FlappyGame::generateMiddleLayer()
 
 /*
   Creates the user's bird, setting it's location in the middle of the screen, this can be changed later.
-  Birds/Objects should always be in the middle layer.
  */
 void FlappyGame::addPlayer()
 {
@@ -108,8 +109,8 @@ void FlappyGame::setCameraTarget()
 
 Point FlappyGame::getStartingLocation()
 {
-    Size wSize = Director::getInstance()->getVisibleSize();
-    Point start = Vec2(wSize.width/2, wSize.height/2);
+    Size windowSize = Director::getInstance()->getVisibleSize();
+    Point start = Vec2(windowSize.width/2, windowSize.height/2);
     return start;
 }
 

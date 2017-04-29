@@ -19,7 +19,7 @@ PlayerBird* PlayerBird::create()
 {
     PlayerBird* player = new PlayerBird();
 
-    // Returns: {Boolean} true if the sprite is initialized properly, false otherwise.
+    // Assigns the player with a sprite and a physics body.
     if (player->initWithFile("bird_blue.png")) {
         cocos2d::PhysicsBody* body = PlayerBird::createPhysicsBody(player);
         player->setPhysicsBody(body);
@@ -41,12 +41,13 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player)
 }
 /* 
    Called from FlappyGame::updatePlayer(dt). Get's the player's position and moves them right.
+   If the player's y location is below 0, set it to the top.
  */
 void PlayerBird::update(float dt)
 {
-    Size wSize = Director::getInstance()->getVisibleSize();
+    Size windowSize = Director::getInstance()->getVisibleSize();
     this->setPositionX(this->getPositionX() + speed);
-    if (this->getPositionY() < 1) {
-        this->setPositionY(wSize.height);
+    if (!this->getPositionY()) {
+        this->setPositionY(windowSize.height);
     }
 }
