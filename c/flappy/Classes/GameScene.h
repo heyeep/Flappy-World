@@ -26,6 +26,7 @@ private:
     cocos2d::ParallaxNode* parallaxNode;
     cocos2d::Sprite* backgroundImg;
     cocos2d::Follow* cameraTarget;
+    cocos2d::EventListenerMouse* mouseListener;
     static cocos2d::Point getStartingLocation();
 
     void generateWorld();
@@ -37,6 +38,9 @@ private:
 
     void updateScene(float dt);
     void updatePlayer(float dt);
+
+    void setMouseListeners();
+    void onMouseDown(cocos2d::Event* event);
 };
 
 #endif /* GameScene_h */

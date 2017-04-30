@@ -27,7 +27,8 @@ bool FlappyGame::init()
     this->generateWorld();
     this->addPlayer();
     this->setCameraTarget();
-
+    this->setMouseListeners();
+    
     return true;
 }
 
@@ -105,6 +106,25 @@ void FlappyGame::setCameraTarget()
     this->cameraTarget = Follow::create(this->player, Rect::ZERO);
     this->cameraTarget->retain();
     this->runAction(this->cameraTarget);
+}
+
+/*
+  Set up game so it recognizes mouse events. 
+ */
+void FlappyGame::setMouseListeners()
+{
+    this->mouseListener = EventListenerMouse::create();
+    this->mouseListener->onMouseDown = CC_CALLBACK_1(FlappyGame::onMouseDown, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+}
+
+/*
+  Called from setMouseListeners(), makes the bird "flap". Please change the physics
+  around this.
+ */
+void FlappyGame::onMouseDown(cocos2d::Event* event)
+{
+    this->player->getPhysicsBody()->setVelocity(Vec2(0, 200));
 }
 
 Point FlappyGame::getStartingLocation()
