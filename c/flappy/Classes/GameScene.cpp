@@ -27,7 +27,7 @@ bool FlappyGame::init()
     this->windowSize = Director::getInstance()->getVisibleSize();
     this->generateWorld();
     this->addPlayer();
-    this->setCameraTarget();
+    this->addCameraObject();
     this->setMouseListeners();
     
     return true;
@@ -99,12 +99,23 @@ void FlappyGame::addPlayer()
 }
 
 /*
+  Creates an invisible camera object, the camera follows this instead of the player
+ */
+void FlappyGame::addCameraObject()
+{
+    this->cameraObject = Sprite::create();
+    cameraObject->setPosition(this->getStartingLocation());
+    this->setCameraTarget(cameraObject);
+    this->middleLayer->addChild(cameraObject);
+}
+
+/*
   "Follow" is the Cocos' class/function for cameras. Creates the camera and follows the main player. 
   Run action starts the camera.
  */
-void FlappyGame::setCameraTarget()
+void FlappyGame::setCameraTarget(cocos2d::Sprite* follow)
 {
-    this->cameraTarget = Follow::create(this->player, Rect::ZERO);
+    this->cameraTarget = Follow::create(follow, Rect::ZERO);
     this->cameraTarget->retain();
     this->runAction(this->cameraTarget);
 }
@@ -135,8 +146,12 @@ Point FlappyGame::getStartingLocation()
     return start;
 }
 
+/*
+  Updates the position of the camera object, etc
+ */
 void FlappyGame::updateScene(float dt)
 {
+    this->cameraObject->setPositionX(this->player->getPositionX());
     this->updatePlayer(dt);
 }
 
