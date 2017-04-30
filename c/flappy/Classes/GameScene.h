@@ -25,6 +25,7 @@ private:
     cocos2d::Layer* hudLayer;
     cocos2d::ParallaxNode* parallaxNode;
     cocos2d::Sprite* backgroundImg;
+    cocos2d::Sprite* cameraObject;
     cocos2d::Follow* cameraTarget;
     static cocos2d::Point getStartingLocation();
 
@@ -33,7 +34,8 @@ private:
     void generateMiddleLayer();
 
     void addPlayer();
-    void setCameraTarget();
+    void addCameraObject();
+    void setCameraTarget(cocos2d::Sprite* follow);
 
     void updateScene(float dt);
     void updatePlayer(float dt);
