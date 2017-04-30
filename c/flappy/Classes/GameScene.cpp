@@ -9,6 +9,7 @@ Scene* FlappyGame::createScene()
 
     // Retrieves the physics world, and gives any object with Physics Enabled a red out. USEFUL
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -500.0f));
 
     Layer* layer = FlappyGame::create();
     
