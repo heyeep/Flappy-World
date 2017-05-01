@@ -48,7 +48,7 @@ bool MainMenu::init()
 void MainMenu::startGameCall(Ref* pSender)
 {
     Director* director = Director::getInstance();
-    Scene* scene = FlappyGame::createScene();
+    Scene* scene = GameScene::createScene();
     
     director->replaceScene(scene);
 }

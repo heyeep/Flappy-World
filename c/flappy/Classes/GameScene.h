@@ -6,13 +6,13 @@
 #include "Constants.h"
 #include "PlayerBird.h"
 
-class FlappyGame : public cocos2d::Layer {
+class GameScene : public cocos2d::Layer {
 public:
     static cocos2d::Scene* createScene();
     
     virtual bool init();
 
-    CREATE_FUNC(FlappyGame);
+    CREATE_FUNC(GameScene);
 
 private:
     PlayerBird* player;

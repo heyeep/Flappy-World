@@ -96,7 +96,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // create a scene. it's an autorelease object
     Scene* scene;
     if (TOGGLE_AUTOSTART) {
-        scene = FlappyGame::createScene();
+        scene = GameScene::createScene();
     } else {
         scene = MainMenu::createScene();
     }
