@@ -2,6 +2,8 @@
 #define _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "Network.h"
+#include <memory>
 
 /**
 @brief    The cocos2d Application.
@@ -9,6 +11,8 @@
 Private inheritance here hides part of interface from Director.
 */
 class AppDelegate : private cocos2d::Application {
+private:
+    std::shared_ptr<Network> network;
 public:
     AppDelegate();
     virtual ~AppDelegate();

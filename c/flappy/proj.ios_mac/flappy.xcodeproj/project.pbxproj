@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
+		1AF353221EB5BD0100DF6F68 /* EasySocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353121EB5BD0100DF6F68 /* EasySocket.cpp */; };
+		1AF353231EB5BD0100DF6F68 /* EasySocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353121EB5BD0100DF6F68 /* EasySocket.cpp */; };
+		1AF353241EB5BD0100DF6F68 /* easywsclient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353141EB5BD0100DF6F68 /* easywsclient.cpp */; };
+		1AF353251EB5BD0100DF6F68 /* easywsclient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353141EB5BD0100DF6F68 /* easywsclient.cpp */; };
+		1AF353261EB5BD0100DF6F68 /* PhxChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353171EB5BD0100DF6F68 /* PhxChannel.cpp */; };
+		1AF353271EB5BD0100DF6F68 /* PhxChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353171EB5BD0100DF6F68 /* PhxChannel.cpp */; };
+		1AF353281EB5BD0100DF6F68 /* PhxPush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353191EB5BD0100DF6F68 /* PhxPush.cpp */; };
+		1AF353291EB5BD0100DF6F68 /* PhxPush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353191EB5BD0100DF6F68 /* PhxPush.cpp */; };
+		1AF3532A1EB5BD0100DF6F68 /* PhxSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3531B1EB5BD0100DF6F68 /* PhxSocket.cpp */; };
+		1AF3532B1EB5BD0100DF6F68 /* PhxSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3531B1EB5BD0100DF6F68 /* PhxSocket.cpp */; };
+		1AF353301EB660CF00DF6F68 /* Network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3532E1EB660CF00DF6F68 /* Network.cpp */; };
+		1AF353311EB660CF00DF6F68 /* Network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3532E1EB660CF00DF6F68 /* Network.cpp */; };
+		1AF353341EB6C1B700DF6F68 /* easylogging++.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353321EB6C1B700DF6F68 /* easylogging++.cc */; };
+		1AF353351EB6C1B700DF6F68 /* easylogging++.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1AF353321EB6C1B700DF6F68 /* easylogging++.cc */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -133,6 +147,24 @@
 /* Begin PBXFileReference section */
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
+		1AF353121EB5BD0100DF6F68 /* EasySocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EasySocket.cpp; sourceTree = "<group>"; };
+		1AF353131EB5BD0100DF6F68 /* EasySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasySocket.h; sourceTree = "<group>"; };
+		1AF353141EB5BD0100DF6F68 /* easywsclient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = easywsclient.cpp; sourceTree = "<group>"; };
+		1AF353151EB5BD0100DF6F68 /* easywsclient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = easywsclient.hpp; sourceTree = "<group>"; };
+		1AF353161EB5BD0100DF6F68 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		1AF353171EB5BD0100DF6F68 /* PhxChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhxChannel.cpp; sourceTree = "<group>"; };
+		1AF353181EB5BD0100DF6F68 /* PhxChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhxChannel.h; sourceTree = "<group>"; };
+		1AF353191EB5BD0100DF6F68 /* PhxPush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhxPush.cpp; sourceTree = "<group>"; };
+		1AF3531A1EB5BD0100DF6F68 /* PhxPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhxPush.h; sourceTree = "<group>"; };
+		1AF3531B1EB5BD0100DF6F68 /* PhxSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhxSocket.cpp; sourceTree = "<group>"; };
+		1AF3531C1EB5BD0100DF6F68 /* PhxSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhxSocket.h; sourceTree = "<group>"; };
+		1AF3531D1EB5BD0100DF6F68 /* PhxTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhxTypes.h; sourceTree = "<group>"; };
+		1AF353201EB5BD0100DF6F68 /* SocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDelegate.h; sourceTree = "<group>"; };
+		1AF353211EB5BD0100DF6F68 /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocket.h; sourceTree = "<group>"; };
+		1AF3532E1EB660CF00DF6F68 /* Network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Network.cpp; sourceTree = "<group>"; };
+		1AF3532F1EB660CF00DF6F68 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		1AF353321EB6C1B700DF6F68 /* easylogging++.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "easylogging++.cc"; sourceTree = "<group>"; };
+		1AF353331EB6C1B700DF6F68 /* easylogging++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "easylogging++.h"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* flappy-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flappy-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -175,7 +207,7 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBird.cpp; sourceTree = "<group>"; };
 		5133892C1EB27B0500FF5E49 /* PlayerBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBird.h; sourceTree = "<group>"; };
-		513389351EB280BB00FF5E49 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
+		513389351EB280BB00FF5E49 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		5147D5541EAADCBD00CE79E6 /* basic_day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basic_day.png; sourceTree = "<group>"; };
 		5147D5551EAADCBD00CE79E6 /* basic_night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basic_night.png; sourceTree = "<group>"; };
 		5147D55C1EAADCF200CE79E6 /* bird_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_blue.png; sourceTree = "<group>"; };
@@ -288,7 +320,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				513389351EB280BB00FF5E49 /* Constants.h */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -344,6 +375,25 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1AF353321EB6C1B700DF6F68 /* easylogging++.cc */,
+				1AF353331EB6C1B700DF6F68 /* easylogging++.h */,
+				1AF3532E1EB660CF00DF6F68 /* Network.cpp */,
+				1AF3532F1EB660CF00DF6F68 /* Network.h */,
+				1AF353121EB5BD0100DF6F68 /* EasySocket.cpp */,
+				1AF353131EB5BD0100DF6F68 /* EasySocket.h */,
+				1AF353141EB5BD0100DF6F68 /* easywsclient.cpp */,
+				1AF353151EB5BD0100DF6F68 /* easywsclient.hpp */,
+				1AF353161EB5BD0100DF6F68 /* json.hpp */,
+				1AF353171EB5BD0100DF6F68 /* PhxChannel.cpp */,
+				1AF353181EB5BD0100DF6F68 /* PhxChannel.h */,
+				1AF353191EB5BD0100DF6F68 /* PhxPush.cpp */,
+				1AF3531A1EB5BD0100DF6F68 /* PhxPush.h */,
+				1AF3531B1EB5BD0100DF6F68 /* PhxSocket.cpp */,
+				1AF3531C1EB5BD0100DF6F68 /* PhxSocket.h */,
+				1AF3531D1EB5BD0100DF6F68 /* PhxTypes.h */,
+				1AF353201EB5BD0100DF6F68 /* SocketDelegate.h */,
+				1AF353211EB5BD0100DF6F68 /* WebSocket.h */,
+				513389351EB280BB00FF5E49 /* Constants.h */,
 				51EB6C551EA82DDD00FC11BC /* MainMenuScene.cpp */,
 				5133892B1EB27B0500FF5E49 /* PlayerBird.cpp */,
 				5133892C1EB27B0500FF5E49 /* PlayerBird.h */,
@@ -615,10 +665,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF353261EB5BD0100DF6F68 /* PhxChannel.cpp in Sources */,
+				1AF353301EB660CF00DF6F68 /* Network.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				1AF3532A1EB5BD0100DF6F68 /* PhxSocket.cpp in Sources */,
+				1AF353221EB5BD0100DF6F68 /* EasySocket.cpp in Sources */,
+				1AF353241EB5BD0100DF6F68 /* easywsclient.cpp in Sources */,
+				1AF353341EB6C1B700DF6F68 /* easylogging++.cc in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				51EB6C571EA82DDD00FC11BC /* MainMenuScene.cpp in Sources */,
+				1AF353281EB5BD0100DF6F68 /* PhxPush.cpp in Sources */,
 				51EB6C6A1EA8440900FC11BC /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				5133892D1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */,
@@ -629,11 +686,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF353311EB660CF00DF6F68 /* Network.cpp in Sources */,
+				1AF353271EB5BD0100DF6F68 /* PhxChannel.cpp in Sources */,
+				1AF353231EB5BD0100DF6F68 /* EasySocket.cpp in Sources */,
+				1AF353351EB6C1B700DF6F68 /* easylogging++.cc in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				1AF353251EB5BD0100DF6F68 /* easywsclient.cpp in Sources */,
 				51EB6C6B1EA8440900FC11BC /* GameScene.cpp in Sources */,
 				51EB6C581EA82DDD00FC11BC /* MainMenuScene.cpp in Sources */,
+				1AF353291EB5BD0100DF6F68 /* PhxPush.cpp in Sources */,
 				5133892E1EB27B0500FF5E49 /* PlayerBird.cpp in Sources */,
+				1AF3532B1EB5BD0100DF6F68 /* PhxSocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

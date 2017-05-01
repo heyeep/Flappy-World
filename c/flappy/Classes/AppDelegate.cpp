@@ -2,6 +2,12 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
 #include "Constants.h"
+#include "Network.h"
+#include "stdio.h"
+
+#define ELPP_THREAD_SAFE
+#include "easylogging++.h"
+INITIALIZE_EASYLOGGINGPP
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -103,6 +109,14 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // run
     director->runWithScene(scene);
+
+    std::thread thread([this]() {
+        std::shared_ptr<Network> n = std::make_shared<Network>();
+        this->network = std::move(n);
+        this->network->start();
+    });
+
+    thread.detach();
 
     return true;
 }

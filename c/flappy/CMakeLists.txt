@@ -134,17 +134,35 @@ endif ( MACOSX )
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/MainMenuScene.cpp
+  Classes/EasySocket.cpp
   Classes/GameScene.cpp
+  Classes/PhxChannel.cpp
+  Classes/PhxPush.cpp
+  Classes/PhxSocket.cpp
   Classes/PlayerBird.cpp
+  Classes/Network.cpp
+  Classes/easylogging++.cc
+  Classes/easywsclient.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/Constants.h
+  Classes/SocketDelegate.h
+  Classes/WebSocket.h
+  Classes/easywsclient.hpp
+  Classes/json.hpp
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
+  Classes/EasySocket.h
   Classes/GameScene.h
   Classes/PlayerBird.h
+  Classes/PhxChannel.h
+  Classes/PhxPush.h
+  Classes/PhxSocket.h
+  Classes/PhxTypes.h
+  Classes/Network.h
+  Classes/easylogging++.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
