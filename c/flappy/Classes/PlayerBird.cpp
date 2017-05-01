@@ -39,15 +39,19 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player)
                                                             PhysicsMaterial(0, 1, 0));
     return pBody;
 }
+
 /* 
    Called from GameScene::updatePlayer(dt). Get's the player's position and moves them right.
-   If the player's y location is below 0, set it to the middle.
  */
 void PlayerBird::update(float dt)
 {
-    Size windowSize = Director::getInstance()->getVisibleSize();
     this->setPositionX(this->getPositionX() + speed);
-    if (this->getPositionY() < 0 || this->getPositionY() > windowSize.height) {
-        this->setPositionY(windowSize.height / 2);
-    }
+}
+
+/*
+   Returns true if the player is dead.
+ */
+bool PlayerBird::isDead(cocos2d::Size windowSize)
+{
+    return (this->getPositionY() < 0 || this->getPositionY() > windowSize.height);
 }
