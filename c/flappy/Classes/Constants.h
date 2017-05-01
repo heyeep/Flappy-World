@@ -10,5 +10,6 @@
 
 // Debug Toggles
 #define TOGGLE_AUTOSTART true
+#define TOGGLE_DEATH false
 
 #endif /* Constants_h */
