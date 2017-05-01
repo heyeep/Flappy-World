@@ -8,4 +8,7 @@
 #define Z_HUD_LAYER 3
 #define BIRD_SPEED 3
 
+// Debug Toggles
+#define TOGGLE_AUTOSTART true
+
 #endif /* Constants_h */

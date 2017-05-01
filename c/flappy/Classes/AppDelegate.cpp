@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
+#include "GameScene.h"
+#include "Constants.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -92,7 +94,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = MainMenu::createScene();
+    Scene* scene;
+    if (TOGGLE_AUTOSTART) {
+        scene = FlappyGame::createScene();
+    } else {
+        scene = MainMenu::createScene();
+    }
 
     // run
     director->runWithScene(scene);
