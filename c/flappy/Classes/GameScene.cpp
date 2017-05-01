@@ -2,7 +2,7 @@
 
 USING_NS_CC;
 
-Scene* FlappyGame::createScene()
+Scene* GameScene::createScene()
 {
     // Creates a scene with built in physics.
     Scene* scene = Scene::createWithPhysics();
@@ -11,14 +11,14 @@ Scene* FlappyGame::createScene()
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -600.0f));
 
-    Layer* layer = FlappyGame::create();
+    Layer* layer = GameScene::create();
     
     scene->addChild(layer);
     
     return scene;
 }
 
-bool FlappyGame::init()
+bool GameScene::init()
 {
     if (!Layer::init()) {
         return false;
@@ -36,7 +36,7 @@ bool FlappyGame::init()
 /*
   Makes each individual layer and adds it to a ParallaxNode. The node is then added to the Scene. 
  */
-void FlappyGame::generateWorld()
+void GameScene::generateWorld()
 {
     this->parallaxNode = ParallaxNode::create();
 
@@ -61,13 +61,13 @@ void FlappyGame::generateWorld()
     this->addChild(this->parallaxNode, 1);
 
     // Start update loop
-    this->schedule(schedule_selector(FlappyGame::updateScene));
+    this->schedule(schedule_selector(GameScene::updateScene));
 }
 
 /*
   Creates the bottom layer (background).
  */
-void FlappyGame::generateBottomLayer()
+void GameScene::generateBottomLayer()
 {
     this->bottomLayer = Layer::create();
     for (int i = 0; i < 100; i++) {
@@ -82,7 +82,7 @@ void FlappyGame::generateBottomLayer()
 /*
   Generates the middle layer. Birds/Objects must be in this layer.
  */
-void FlappyGame::generateMiddleLayer()
+void GameScene::generateMiddleLayer()
 {
     this->middleLayer = Layer::create();
 }
@@ -90,7 +90,7 @@ void FlappyGame::generateMiddleLayer()
 /*
   Creates the user's bird, setting it's location in the middle of the screen, this can be changed later.
  */
-void FlappyGame::addPlayer()
+void GameScene::addPlayer()
 {
     this->player = PlayerBird::create();
     this->player->retain();
@@ -101,7 +101,7 @@ void FlappyGame::addPlayer()
 /*
   Creates an invisible camera object, the camera follows this instead of the player
  */
-void FlappyGame::addCameraObject()
+void GameScene::addCameraObject()
 {
     this->cameraObject = Sprite::create();
     cameraObject->setPosition(this->getStartingLocation());
@@ -113,7 +113,7 @@ void FlappyGame::addCameraObject()
   "Follow" is the Cocos' class/function for cameras. Creates the camera and follows the main player. 
   Run action starts the camera.
  */
-void FlappyGame::setCameraTarget(cocos2d::Sprite* follow)
+void GameScene::setCameraTarget(cocos2d::Sprite* follow)
 {
     this->cameraTarget = Follow::create(follow, Rect::ZERO);
     this->cameraTarget->retain();
@@ -123,10 +123,10 @@ void FlappyGame::setCameraTarget(cocos2d::Sprite* follow)
 /*
   Set up game so it recognizes mouse events. 
  */
-void FlappyGame::setMouseListeners()
+void GameScene::setMouseListeners()
 {
     this->mouseListener = EventListenerMouse::create();
-    this->mouseListener->onMouseDown = CC_CALLBACK_1(FlappyGame::onMouseDown, this);
+    this->mouseListener->onMouseDown = CC_CALLBACK_1(GameScene::onMouseDown, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
@@ -134,12 +134,12 @@ void FlappyGame::setMouseListeners()
   Called from setMouseListeners(), makes the bird "flap". Please change the physics
   around this.
  */
-void FlappyGame::onMouseDown(cocos2d::Event* event)
+void GameScene::onMouseDown(cocos2d::Event* event)
 {
     this->player->getPhysicsBody()->setVelocity(Vec2(0, 300));
 }
 
-Point FlappyGame::getStartingLocation()
+Point GameScene::getStartingLocation()
 {
     Size windowSize = Director::getInstance()->getVisibleSize();
     Point start = Vec2(windowSize.width/2, windowSize.height/2);
@@ -149,13 +149,13 @@ Point FlappyGame::getStartingLocation()
 /*
   Updates the position of the camera object, etc
  */
-void FlappyGame::updateScene(float dt)
+void GameScene::updateScene(float dt)
 {
     this->cameraObject->setPositionX(this->player->getPositionX());
     this->updatePlayer(dt);
 }
 
-void FlappyGame::updatePlayer(float dt)
+void GameScene::updatePlayer(float dt)
 {
     this->player->update(dt);
 }

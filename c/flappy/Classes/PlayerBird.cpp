@@ -40,7 +40,7 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player)
     return pBody;
 }
 /* 
-   Called from FlappyGame::updatePlayer(dt). Get's the player's position and moves them right.
+   Called from GameScene::updatePlayer(dt). Get's the player's position and moves them right.
    If the player's y location is below 0, set it to the top.
  */
 void PlayerBird::update(float dt)
