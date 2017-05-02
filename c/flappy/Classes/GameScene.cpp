@@ -73,7 +73,7 @@ void GameScene::generateBottomLayer()
     for (int i = 0; i < 100; i++) {
         this->backgroundImg = Sprite::create("basic_day.png");
         this->backgroundImg->setAnchorPoint(Point::ZERO);
-        this->backgroundImg->setPosition(i * this->backgroundImg->getContentSize().width, 0);
+        this->backgroundImg->setPosition(i * (this->backgroundImg->getContentSize().width * SCALE_FACTOR), 0);
         this->backgroundImg->setScale(SCALE_FACTOR);
         this->bottomLayer->addChild(this->backgroundImg, Z_BOTTOM_LAYER);
     }
