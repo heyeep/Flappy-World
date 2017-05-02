@@ -41,11 +41,11 @@ private:
 
     void updateScene(float dt);
     void updatePlayer(float dt);
-    void deathCheck();
+    void playerDeathCheck();
     void death();
     
     void setMouseListeners();
-    void onMouseDown(cocos2d::Event* event); 
+    void onMouseDown(cocos2d::Event* event);
 };
 
 #endif /* GameScene_h */

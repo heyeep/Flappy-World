@@ -158,10 +158,10 @@ void GameScene::updateScene(float dt)
 void GameScene::updatePlayer(float dt)
 {
     this->player->update(dt);
-    this->deathCheck();
+    this->playerDeathCheck();
 }
 
-void GameScene::deathCheck()
+void GameScene::playerDeathCheck()
 {
     if (this->player->isDead(windowSize)) {
         if (DEBUG_DEATH_ON) {
