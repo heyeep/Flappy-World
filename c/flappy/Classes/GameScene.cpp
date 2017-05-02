@@ -164,10 +164,11 @@ void GameScene::updatePlayer(float dt)
 void GameScene::deathCheck()
 {
     if (this->player->isDead(windowSize)) {
-        if (TOGGLE_DEATH) {
-            this->death();
-        } else {
+        if (DEBUG_DEATH_ON) {
             this->player->setPositionY(windowSize.height / 2);
+
+        } else {
+            this->death();
         }
     }
 }

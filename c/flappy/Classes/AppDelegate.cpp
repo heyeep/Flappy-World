@@ -95,7 +95,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // create a scene. it's an autorelease object
     Scene* scene;
-    if (TOGGLE_AUTOSTART) {
+    if (DEBUG_AUTOSTART_ON) {
         scene = GameScene::createScene();
     } else {
         scene = MainMenu::createScene();
