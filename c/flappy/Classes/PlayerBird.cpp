@@ -49,7 +49,8 @@ void PlayerBird::update(float dt)
 }
 
 /*
-   Returns true if the player is dead.
+   Returns true if the player's y location is below 0 or if it's above the height
+   of the window.
  */
 bool PlayerBird::isDead(cocos2d::Size windowSize)
 {
