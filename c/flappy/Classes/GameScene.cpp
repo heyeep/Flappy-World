@@ -158,4 +158,25 @@ void GameScene::updateScene(float dt)
 void GameScene::updatePlayer(float dt)
 {
     this->player->update(dt);
+    this->playerDeathCheck();
+}
+
+void GameScene::playerDeathCheck()
+{
+    if (this->player->isDead(windowSize)) {
+        if (DEBUG_DEATH_ON) {
+            this->player->setPositionY(windowSize.height / 2);
+
+        } else {
+            this->death();
+        }
+    }
+}
+
+void GameScene::death()
+{
+    Director* director = Director::getInstance();
+    Scene* scene = MainMenu::createScene();
+
+    director->replaceScene(scene);
 }

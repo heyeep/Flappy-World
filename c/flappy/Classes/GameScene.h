@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "Constants.h"
 #include "PlayerBird.h"
+#include "MainMenuScene.h"
 
 class GameScene : public cocos2d::Layer {
 public:
@@ -40,7 +41,9 @@ private:
 
     void updateScene(float dt);
     void updatePlayer(float dt);
-
+    void playerDeathCheck();
+    void death();
+    
     void setMouseListeners();
     void onMouseDown(cocos2d::Event* event);
 };

@@ -9,6 +9,7 @@
 #define BIRD_SPEED 3
 
 // Debug Toggles
-#define TOGGLE_AUTOSTART true
+#define DEBUG_AUTOSTART_ON true
+#define DEBUG_DEATH_ON true
 
 #endif /* Constants_h */
