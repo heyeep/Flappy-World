@@ -49,6 +49,14 @@ void PlayerBird::update(float dt)
 }
 
 /*
+  Changes the player's velocity, making the player flap.
+ */
+void PlayerBird::flap()
+{
+    this->getPhysicsBody()->setVelocity(Vec2(0, 300));
+}
+
+/*
    Returns true if the player's y location is below 0 or if it's above the height
    of the window.
  */

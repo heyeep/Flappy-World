@@ -12,7 +12,10 @@ public:
 
     static PlayerBird* create();
     static cocos2d::PhysicsBody* createPhysicsBody(PlayerBird* player);
+
     void update(float dt);
+    void flap();
+
     bool isDead(cocos2d::Size windowSize);
     
     PlayerBird();

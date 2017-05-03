@@ -131,12 +131,11 @@ void GameScene::setMouseListeners()
 }
 
 /*
-  Called from setMouseListeners(), makes the bird "flap". Please change the physics
-  around this.
+  Called from setMouseListeners(), makes the bird "flap".
  */
 void GameScene::onMouseDown(cocos2d::Event* event)
 {
-    this->player->getPhysicsBody()->setVelocity(Vec2(0, 300));
+    this->player->flap();
 }
 
 Point GameScene::getStartingLocation()
