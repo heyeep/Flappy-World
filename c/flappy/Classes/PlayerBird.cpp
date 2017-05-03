@@ -48,12 +48,9 @@ void PlayerBird::update(float dt)
     this->setPositionX(this->getPositionX() + speed);
 }
 
-/*
-  Changes the player's velocity, making the player flap.
- */
 void PlayerBird::flap()
 {
-    this->getPhysicsBody()->setVelocity(Vec2(0, 300));
+    this->getPhysicsBody()->setVelocity(BIRD_VELOCITY);
 }
 
 /*

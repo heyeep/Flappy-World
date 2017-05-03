@@ -7,6 +7,7 @@
 #define Z_TOP_LAYER 2
 #define Z_HUD_LAYER 3
 #define BIRD_SPEED 3
+#define BIRD_VELOCITY Vec2(0, 300)
 
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON true
