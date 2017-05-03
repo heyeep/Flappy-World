@@ -13,3 +13,6 @@
 [submodule "client/src/vendor/inspect"]
 	path = client/src/vendor/inspect
 	url = git@github.com:kikito/inspect.lua.git
+[submodule "c/lib/PhxSocketCPP"]
+	path = c/lib/PhxSocketCPP
+	url = https://github.com/jojojames/PhxSocketCPP
