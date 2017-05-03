@@ -29,6 +29,7 @@ bool GameScene::init()
     this->addPlayer();
     this->addCameraObject();
     this->setMouseListeners();
+    this->setTouchListeners();
     
     return true;
 }
@@ -131,6 +132,16 @@ void GameScene::setMouseListeners()
 }
 
 /*
+  Set up game so it recognizes touch events.
+ */
+void GameScene::setTouchListeners()
+{
+    this->touchListener = EventListenerTouchOneByOne::create();
+    this->touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+    this->touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(this->touchListener, this);
+}
+/*
   Called from setMouseListeners(), makes the bird "flap".
  */
 void GameScene::onMouseDown(cocos2d::Event* event)
@@ -143,6 +154,22 @@ Point GameScene::getStartingLocation()
     Size windowSize = Director::getInstance()->getVisibleSize();
     Point start = Vec2(windowSize.width/2, windowSize.height/2);
     return start;
+}
+
+/*
+  A must for onTouchEnded() to be called, it's part of the EventListenerTouchOneByOne class.
+ */
+bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+    return true;
+}
+
+/*
+  Makes the bird flap after touching the screen.
+ */
+void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event*)
+{
+    this->player->flap();
 }
 
 /*
