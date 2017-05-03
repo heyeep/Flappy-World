@@ -13,6 +13,7 @@ public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
+    virtual void initSprites();
 
     virtual void setTouchListeners();
     virtual bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
