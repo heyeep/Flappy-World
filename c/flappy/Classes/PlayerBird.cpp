@@ -54,5 +54,8 @@ void PlayerBird::update(float dt)
  */
 bool PlayerBird::isDead(cocos2d::Size windowSize)
 {
-    return (this->getPositionY() < 0 || this->getPositionY() > windowSize.height);
+    return (this->getPositionY() <= 0 ||
+            (this->getPositionY() +
+            (this->getContentSize().height * SCALE_FACTOR) >=
+             windowSize.height));
 }
