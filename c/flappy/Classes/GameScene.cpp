@@ -156,9 +156,6 @@ Point GameScene::getStartingLocation()
     return start;
 }
 
-/*
-  A must for onTouchEnded() to be called, it's part of the EventListenerTouchOneByOne class.
- */
 bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
     return true;
