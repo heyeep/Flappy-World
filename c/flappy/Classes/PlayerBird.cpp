@@ -17,8 +17,8 @@ PlayerBird::~PlayerBird() {
 PlayerBird* PlayerBird::create() {
     PlayerBird* player = new PlayerBird();
 
-    // Assigns the player with a sprite and a physics body.
-    if (player->initWithFile("bird_blue.png")) {
+    // Assigns the player with a sprite and a physics body. Loads it from cache.
+    if (player->initWithSpriteFrameName("bird_blue1.png")) {
         cocos2d::PhysicsBody* body = PlayerBird::createPhysicsBody(player);
         player->setPhysicsBody(body);
         player->setAnchorPoint(Point::ZERO);
