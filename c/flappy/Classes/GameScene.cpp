@@ -166,7 +166,7 @@ void GameScene::playerDeathCheck()
     if (this->player->isDead(windowSize)) {
         if (DEBUG_DEATH_ON) {
             this->player->setPositionY(windowSize.height / 2);
-
+            this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
         } else {
             this->death();
         }
