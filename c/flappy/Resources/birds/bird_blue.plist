@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>bird_blue1.png</key>
+            <key>bird_blue_01.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bird_blue2.png</key>
+            <key>bird_blue_02.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bird_blue3.png</key>
+            <key>bird_blue_03.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -63,7 +63,7 @@
             <key>size</key>
             <string>{57,14}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:05554ddedab58fe81135b52c673d059f:57f4f0a0a20887d185be50f05de341b7:207982590c1c3670f5815353a7413766$</string>
+            <string>$TexturePacker:SmartUpdate:8a38b4d2bc66ba60fde60a6f93b53560:57f4f0a0a20887d185be50f05de341b7:207982590c1c3670f5815353a7413766$</string>
             <key>textureFileName</key>
             <string>bird_blue.png</string>
         </dict>
