@@ -131,41 +131,47 @@ if ( MACOSX )
   )
 endif ( MACOSX )
 
+set(PHX_SOCKET_LIB_SRC
+    lib/PhxSocketCPP/EasySocket.cpp
+    lib/PhxSocketCPP/PhxChannel.cpp
+    lib/PhxSocketCPP/PhxPush.cpp
+    lib/PhxSocketCPP/PhxSocket.cpp
+    lib/PhxSocketCPP/easylogging++.cc
+    lib/PhxSocketCPP/easywsclient.cpp
+)
+
+set(PHX_SOCKET_LIB_HEADER
+    lib/PhxSocketCPP/EasySocket.h
+    lib/PhxSocketCPP/PhxChannel.h
+    lib/PhxSocketCPP/PhxPush.h
+    lib/PhxSocketCPP/PhxSocket.h
+    lib/PhxSocketCPP/PhxTypes.h
+    lib/PhxSocketCPP/SocketDelegate.h
+    lib/PhxSocketCPP/WebSocket.h
+    lib/PhxSocketCPP/easylogging++.h
+    lib/PhxSocketCPP/easywsclient.hpp
+    lib/PhxSocketCPP/json.hpp
+)
+
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/MainMenuScene.cpp
-  Classes/EasySocket.cpp
   Classes/GameScene.cpp
-  Classes/PhxChannel.cpp
-  Classes/PhxPush.cpp
-  Classes/PhxSocket.cpp
   Classes/PlayerBird.cpp
   Classes/Network.cpp
-  Classes/easylogging++.cc
-  Classes/easywsclient.cpp
+  ${PHX_SOCKET_LIB_SRC}
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/Constants.h
-  Classes/SocketDelegate.h
-  Classes/WebSocket.h
-  Classes/easywsclient.hpp
-  Classes/json.hpp
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
-  Classes/EasySocket.h
   Classes/GameScene.h
-  Classes/PlayerBird.h
-  Classes/PhxChannel.h
-  Classes/PhxPush.h
-  Classes/PhxSocket.h
-  Classes/PhxTypes.h
   Classes/Network.h
-  Classes/easylogging++.h
+  ${PHX_SOCKET_LIB_HEADER}
   ${PLATFORM_SPECIFIC_HEADERS}
 )
-
 
 # Configure libcocos2d
 set(BUILD_CPP_EMPTY_TEST OFF CACHE BOOL "turn off build cpp-empty-test")
