@@ -10,7 +10,7 @@ Scene* GameScene::createScene() {
     // Retrieves the physics world, and gives any object with Physics Enabled a
     // red out. USEFUL
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -600.0f));
+    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -700.0f));
 
     Layer* layer = GameScene::create();
 
