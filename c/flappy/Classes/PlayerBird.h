@@ -5,14 +5,21 @@
 #include "cocos2d.h"
 #include <stdio.h>
 
+const int numberOfFrames = 3;
+
 class PlayerBird : public cocos2d::Sprite {
 public:
     int speed;
+    float flapDegrees;
+    cocos2d::Vector<cocos2d::SpriteFrame*> frames;
 
     static PlayerBird* create();
     static cocos2d::PhysicsBody* createPhysicsBody(PlayerBird* player);
+    static cocos2d::Vector<cocos2d::SpriteFrame*> getFrames();
 
     void update(float dt);
+    void updatePosition();
+    void updateAngle();
     void flap();
 
     bool isDead(cocos2d::Size windowSize);
