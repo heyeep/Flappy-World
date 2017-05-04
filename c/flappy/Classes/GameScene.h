@@ -1,11 +1,11 @@
 #ifndef SinglePlayerScene_h
 #define SinglePlayerScene_h
 
-#include <stdio.h>
-#include "cocos2d.h"
 #include "Constants.h"
-#include "PlayerBird.h"
 #include "MainMenuScene.h"
+#include "PlayerBird.h"
+#include "cocos2d.h"
+#include <stdio.h>
 
 class GameScene : public cocos2d::Layer {
 public:
@@ -21,7 +21,7 @@ public:
 
 private:
     PlayerBird* player;
-    
+
     cocos2d::Size windowSize;
     cocos2d::PhysicsWorld* sceneWorld;
     cocos2d::Layer* bottomLayer;
@@ -48,7 +48,7 @@ private:
     void updatePlayer(float dt);
     void playerDeathCheck();
     void death();
-    
+
     void setMouseListeners();
     void onMouseDown(cocos2d::Event* event);
 };
