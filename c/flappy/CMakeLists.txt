@@ -68,8 +68,8 @@ if(MSVC)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /NODEFAULTLIB:libcmt")
   endif()
   ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_WARNINGS
-                  -wd4251 -wd4244 -wd4334 -wd4005 -wd4820 -wd4710
-                  -wd4514 -wd4056 -wd4996 -wd4099)
+    -wd4251 -wd4244 -wd4334 -wd4005 -wd4820 -wd4710
+    -wd4514 -wd4056 -wd4996 -wd4099)
 else()
   if(CMAKE_BUILD_TYPE MATCHES Debug)
     ADD_DEFINITIONS(-DCOCOS2D_DEBUG=1)
@@ -87,25 +87,20 @@ set(PLATFORM_SPECIFIC_SRC)
 set(PLATFORM_SPECIFIC_HEADERS)
 
 if(MACOSX OR APPLE)
-    set(PLATFORM_SPECIFIC_SRC
-      proj.ios_mac/mac/main.cpp
-    )
+  set(PLATFORM_SPECIFIC_SRC
+    proj.ios_mac/mac/main.cpp)
 elseif(LINUX)
-    set(PLATFORM_SPECIFIC_SRC
-      proj.linux/main.cpp
-    )
-elseif ( WIN32 )
-    set(PLATFORM_SPECIFIC_SRC
-      proj.win32/main.cpp
-    )
-    set(PLATFORM_SPECIFIC_HEADERS
-      proj.win32/main.h
-      proj.win32/resource.h
-    )
+  set(PLATFORM_SPECIFIC_SRC
+    proj.linux/main.cpp)
+elseif (WIN32)
+  set(PLATFORM_SPECIFIC_SRC
+    proj.win32/main.cpp)
+  set(PLATFORM_SPECIFIC_HEADERS
+    proj.win32/main.h
+    proj.win32/resource.h)
 elseif(ANDROID)
-    set(PLATFORM_SPECIFIC_SRC
-      proj.android-studio/app/jni/hellocpp/main.cpp
-    )
+  set(PLATFORM_SPECIFIC_SRC
+    proj.android-studio/app/jni/hellocpp/main.cpp)
 endif()
 
 include_directories(
@@ -116,42 +111,37 @@ include_directories(
   ${COCOS2D_ROOT}/external
   ${COCOS2D_ROOT}/cocos/platform
   ${COCOS2D_ROOT}/cocos/audio/include/
-  Classes
-)
-if ( WIN32 )
+  Classes)
+if (WIN32)
   include_directories(
-  ${COCOS2D_ROOT}/external/glfw3/include/win32
-  ${COCOS2D_ROOT}/external/win32-specific/gles/include/OGLES
-)
-endif( WIN32 )
+    ${COCOS2D_ROOT}/external/glfw3/include/win32
+    ${COCOS2D_ROOT}/external/win32-specific/gles/include/OGLES)
+endif(WIN32)
 
-if ( MACOSX )
+if (MACOSX)
   include_directories(
-  ${COCOS2D_ROOT}/external/glfw3/include/mac
-  )
-endif ( MACOSX )
+    ${COCOS2D_ROOT}/external/glfw3/include/mac)
+endif (MACOSX)
 
 set(PHX_SOCKET_LIB_SRC
-    lib/PhxSocketCPP/EasySocket.cpp
-    lib/PhxSocketCPP/PhxChannel.cpp
-    lib/PhxSocketCPP/PhxPush.cpp
-    lib/PhxSocketCPP/PhxSocket.cpp
-    lib/PhxSocketCPP/easylogging++.cc
-    lib/PhxSocketCPP/easywsclient.cpp
-)
+  lib/PhxSocketCPP/EasySocket.cpp
+  lib/PhxSocketCPP/PhxChannel.cpp
+  lib/PhxSocketCPP/PhxPush.cpp
+  lib/PhxSocketCPP/PhxSocket.cpp
+  lib/PhxSocketCPP/easylogging++.cc
+  lib/PhxSocketCPP/easywsclient.cpp)
 
 set(PHX_SOCKET_LIB_HEADER
-    lib/PhxSocketCPP/EasySocket.h
-    lib/PhxSocketCPP/PhxChannel.h
-    lib/PhxSocketCPP/PhxPush.h
-    lib/PhxSocketCPP/PhxSocket.h
-    lib/PhxSocketCPP/PhxTypes.h
-    lib/PhxSocketCPP/SocketDelegate.h
-    lib/PhxSocketCPP/WebSocket.h
-    lib/PhxSocketCPP/easylogging++.h
-    lib/PhxSocketCPP/easywsclient.hpp
-    lib/PhxSocketCPP/json.hpp
-)
+  lib/PhxSocketCPP/EasySocket.h
+  lib/PhxSocketCPP/PhxChannel.h
+  lib/PhxSocketCPP/PhxPush.h
+  lib/PhxSocketCPP/PhxSocket.h
+  lib/PhxSocketCPP/PhxTypes.h
+  lib/PhxSocketCPP/SocketDelegate.h
+  lib/PhxSocketCPP/WebSocket.h
+  lib/PhxSocketCPP/easylogging++.h
+  lib/PhxSocketCPP/easywsclient.hpp
+  lib/PhxSocketCPP/json.hpp)
 
 set(GAME_SRC
   Classes/AppDelegate.cpp
@@ -160,8 +150,7 @@ set(GAME_SRC
   Classes/PlayerBird.cpp
   Classes/Network.cpp
   ${PHX_SOCKET_LIB_SRC}
-  ${PLATFORM_SPECIFIC_SRC}
-)
+  ${PLATFORM_SPECIFIC_SRC})
 
 set(GAME_HEADERS
   Classes/Constants.h
@@ -170,8 +159,7 @@ set(GAME_HEADERS
   Classes/GameScene.h
   Classes/Network.h
   ${PHX_SOCKET_LIB_HEADER}
-  ${PLATFORM_SPECIFIC_HEADERS}
-)
+  ${PLATFORM_SPECIFIC_HEADERS})
 
 # Configure libcocos2d
 set(BUILD_CPP_EMPTY_TEST OFF CACHE BOOL "turn off build cpp-empty-test")
@@ -180,15 +168,14 @@ set(BUILD_LUA_LIBS OFF CACHE BOOL "turn off build lua related targets")
 set(BUILD_JS_LIBS OFF CACHE BOOL "turn off build js related targets")
 add_subdirectory(${COCOS2D_ROOT})
 
-
 # MyGame
-if( ANDROID )
-    add_library(${APP_NAME} SHARED ${GAME_SRC} ${GAME_HEADERS})
-    IF(CMAKE_BUILD_TYPE MATCHES RELEASE)
-        ADD_CUSTOM_COMMAND(TARGET ${APP_NAME} POST_BUILD COMMAND ${CMAKE_STRIP} lib${APP_NAME}.so)
-    ENDIF()
+if (ANDROID)
+  add_library(${APP_NAME} SHARED ${GAME_SRC} ${GAME_HEADERS})
+  IF(CMAKE_BUILD_TYPE MATCHES RELEASE)
+    ADD_CUSTOM_COMMAND(TARGET ${APP_NAME} POST_BUILD COMMAND ${CMAKE_STRIP} lib${APP_NAME}.so)
+  ENDIF()
 else()
-    add_executable(${APP_NAME} ${GAME_SRC} ${GAME_HEADERS})
+  add_executable(${APP_NAME} ${GAME_SRC} ${GAME_HEADERS})
 endif()
 
 target_link_libraries(${APP_NAME} cocos2d)
@@ -196,22 +183,19 @@ target_link_libraries(${APP_NAME} cocos2d)
 set(APP_BIN_DIR "${CMAKE_BINARY_DIR}/bin")
 
 set_target_properties(${APP_NAME} PROPERTIES
-     RUNTIME_OUTPUT_DIRECTORY  "${APP_BIN_DIR}")
+  RUNTIME_OUTPUT_DIRECTORY  "${APP_BIN_DIR}")
 
-if ( WIN32 )
+if (WIN32)
   #also copying dlls to binary directory for the executable to run
   pre_build(${APP_NAME}
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/Resources
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources
     COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/gles/prebuilt/glew32.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
-	COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/zlib/prebuilt/zlib1.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE}
-	)
-elseif( ANDROID )
+    COMMAND ${CMAKE_COMMAND} -E copy ${COCOS2D_ROOT}/external/win32-specific/zlib/prebuilt/zlib1.dll ${APP_BIN_DIR}/${CMAKE_BUILD_TYPE})
+elseif (ANDROID)
 
 else()
   pre_build(${APP_NAME}
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${APP_BIN_DIR}/Resources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources
-    )
-
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/Resources ${APP_BIN_DIR}/Resources)
 endif()
