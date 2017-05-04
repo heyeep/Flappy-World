@@ -3,6 +3,13 @@
 
 USING_NS_CC;
 
+GameScene::GameScene() {
+}
+
+GameScene::~GameScene() {
+    CC_SAFE_RELEASE_NULL(player);
+}
+
 Scene* GameScene::createScene() {
     // Creates a scene with built in physics.
     Scene* scene = Scene::createWithPhysics();
@@ -10,7 +17,7 @@ Scene* GameScene::createScene() {
     // Retrieves the physics world, and gives any object with Physics Enabled a
     // red out. USEFUL
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -600.0f));
+    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -700.0f));
 
     Layer* layer = GameScene::create();
 
@@ -42,14 +49,14 @@ bool GameScene::init() {
 /*
   Adds sprites to the cache. Makes it less intensive reloading images.
  */
-void GameScene::initSprites()
-{
+void GameScene::initSprites() {
     SpriteFrameCache* cache = SpriteFrameCache::getInstance();
     cache->addSpriteFramesWithFile("bird_blue.plist");
 }
 
 /*
-  Makes each individual layer and adds it to a ParallaxNode. The node is then added to the Scene.
+  Makes each individual layer and adds it to a ParallaxNode. The node is then
+  added to the Scene.
  */
 void GameScene::generateWorld() {
     this->parallaxNode = ParallaxNode::create();
@@ -201,6 +208,7 @@ void GameScene::playerDeathCheck() {
         if (DEBUG_DEATH_ON) {
             this->player->setPositionY(windowSize.height / 2);
             this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
+            this->player->setRotation(0);
         } else {
             this->death();
         }
