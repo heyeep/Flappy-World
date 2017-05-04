@@ -60,7 +60,7 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player) {
  */
 void PlayerBird::update(float dt) {
     this->updatePosition();
-    this->updateAngle();
+    this->updateAngle(dt);
 }
 
 /*
@@ -72,10 +72,11 @@ void PlayerBird::updatePosition() {
 }
 
 /*
-  Rotates the player's sprite based on velocity
+  Rotates the player's sprite based on velocity. Multiplying it by delta should
+  give it a smoother transition
  */
-void PlayerBird::updateAngle() {
-    Vec2 vec = this->getPhysicsBody()->getVelocity();
+void PlayerBird::updateAngle(float dt) {
+    Vec2 vec = this->getPhysicsBody()->getVelocity() * dt;
     float degrees = CC_RADIANS_TO_DEGREES(-vec.getAngle());
     this->setRotation(degrees);
 }

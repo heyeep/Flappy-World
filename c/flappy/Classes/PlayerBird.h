@@ -19,7 +19,7 @@ public:
 
     void update(float dt);
     void updatePosition();
-    void updateAngle();
+    void updateAngle(float dt);
     void flap();
 
     bool isDead(cocos2d::Size windowSize);
