@@ -2,6 +2,7 @@
 #define Constants_h
 
 #define SCALE_FACTOR 5.0
+#define GAME_GRAVITY Vec2(0.0f, -600.0f)
 #define Z_BOTTOM_LAYER 0
 #define Z_MIDDLE_LAYER 1
 #define Z_TOP_LAYER 2

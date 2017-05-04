@@ -15,6 +15,7 @@ Scene* GameScene::createScene() {
 
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -700.0f));
+    scene->getPhysicsWorld()->setGravity(GAME_GRAVITY);
 
     Layer* layer = GameScene::create();
 
