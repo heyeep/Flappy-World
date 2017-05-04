@@ -9,6 +9,7 @@
 #define Z_HUD_LAYER 3
 #define BIRD_SPEED 3
 #define BIRD_VELOCITY Vec2(0, 300)
+#define BIRD_PHYSICS_MATERIAL PhysicsMaterial(0, 1, 0)
 
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON true
