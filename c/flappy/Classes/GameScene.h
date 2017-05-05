@@ -21,6 +21,9 @@ public:
 
     CREATE_FUNC(GameScene);
 
+    GameScene();
+    virtual ~GameScene();
+
 private:
     PlayerBird* player;
 

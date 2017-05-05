@@ -3,6 +3,13 @@
 
 USING_NS_CC;
 
+GameScene::GameScene() {
+}
+
+GameScene::~GameScene() {
+    CC_SAFE_RELEASE_NULL(player);
+}
+
 Scene* GameScene::createScene() {
     // Creates a scene with built in physics.
     Scene* scene = Scene::createWithPhysics();
