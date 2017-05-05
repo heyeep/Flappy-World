@@ -13,12 +13,13 @@ GameScene::~GameScene() {
 Scene* GameScene::createScene() {
     Scene* scene = Scene::createWithPhysics();
 
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -700.0f));
-    scene->getPhysicsWorld()->setGravity(GAME_GRAVITY);
+    if (DEBUG_DRAW_DEBUG_MASK) {
+        scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    }
 
     Layer* layer = GameScene::create();
 
+    scene->getPhysicsWorld()->setGravity(GAME_GRAVITY);
     scene->addChild(layer);
 
     return scene;

@@ -14,5 +14,6 @@
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON true
 #define DEBUG_DEATH_ON true
+#define DEBUG_DRAW_DEBUG_MASK false
 
 #endif /* Constants_h */
