@@ -11,6 +11,7 @@ class PlayerBird : public cocos2d::Sprite {
 public:
     int speed;
     float flapDegrees;
+    cocos2d::Animation* flapAnimation;
     cocos2d::Vector<cocos2d::SpriteFrame*> frames;
 
     static PlayerBird* create();
@@ -21,6 +22,8 @@ public:
     void updatePosition();
     void updateAngle(float dt);
     void flap();
+    void flapAnimate();
+    void setFlapAnimation();
 
     bool isDead(cocos2d::Size windowSize);
 

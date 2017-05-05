@@ -21,6 +21,7 @@ PlayerBird* PlayerBird::create() {
     if (player->initWithSpriteFrameName("bird_blue_01.png")) {
         cocos2d::PhysicsBody* body = PlayerBird::createPhysicsBody(player);
         player->frames = PlayerBird::getFrames();
+        player->setFlapAnimation();
         player->setPhysicsBody(body);
         player->getTexture()->setAliasTexParameters();
         player->setAnchorPoint(Vec2(0.5, 0.5));
@@ -85,11 +86,27 @@ void PlayerBird::updateAngle(float dt) {
   Moves and rotates the player upwards, runs the flap animation.
  */
 void PlayerBird::flap() {
-    Animation* anim = new Animation;
-    anim->initWithSpriteFrames(frames, 0.05f);
-    this->runAction(Animate::create(anim));
-    this->setRotation(flapDegrees);
     this->getPhysicsBody()->setVelocity(BIRD_VELOCITY);
+    this->setRotation(flapDegrees);
+    this->flapAnimate();
+}
+
+/*
+  Runs the conversion from animation to animate, also make it graphically flap.
+ */
+void PlayerBird::flapAnimate() {
+    this->runAction(Animate::create(this->flapAnimation));
+}
+
+/*
+  Sets up player's flapping animations to be used via Animate.
+ */
+void PlayerBird::setFlapAnimation() {
+    if (this->flapAnimation != NULL) {
+        this->flapAnimation->release();
+    }
+    this->flapAnimation = Animation::createWithSpriteFrames(frames, 0.05f);
+    this->flapAnimation->retain();
 }
 
 /*
