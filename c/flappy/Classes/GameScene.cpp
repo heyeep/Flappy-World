@@ -78,6 +78,7 @@ void GameScene::generateBottomLayer() {
         this->backgroundImg->setPosition(
             i * (this->backgroundImg->getContentSize().width * SCALE_FACTOR),
             0);
+        this->backgroundImg->getTexture()->setAliasTexParameters();
         this->backgroundImg->setScale(SCALE_FACTOR);
         this->bottomLayer->addChild(this->backgroundImg, Z_BOTTOM_LAYER);
     }

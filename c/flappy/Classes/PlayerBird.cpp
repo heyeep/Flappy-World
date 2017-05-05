@@ -22,6 +22,7 @@ PlayerBird* PlayerBird::create() {
         cocos2d::PhysicsBody* body = PlayerBird::createPhysicsBody(player);
         player->setPhysicsBody(body);
         player->setAnchorPoint(Point::ZERO);
+        player->getTexture()->setAliasTexParameters();
         player->setScale(SCALE_FACTOR);
         return player;
     }
