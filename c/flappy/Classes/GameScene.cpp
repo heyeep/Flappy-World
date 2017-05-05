@@ -42,14 +42,14 @@ bool GameScene::init() {
 /*
   Adds sprites to the cache. Makes it less intensive reloading images.
  */
-void GameScene::initSprites()
-{
+void GameScene::initSprites() {
     SpriteFrameCache* cache = SpriteFrameCache::getInstance();
     cache->addSpriteFramesWithFile("bird_blue.plist");
 }
 
 /*
-  Makes each individual layer and adds it to a ParallaxNode. The node is then added to the Scene.
+  Makes each individual layer and adds it to a ParallaxNode. The node is then
+  added to the Scene.
  */
 void GameScene::generateWorld() {
     this->parallaxNode = ParallaxNode::create();

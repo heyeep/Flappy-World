@@ -72,8 +72,8 @@ void PlayerBird::updatePosition() {
 }
 
 /*
-  Rotates the player's sprite based on velocity. Multiplying it by delta should
-  give it a smoother transition
+  Rotates the player's sprite based on velocity. Multiplying it by delta
+  should give it a smoother transition
  */
 void PlayerBird::updateAngle(float dt) {
     Vec2 vec = this->getPhysicsBody()->getVelocity() * dt;
