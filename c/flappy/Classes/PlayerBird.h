@@ -7,7 +7,7 @@
 
 USING_NS_CC;
 
-const int numberOfFrames = 3;
+const int NUMBER_OF_FRAMES = 3;
 
 class PlayerBird : public cocos2d::Sprite {
 public:
