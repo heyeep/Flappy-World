@@ -7,7 +7,7 @@ PlayerBird::PlayerBird() {
 }
 
 PlayerBird::~PlayerBird() {
-    CC_SAFE_RELEASE(flapAnimation);
+    CC_SAFE_DELETE(flapAnimation);
 }
 
 /*
@@ -104,6 +104,7 @@ void PlayerBird::flapAnimate() {
  */
 void PlayerBird::setFlapAnimation() {
     this->flapAnimation = Animation::createWithSpriteFrames(frames, 0.05f);
+    this->flapAnimation->retain();
 }
 
 /*
