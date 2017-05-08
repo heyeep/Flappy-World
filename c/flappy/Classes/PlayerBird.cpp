@@ -103,11 +103,7 @@ void PlayerBird::flapAnimate() {
   Sets up player's flapping animations to be used via Animate.
  */
 void PlayerBird::setFlapAnimation() {
-    if (this->flapAnimation != NULL) {
-        this->flapAnimation->release();
-    }
     this->flapAnimation = Animation::createWithSpriteFrames(frames, 0.05f);
-    this->flapAnimation->retain();
 }
 
 /*
