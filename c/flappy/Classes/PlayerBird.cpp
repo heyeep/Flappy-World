@@ -1,7 +1,5 @@
 #include "PlayerBird.h"
 
-USING_NS_CC;
-
 PlayerBird::PlayerBird() {
     this->speed = BIRD_SPEED;
 }
