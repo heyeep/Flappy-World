@@ -40,7 +40,7 @@ PlayerBird* PlayerBird::create() {
 cocos2d::Vector<SpriteFrame*> PlayerBird::getFrames() {
     SpriteFrameCache* cache = SpriteFrameCache::getInstance();
     Vector<SpriteFrame*> newFrames;
-    char str[100] = { 0 };
+    char str[20] = { 0 };
     for (int i = 1; i < numberOfFrames; i++) {
         sprintf(str, "bird_blue_%02d.png", i);
         newFrames.pushBack(cache->getSpriteFrameByName(str));
