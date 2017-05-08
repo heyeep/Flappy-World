@@ -27,6 +27,10 @@ PlayerBird* PlayerBird::create() {
         player->getTexture()->setAliasTexParameters();
         player->setAnchorPoint(Vec2(0.5, 0.5));
         player->setScale(SCALE_FACTOR);
+
+        // Using the bird's speed and radius to determine how much the bird
+        // should turn seemed the most reasonable. I went from 0-100 as the
+        // multiplier and 50 seems to be the middle ground.
         player->flapDegrees
             = -((BIRD_SPEED / (player->getContentSize().width / 2)) * 50);
         return player;
