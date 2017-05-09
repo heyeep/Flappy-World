@@ -11,7 +11,6 @@ const int NUMBER_OF_FRAMES = 3;
 
 class PlayerBird : public cocos2d::Sprite {
 public:
-    int speed;
     cocos2d::Animation* flapAnimation;
     cocos2d::Vector<cocos2d::SpriteFrame*> frames;
 
@@ -32,6 +31,7 @@ public:
     virtual ~PlayerBird();
 
 private:
+    int speed;
     float flapDegrees;
 };
 
