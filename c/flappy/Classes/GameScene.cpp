@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -29,6 +30,10 @@ bool GameScene::init() {
     this->addCameraObject();
     this->setMouseListeners();
     this->setTouchListeners();
+    this->setAudio();
+    this->stopBackgroundMusic();
+    this->preloadAudio();
+    this->playBackgroundMusic();
 
     return true;
 }
@@ -199,4 +204,21 @@ void GameScene::death() {
     Scene* scene = MainMenu::createScene();
 
     director->replaceScene(scene);
+}
+
+void GameScene::setAudio() {
+    this->sceneAudio = CocosDenshion::SimpleAudioEngine::getInstance();
+}
+
+void GameScene::preloadAudio() {
+    this->sceneAudio->preloadBackgroundMusic("game_background.mp3");
+    this->sceneAudio->preloadEffect("bird_flap.mp3");
+}
+
+void GameScene::playBackgroundMusic() {
+    this->sceneAudio->playBackgroundMusic("game_background.mp3");
+}
+
+void GameScene::stopBackgroundMusic() {
+    this->sceneAudio->stopBackgroundMusic();
 }
