@@ -5,6 +5,7 @@
 #include "MainMenuScene.h"
 #include "PlayerBird.h"
 #include "cocos2d.h"
+#include "SimpleAudioEngine.h"
 #include <stdio.h>
 
 class GameScene : public cocos2d::Layer {
@@ -35,6 +36,7 @@ private:
     cocos2d::EventListenerMouse* mouseListener;
     cocos2d::EventListenerTouchOneByOne* touchListener;
     static cocos2d::Point getStartingLocation();
+    CocosDenshion::SimpleAudioEngine* sceneAudio;
 
     void generateWorld();
     void generateBottomLayer();
@@ -48,6 +50,11 @@ private:
     void updatePlayer(float dt);
     void playerDeathCheck();
     void death();
+
+    void setAudio();
+    void preloadAudio();
+    void playBackgroundMusic();
+    void stopBackgroundMusic();
 
     void setMouseListeners();
     void onMouseDown(cocos2d::Event* event);

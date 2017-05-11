@@ -1,6 +1,7 @@
 #ifndef MainMenuScene_h
 #define MainMenuScene_h
 
+#include "SimpleAudioEngine.h"
 #include "cocos2d.h"
 #include <stdio.h>
 
@@ -19,6 +20,14 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);
+
+private:
+    CocosDenshion::SimpleAudioEngine* sceneAudio;
+
+    void setAudio();
+    void preloadAudio();
+    void playBackgroundMusic();
+    void stopBackgroundMusic();
 };
 
 #endif // MainMenuScene_h //
