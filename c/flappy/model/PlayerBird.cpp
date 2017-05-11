@@ -20,6 +20,7 @@ PlayerBird* PlayerBird::create() {
         player->getTexture()->setAliasTexParameters();
         player->setAnchorPoint(Vec2(0.5, 0.5));
         player->setScale(SCALE_FACTOR);
+        player->initCollision();
 
         // Using the bird's speed and radius to determine how much the bird
         // should turn seemed the most reasonable. I went from 0-100 as the
@@ -92,4 +93,37 @@ bool PlayerBird::isDead(cocos2d::Size windowSize) {
         || (this->getPositionY()
                    + (this->getContentSize().height * SCALE_FACTOR)
                >= windowSize.height));
+}
+
+void PlayerBird::initCollision() {
+    this->getPhysicsBody()->setTag(TAG_PLAYER);
+    this->getPhysicsBody()->setCollisionBitmask(BITMAP_CONTACT);
+    this->getPhysicsBody()->setContactTestBitmask(true);
+    EventListenerPhysicsContact* contactListener
+        = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin
+        = CC_CALLBACK_1(PlayerBird::onContactBegin, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(
+        contactListener, this);
+}
+
+bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
+    PhysicsBody* bodyA = contact.getShapeA()->getBody();
+    PhysicsBody* bodyB = contact.getShapeB()->getBody();
+    if (bodyA && bodyB) {
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
+            || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected.");
+            this->death();
+        }
+    }
+
+    return true;
+}
+
+void PlayerBird::death() {
+    Director* director = Director::getInstance();
+    Scene* scene = MainMenu::createScene();
+
+    director->replaceScene(scene);
 }

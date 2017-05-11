@@ -66,6 +66,10 @@ bool GameScene::init() {
             }
         });
 
+    if (DEBUG_COLLISION_TEST) {
+        this->initCollisionTest();
+    }
+
     return true;
 }
 
@@ -225,4 +229,19 @@ void GameScene::playBackgroundMusic() {
 
 void GameScene::stopBackgroundMusic() {
     this->sceneAudio->stopBackgroundMusic();
+}
+
+void GameScene::initCollisionTest() {
+    Sprite* pipe = Sprite::create("pipe_green_base.png");
+    PhysicsBody* pipeBody = PhysicsBody::createBox(
+        Size(pipe->getContentSize().width, pipe->getContentSize().height),
+        PhysicsMaterial(0, 1, 0));
+    pipeBody->setDynamic(false);
+    pipeBody->setTag(TAG_PIPE);
+    pipeBody->setCollisionBitmask(BITMAP_CONTACT);
+    pipeBody->setContactTestBitmask(true);
+    pipe->setPosition(Vec2((windowSize.width / 2) * 5, windowSize.height / 2));
+    pipe->setScale(SCALE_FACTOR);
+    pipe->setPhysicsBody(pipeBody);
+    this->middleLayer->addChild(pipe, Z_MIDDLE_LAYER);
 }
