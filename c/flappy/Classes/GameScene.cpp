@@ -173,6 +173,7 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
  */
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event*) {
     this->player->flap();
+    this->sceneAudio->playEffect("bird_flap.mp3");
 }
 
 /*
