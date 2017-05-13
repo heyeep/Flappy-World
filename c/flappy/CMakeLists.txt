@@ -145,21 +145,21 @@ set(PHX_SOCKET_LIB_HEADER
   lib/PhxSocketCPP/json.hpp)
 
 set(GAME_SRC
+  ${PHX_SOCKET_LIB_SRC}
   Classes/AppDelegate.cpp
   Classes/MainMenuScene.cpp
   Classes/GameScene.cpp
   Classes/PlayerBird.cpp
   Classes/Network.cpp
-  ${PHX_SOCKET_LIB_SRC}
   ${PLATFORM_SPECIFIC_SRC})
 
 set(GAME_HEADERS
+  ${PHX_SOCKET_LIB_HEADER}
   Classes/Constants.h
   Classes/AppDelegate.h
   Classes/MainMenuScene.h
   Classes/GameScene.h
   Classes/Network.h
-  ${PHX_SOCKET_LIB_HEADER}
   ${PLATFORM_SPECIFIC_HEADERS})
 
 # Configure libcocos2d
