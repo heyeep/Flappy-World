@@ -111,7 +111,8 @@ include_directories(
   ${COCOS2D_ROOT}/external
   ${COCOS2D_ROOT}/cocos/platform
   ${COCOS2D_ROOT}/cocos/audio/include/
-  Classes)
+  Classes
+  lib/PhxSocketCPP)
 if (WIN32)
   include_directories(
     ${COCOS2D_ROOT}/external/glfw3/include/win32
