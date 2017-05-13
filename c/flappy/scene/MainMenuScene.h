@@ -7,26 +7,66 @@
 
 class MainMenu : public cocos2d::Layer {
 public:
-    // there's no 'id' in cpp, so we recommend returning the class instance
-    // pointer
+    /**
+     *  \brief No identifier in C++, it's recommended returning the class
+     *   instance point.
+     *
+     *  \return MainMenu
+     */
     static cocos2d::Scene* createScene();
 
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of
-    // returning 'id' in cocos2d-iphone
+    /**
+     *  \brief Method 'init' in cocos2d-x returns bool, instead of returning
+     *   'id' in cocos2d-iphone. Creates the splash screen.
+     *
+     *  \return bool
+     */
     virtual bool init();
 
-    // a selector callback
+    /**
+     *  \brief Callback to start GameScene.
+     *
+     *  \return void
+     */
     void startGameCall(cocos2d::Ref* pSender);
 
-    // implement the "static create()" method manually
+    /**
+     *  \brief Implement the "static create()" method manually.
+     *
+     *  \return void
+     */
     CREATE_FUNC(MainMenu);
 
 private:
+    /*!< Reference that holds the current audio in the scene. */
     CocosDenshion::SimpleAudioEngine* sceneAudio;
 
+    /**
+     *  \brief Initializes the audio.
+     *
+     *  \return void
+     */
     void setAudio();
+
+    /**
+     *  \brief Preload all audio pertaining to the scene.
+     *
+     *  \return void
+     */
     void preloadAudio();
+
+    /**
+     *  \brief Plays the background music.
+     *
+     *  \return void
+     */
     void playBackgroundMusic();
+
+    /**
+     *  \brief Stops the current running background music.
+     *
+     *  \return void
+     */
     void stopBackgroundMusic();
 };
 

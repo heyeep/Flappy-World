@@ -5,7 +5,6 @@
 USING_NS_CC;
 
 Scene* MainMenu::createScene() {
-    // 'scene' is an autorelease object
     Scene* scene = Scene::create();
     Layer* layer = MainMenu::create();
 
