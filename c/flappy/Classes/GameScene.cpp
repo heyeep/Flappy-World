@@ -102,7 +102,6 @@ void GameScene::generateMiddleLayer() {
  */
 void GameScene::addPlayer() {
     this->player = PlayerBird::create();
-    this->player->retain();
     this->player->setPosition(this->getStartingLocation());
     this->middleLayer->addChild(this->player, Z_MIDDLE_LAYER);
 }
@@ -124,7 +123,6 @@ void GameScene::addCameraObject() {
  */
 void GameScene::setCameraTarget(cocos2d::Sprite* follow) {
     this->cameraTarget = Follow::create(follow, Rect::ZERO);
-    this->cameraTarget->retain();
     this->runAction(this->cameraTarget);
 }
 
