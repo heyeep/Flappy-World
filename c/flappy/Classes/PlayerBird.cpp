@@ -5,7 +5,7 @@ PlayerBird::PlayerBird() {
 }
 
 PlayerBird::~PlayerBird() {
-    CC_SAFE_DELETE(flapAnimation);
+    CC_SAFE_RELEASE_NULL(flapAnimation);
 }
 
 /*
