@@ -112,6 +112,8 @@ include_directories(
   ${COCOS2D_ROOT}/cocos/platform
   ${COCOS2D_ROOT}/cocos/audio/include/
   Classes
+  model
+  scene
   lib/PhxSocketCPP)
 if (WIN32)
   include_directories(
@@ -144,22 +146,35 @@ set(PHX_SOCKET_LIB_HEADER
   lib/PhxSocketCPP/easywsclient.hpp
   lib/PhxSocketCPP/json.hpp)
 
+set(GAME_MODELS_SRC
+  model/Network.cpp
+  model/PlayerBird.cpp)
+
+set(GAME_MODELS_HEADER
+  model/Network.h
+  model/PlayerBird.h)
+
+set(GAME_SCENES_SRC
+  scene/GameScene.cpp
+  scene/MainMenuScene.cpp)
+
+set(GAME_SCENES_HEADER
+  scene/GameScene.h
+  scene/MainMenuScene.h)
+
 set(GAME_SRC
   ${PHX_SOCKET_LIB_SRC}
+  ${GAME_MODELS_SRC}
+  ${GAME_SCENES_SRC}
   Classes/AppDelegate.cpp
-  Classes/MainMenuScene.cpp
-  Classes/GameScene.cpp
-  Classes/PlayerBird.cpp
-  Classes/Network.cpp
   ${PLATFORM_SPECIFIC_SRC})
 
 set(GAME_HEADERS
   ${PHX_SOCKET_LIB_HEADER}
+  ${GAME_MODELS_HEADER}
+  ${GAME_SCENES_HEADER}
   Classes/Constants.h
   Classes/AppDelegate.h
-  Classes/MainMenuScene.h
-  Classes/GameScene.h
-  Classes/Network.h
   ${PLATFORM_SPECIFIC_HEADERS})
 
 # Configure libcocos2d
