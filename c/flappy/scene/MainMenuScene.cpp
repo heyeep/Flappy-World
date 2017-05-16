@@ -39,7 +39,7 @@ bool MainMenu::init() {
 
     this->addChild(menu, 1);
     this->addChild(gameTitle, 1);
-    this->setAudio();
+    this->initAudio();
     this->preloadAudio();
     this->playBackgroundMusic();
 
@@ -53,7 +53,7 @@ void MainMenu::startGameCall(Ref* pSender) {
     director->replaceScene(scene);
 }
 
-void MainMenu::setAudio() {
+void MainMenu::initAudio() {
     this->sceneAudio = CocosDenshion::SimpleAudioEngine::getInstance();
 }
 

@@ -75,14 +75,14 @@ public:
      *
      *  \return void
      */
-    void flapAnimate();
+    void animateFlapping();
 
     /**
      *  \brief Initiates the player's flapping animations.
      *
      *  \return void
      */
-    void setFlapAnimation();
+    void initFlapAnimation();
 
     /**
      *  \brief Return true if the player meet's requirements for death. For

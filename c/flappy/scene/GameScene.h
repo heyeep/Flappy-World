@@ -10,7 +10,6 @@
 
 class GameScene : public cocos2d::Layer {
 public:
-
     /**
      *  \brief Creates a scene with built-in physics.
      *
@@ -38,7 +37,7 @@ public:
      *
      *  \return void
      */
-    virtual void setTouchListeners();
+    virtual void initTouchListeners();
 
     /**
      *  \brief Returns true when the client touches the screen.
@@ -151,11 +150,11 @@ private:
     void addPlayer();
 
     /**
-     *  \brief Adds an invisible object for the camera to follow.
+     *  \brief Initiates and adds an invisible object for the camera to follow.
      *
      *  \return void
      */
-    void addCameraObject();
+    void initCamera();
 
     /**
      *  \brief Sets the camera to follow the invisible camera object.
@@ -179,7 +178,8 @@ private:
     void updatePlayer(float dt);
 
     /**
-     *  \brief Check's whether the player is in state where they can be considered death.
+     *  \brief Check's whether the player is in state where they can be
+     * considered death.
      *
      *  \return void
      */
@@ -197,7 +197,7 @@ private:
      *
      *  \return void
      */
-    void setAudio();
+    void initAudio();
 
     /**
      *  \brief Preload all audio pertaining to the scene.
@@ -225,7 +225,7 @@ private:
      *
      *  \return void
      */
-    void setMouseListeners();
+    void initMouseListeners();
 
     /**
      *  \brief This is called when the player clicks using their mouse, making

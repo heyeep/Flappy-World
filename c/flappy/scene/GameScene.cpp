@@ -32,10 +32,10 @@ bool GameScene::init() {
     this->initSprites();
     this->generateWorld();
     this->addPlayer();
-    this->addCameraObject();
-    this->setMouseListeners();
-    this->setTouchListeners();
-    this->setAudio();
+    this->initCamera();
+    this->initMouseListeners();
+    this->initTouchListeners();
+    this->initAudio();
     this->stopBackgroundMusic();
     this->preloadAudio();
     this->playBackgroundMusic();
@@ -89,7 +89,7 @@ void GameScene::addPlayer() {
     this->middleLayer->addChild(this->player, Z_MIDDLE_LAYER);
 }
 
-void GameScene::addCameraObject() {
+void GameScene::initCamera() {
     this->cameraObject = Sprite::create();
     cameraObject->setPosition(this->getStartingLocation());
     this->setCameraTarget(cameraObject);
@@ -101,7 +101,7 @@ void GameScene::setCameraTarget(cocos2d::Sprite* follow) {
     this->runAction(this->cameraTarget);
 }
 
-void GameScene::setMouseListeners() {
+void GameScene::initMouseListeners() {
     this->mouseListener = EventListenerMouse::create();
     this->mouseListener->onMouseDown
         = CC_CALLBACK_1(GameScene::onMouseDown, this);
@@ -109,7 +109,7 @@ void GameScene::setMouseListeners() {
         mouseListener, this);
 }
 
-void GameScene::setTouchListeners() {
+void GameScene::initTouchListeners() {
     this->touchListener = EventListenerTouchOneByOne::create();
     this->touchListener->onTouchBegan
         = CC_CALLBACK_2(GameScene::onTouchBegan, this);
@@ -167,7 +167,7 @@ void GameScene::death() {
     director->replaceScene(scene);
 }
 
-void GameScene::setAudio() {
+void GameScene::initAudio() {
     this->sceneAudio = CocosDenshion::SimpleAudioEngine::getInstance();
 }
 

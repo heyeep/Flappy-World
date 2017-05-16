@@ -46,7 +46,7 @@ private:
      *
      *  \return void
      */
-    void setAudio();
+    void initAudio();
 
     /**
      *  \brief Preload all audio pertaining to the scene.

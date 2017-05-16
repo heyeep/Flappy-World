@@ -15,7 +15,7 @@ PlayerBird* PlayerBird::create() {
     if (player->initWithSpriteFrameName("bird_blue_01.png")) {
         cocos2d::PhysicsBody* body = PlayerBird::createPhysicsBody(player);
         player->frames = PlayerBird::getFrames();
-        player->setFlapAnimation();
+        player->initFlapAnimation();
         player->setPhysicsBody(body);
         player->getTexture()->setAliasTexParameters();
         player->setAnchorPoint(Vec2(0.5, 0.5));
@@ -67,14 +67,14 @@ void PlayerBird::updateAngle(float dt) {
 void PlayerBird::flap() {
     this->getPhysicsBody()->setVelocity(BIRD_VELOCITY);
     this->setRotation(flapDegrees);
-    this->flapAnimate();
+    this->animateFlapping();
 }
 
-void PlayerBird::flapAnimate() {
+void PlayerBird::animateFlapping() {
     this->runAction(Animate::create(this->flapAnimation));
 }
 
-void PlayerBird::setFlapAnimation() {
+void PlayerBird::initFlapAnimation() {
     this->flapAnimation = Animation::createWithSpriteFrames(frames, 0.05f);
     this->flapAnimation->retain();
 }
