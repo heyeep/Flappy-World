@@ -107,8 +107,8 @@
 		911001501ECD1BA700D3D9A4 /* tap_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001461ECD1BA700D3D9A4 /* tap_button.png */; };
 		911001511ECD1BA700D3D9A4 /* endgame_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001471ECD1BA700D3D9A4 /* endgame_scores.png */; };
 		911001521ECD1BA700D3D9A4 /* endgame_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001471ECD1BA700D3D9A4 /* endgame_scores.png */; };
-		911001531ECD1BA700D3D9A4 /* flappybird_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_name.png */; };
-		911001541ECD1BA700D3D9A4 /* flappybird_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_name.png */; };
+		911001531ECD1BA700D3D9A4 /* flappybird_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_title.png */; };
+		911001541ECD1BA700D3D9A4 /* flappybird_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_title.png */; };
 		911001551ECD1BA700D3D9A4 /* game_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001491ECD1BA700D3D9A4 /* game_over.png */; };
 		911001561ECD1BA700D3D9A4 /* game_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001491ECD1BA700D3D9A4 /* game_over.png */; };
 		911001571ECD1BA700D3D9A4 /* get_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = 9110014A1ECD1BA700D3D9A4 /* get_ready.png */; };
@@ -258,7 +258,7 @@
 		911001451ECD1BA700D3D9A4 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
 		911001461ECD1BA700D3D9A4 /* tap_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tap_button.png; sourceTree = "<group>"; };
 		911001471ECD1BA700D3D9A4 /* endgame_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endgame_scores.png; sourceTree = "<group>"; };
-		911001481ECD1BA700D3D9A4 /* flappybird_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappybird_name.png; sourceTree = "<group>"; };
+		911001481ECD1BA700D3D9A4 /* flappybird_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappybird_title.png; sourceTree = "<group>"; };
 		911001491ECD1BA700D3D9A4 /* game_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_over.png; sourceTree = "<group>"; };
 		9110014A1ECD1BA700D3D9A4 /* get_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_ready.png; sourceTree = "<group>"; };
 		9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bird_flap.mp3; sourceTree = "<group>"; };
@@ -592,7 +592,7 @@
 			children = (
 				911001431ECD1BA700D3D9A4 /* buttons */,
 				911001471ECD1BA700D3D9A4 /* endgame_scores.png */,
-				911001481ECD1BA700D3D9A4 /* flappybird_name.png */,
+				911001481ECD1BA700D3D9A4 /* flappybird_title.png */,
 				911001491ECD1BA700D3D9A4 /* game_over.png */,
 				9110014A1ECD1BA700D3D9A4 /* get_ready.png */,
 			);
@@ -719,7 +719,7 @@
 				5147D5581EAADCBD00CE79E6 /* basic_night.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
-				911001531ECD1BA700D3D9A4 /* flappybird_name.png in Resources */,
+				911001531ECD1BA700D3D9A4 /* flappybird_title.png in Resources */,
 				51338AB61EC25F590042FBF2 /* game_background.mp3 in Resources */,
 				5147D56A1EAADD0D00CE79E6 /* pipe_green_top.png in Resources */,
 				51616F4E1EBA93A200F55BEE /* bird_blue.png in Resources */,
@@ -776,7 +776,7 @@
 				5147D5691EAADD0D00CE79E6 /* pipe_green_bottom.png in Resources */,
 				911001521ECD1BA700D3D9A4 /* endgame_scores.png in Resources */,
 				9110014C1ECD1BA700D3D9A4 /* play_button-s.png in Resources */,
-				911001541ECD1BA700D3D9A4 /* flappybird_name.png in Resources */,
+				911001541ECD1BA700D3D9A4 /* flappybird_title.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				5147D5651EAADD0D00CE79E6 /* pipe_green_base.png in Resources */,
 				51616F4D1EBA93A200F55BEE /* bird_blue.plist in Resources */,

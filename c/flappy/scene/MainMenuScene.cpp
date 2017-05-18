@@ -20,24 +20,45 @@ bool MainMenu::init() {
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    Label* gameTitle
-        = Label::createWithSystemFont("Flappy World", "Arial", 100);
 
-    // To position a sprite using it's mid point
+    Sprite* gameTitle = Sprite::create("flappybird_title.png");
     gameTitle->setAnchorPoint(Vec2(0.5, 0.5));
     gameTitle->setPosition(Vec2(visibleSize.width / 2,
-        visibleSize.height - gameTitle->getContentSize().height));
+        visibleSize.height
+            - (gameTitle->getContentSize().height) * SCALE_FACTOR));
+    gameTitle->getTexture()->setAliasTexParameters();
+    gameTitle->setScale(SCALE_FACTOR);
 
-    MenuItemImage* startButton = MenuItemImage::create("play_button.png",
-        "play_button-s.png",
+    // MenuItemSprite does not allow disabling of anti-aliasing. This is a work
+    // around.
+    Sprite* playButton = Sprite::create("play_button.png");
+    Sprite* playButtonSel = Sprite::create("play_button-s.png");
+    playButton->getTexture()->setAliasTexParameters();
+    playButtonSel->getTexture()->setAliasTexParameters();
+
+    MenuItemSprite* startButton = MenuItemSprite::create(playButton,
+        playButtonSel,
         CC_CALLBACK_1(MainMenu::startGameCall, this));
     startButton->setPosition(Vec2(gameTitle->getPositionX(),
-                                  gameTitle->getPositionY() - (startButton->getContentSize().height * 2.5)));
+        gameTitle->getPositionY()
+            - (startButton->getContentSize().height * SCALE_FACTOR)));
     startButton->setScale(SCALE_FACTOR / 2);
-    
+
     Menu* menu = Menu::create(startButton, NULL);
     menu->setPosition(Vec2::ZERO);
 
+    // Backdrop
+    for (int i = 0; i < 5; i++) {
+        Sprite* backgroundImg = Sprite::create("basic_day.png");
+        backgroundImg->setAnchorPoint(Point::ZERO);
+        backgroundImg->setPosition(
+            i * (backgroundImg->getContentSize().width * SCALE_FACTOR),
+            0);
+        backgroundImg->getTexture()->setAliasTexParameters();
+        backgroundImg->setScale(SCALE_FACTOR);
+        this->addChild(backgroundImg, 0);
+    }
+    
     this->addChild(menu, 1);
     this->addChild(gameTitle, 1);
     this->initAudio();
