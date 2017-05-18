@@ -39,9 +39,8 @@ bool MainMenu::init() {
     MenuItemSprite* startButton = MenuItemSprite::create(playButton,
         playButtonSel,
         CC_CALLBACK_1(MainMenu::startGameCall, this));
-    startButton->setPosition(Vec2(gameTitle->getPositionX(),
-        gameTitle->getPositionY()
-            - (startButton->getContentSize().height * SCALE_FACTOR)));
+    startButton->setPosition(
+        Vec2(gameTitle->getPositionX(), visibleSize.height / 2));
     startButton->setScale(SCALE_FACTOR / 2);
 
     Menu* menu = Menu::create(startButton, NULL);
@@ -52,13 +51,12 @@ bool MainMenu::init() {
         Sprite* backgroundImg = Sprite::create("basic_day.png");
         backgroundImg->setAnchorPoint(Point::ZERO);
         backgroundImg->setPosition(
-            i * (backgroundImg->getContentSize().width * SCALE_FACTOR),
-            0);
+            i * (backgroundImg->getContentSize().width * SCALE_FACTOR), 0);
         backgroundImg->getTexture()->setAliasTexParameters();
         backgroundImg->setScale(SCALE_FACTOR);
         this->addChild(backgroundImg, 0);
     }
-    
+
     this->addChild(menu, 1);
     this->addChild(gameTitle, 1);
     this->initAudio();
