@@ -91,10 +91,6 @@
 		51616F4D1EBA93A200F55BEE /* bird_blue.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51616F4A1EBA93A200F55BEE /* bird_blue.plist */; };
 		51616F4E1EBA93A200F55BEE /* bird_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 51616F4B1EBA93A200F55BEE /* bird_blue.png */; };
 		51616F4F1EBA93A200F55BEE /* bird_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 51616F4B1EBA93A200F55BEE /* bird_blue.png */; };
-		517592C21EAE8B2E0018C613 /* startgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 517592C01EAE8B2E0018C613 /* startgame.png */; };
-		517592C31EAE8B2E0018C613 /* startgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 517592C01EAE8B2E0018C613 /* startgame.png */; };
-		517592C41EAE8B2E0018C613 /* startgame-s.png in Resources */ = {isa = PBXBuildFile; fileRef = 517592C11EAE8B2E0018C613 /* startgame-s.png */; };
-		517592C51EAE8B2E0018C613 /* startgame-s.png in Resources */ = {isa = PBXBuildFile; fileRef = 517592C11EAE8B2E0018C613 /* startgame-s.png */; };
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
@@ -103,6 +99,20 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		894FBBD31ED47B9C003660E8 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 894FBBD11ED47B9C003660E8 /* Pipe.cpp */; };
 		894FBBD41ED47B9E003660E8 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 894FBBD11ED47B9C003660E8 /* Pipe.cpp */; };
+		9110014B1ECD1BA700D3D9A4 /* play_button-s.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001441ECD1BA700D3D9A4 /* play_button-s.png */; };
+		9110014C1ECD1BA700D3D9A4 /* play_button-s.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001441ECD1BA700D3D9A4 /* play_button-s.png */; };
+		9110014D1ECD1BA700D3D9A4 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001451ECD1BA700D3D9A4 /* play_button.png */; };
+		9110014E1ECD1BA700D3D9A4 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001451ECD1BA700D3D9A4 /* play_button.png */; };
+		9110014F1ECD1BA700D3D9A4 /* tap_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001461ECD1BA700D3D9A4 /* tap_button.png */; };
+		911001501ECD1BA700D3D9A4 /* tap_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001461ECD1BA700D3D9A4 /* tap_button.png */; };
+		911001511ECD1BA700D3D9A4 /* endgame_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001471ECD1BA700D3D9A4 /* endgame_scores.png */; };
+		911001521ECD1BA700D3D9A4 /* endgame_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001471ECD1BA700D3D9A4 /* endgame_scores.png */; };
+		911001531ECD1BA700D3D9A4 /* flappybird_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_name.png */; };
+		911001541ECD1BA700D3D9A4 /* flappybird_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001481ECD1BA700D3D9A4 /* flappybird_name.png */; };
+		911001551ECD1BA700D3D9A4 /* game_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001491ECD1BA700D3D9A4 /* game_over.png */; };
+		911001561ECD1BA700D3D9A4 /* game_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 911001491ECD1BA700D3D9A4 /* game_over.png */; };
+		911001571ECD1BA700D3D9A4 /* get_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = 9110014A1ECD1BA700D3D9A4 /* get_ready.png */; };
+		911001581ECD1BA700D3D9A4 /* get_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = 9110014A1ECD1BA700D3D9A4 /* get_ready.png */; };
 		9142A5EE1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
 		9142A5EF1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -237,8 +247,6 @@
 		5147D5631EAADD0D00CE79E6 /* pipe_green_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe_green_top.png; sourceTree = "<group>"; };
 		51616F4A1EBA93A200F55BEE /* bird_blue.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bird_blue.plist; sourceTree = "<group>"; };
 		51616F4B1EBA93A200F55BEE /* bird_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_blue.png; sourceTree = "<group>"; };
-		517592C01EAE8B2E0018C613 /* startgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startgame.png; sourceTree = "<group>"; };
-		517592C11EAE8B2E0018C613 /* startgame-s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startgame-s.png"; sourceTree = "<group>"; };
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
@@ -246,6 +254,13 @@
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		894FBBD11ED47B9C003660E8 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
 		894FBBD21ED47B9C003660E8 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
+		911001441ECD1BA700D3D9A4 /* play_button-s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_button-s.png"; sourceTree = "<group>"; };
+		911001451ECD1BA700D3D9A4 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
+		911001461ECD1BA700D3D9A4 /* tap_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tap_button.png; sourceTree = "<group>"; };
+		911001471ECD1BA700D3D9A4 /* endgame_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endgame_scores.png; sourceTree = "<group>"; };
+		911001481ECD1BA700D3D9A4 /* flappybird_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappybird_name.png; sourceTree = "<group>"; };
+		911001491ECD1BA700D3D9A4 /* game_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_over.png; sourceTree = "<group>"; };
+		9110014A1ECD1BA700D3D9A4 /* get_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_ready.png; sourceTree = "<group>"; };
 		9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bird_flap.mp3; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -446,11 +461,11 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				911001421ECD1BA700D3D9A4 /* gui */,
 				51338AAD1EC25C290042FBF2 /* audio */,
 				5147D55F1EAADD0D00CE79E6 /* pipes */,
 				5147D55B1EAADCF200CE79E6 /* birds */,
 				5147D5531EAADCBD00CE79E6 /* backgrounds */,
-				51EB6C5A1EA82E0200FC11BC /* buttons */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 			);
@@ -572,21 +587,26 @@
 			path = pipes;
 			sourceTree = "<group>";
 		};
-		51EB6C5A1EA82E0200FC11BC /* buttons */ = {
+		911001421ECD1BA700D3D9A4 /* gui */ = {
 			isa = PBXGroup;
 			children = (
-				51EB6C5B1EA82E0200FC11BC /* menu */,
+				911001431ECD1BA700D3D9A4 /* buttons */,
+				911001471ECD1BA700D3D9A4 /* endgame_scores.png */,
+				911001481ECD1BA700D3D9A4 /* flappybird_name.png */,
+				911001491ECD1BA700D3D9A4 /* game_over.png */,
+				9110014A1ECD1BA700D3D9A4 /* get_ready.png */,
 			);
-			path = buttons;
+			path = gui;
 			sourceTree = "<group>";
 		};
-		51EB6C5B1EA82E0200FC11BC /* menu */ = {
+		911001431ECD1BA700D3D9A4 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
-				517592C01EAE8B2E0018C613 /* startgame.png */,
-				517592C11EAE8B2E0018C613 /* startgame-s.png */,
+				911001441ECD1BA700D3D9A4 /* play_button-s.png */,
+				911001451ECD1BA700D3D9A4 /* play_button.png */,
+				911001461ECD1BA700D3D9A4 /* tap_button.png */,
 			);
-			path = menu;
+			path = buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -699,10 +719,11 @@
 				5147D5581EAADCBD00CE79E6 /* basic_night.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				911001531ECD1BA700D3D9A4 /* flappybird_name.png in Resources */,
 				51338AB61EC25F590042FBF2 /* game_background.mp3 in Resources */,
 				5147D56A1EAADD0D00CE79E6 /* pipe_green_top.png in Resources */,
 				51616F4E1EBA93A200F55BEE /* bird_blue.png in Resources */,
-				517592C41EAE8B2E0018C613 /* startgame-s.png in Resources */,
+				9110014B1ECD1BA700D3D9A4 /* play_button-s.png in Resources */,
 				5147D5641EAADD0D00CE79E6 /* pipe_green_base.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -713,6 +734,7 @@
 				1ACB7B9F1EB98BF1002B47A5 /* README.org in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				9110014F1ECD1BA700D3D9A4 /* tap_button.png in Resources */,
 				51338AB31EC25D980042FBF2 /* start_background.mp3 in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -721,13 +743,16 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
-				517592C21EAE8B2E0018C613 /* startgame.png in Resources */,
+				911001511ECD1BA700D3D9A4 /* endgame_scores.png in Resources */,
+				911001571ECD1BA700D3D9A4 /* get_ready.png in Resources */,
 				9142A5EE1EC7BA9100FE688B /* bird_flap.mp3 in Resources */,
 				5147D5561EAADCBD00CE79E6 /* basic_day.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				9110014D1ECD1BA700D3D9A4 /* play_button.png in Resources */,
 				5147D5661EAADD0D00CE79E6 /* pipe_green_base_2.png in Resources */,
 				51616F4C1EBA93A200F55BEE /* bird_blue.plist in Resources */,
+				911001551ECD1BA700D3D9A4 /* game_over.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -738,8 +763,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				51338AB41EC25D980042FBF2 /* start_background.mp3 in Resources */,
-				517592C51EAE8B2E0018C613 /* startgame-s.png in Resources */,
+				911001561ECD1BA700D3D9A4 /* game_over.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				911001581ECD1BA700D3D9A4 /* get_ready.png in Resources */,
 				5147D5671EAADD0D00CE79E6 /* pipe_green_base_2.png in Resources */,
 				51338AB71EC25F590042FBF2 /* game_background.mp3 in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
@@ -748,10 +774,14 @@
 				5147D56B1EAADD0D00CE79E6 /* pipe_green_top.png in Resources */,
 				9142A5EF1EC7BA9100FE688B /* bird_flap.mp3 in Resources */,
 				5147D5691EAADD0D00CE79E6 /* pipe_green_bottom.png in Resources */,
+				911001521ECD1BA700D3D9A4 /* endgame_scores.png in Resources */,
+				9110014C1ECD1BA700D3D9A4 /* play_button-s.png in Resources */,
+				911001541ECD1BA700D3D9A4 /* flappybird_name.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				5147D5651EAADD0D00CE79E6 /* pipe_green_base.png in Resources */,
-				517592C31EAE8B2E0018C613 /* startgame.png in Resources */,
 				51616F4D1EBA93A200F55BEE /* bird_blue.plist in Resources */,
+				9110014E1ECD1BA700D3D9A4 /* play_button.png in Resources */,
+				911001501ECD1BA700D3D9A4 /* tap_button.png in Resources */,
 				5147D5591EAADCBD00CE79E6 /* basic_night.png in Resources */,
 				5147D5571EAADCBD00CE79E6 /* basic_day.png in Resources */,
 			);

@@ -10,7 +10,7 @@
 #define BIRD_VELOCITY Vec2(0, 300)
 
 // Debug Toggles
-#define DEBUG_AUTOSTART_ON true
+#define DEBUG_AUTOSTART_ON false
 #define DEBUG_DEATH_ON true
 
 #endif /* Constants_h */

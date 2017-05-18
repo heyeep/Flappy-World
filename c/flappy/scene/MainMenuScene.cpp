@@ -28,12 +28,13 @@ bool MainMenu::init() {
     gameTitle->setPosition(Vec2(visibleSize.width / 2,
         visibleSize.height - gameTitle->getContentSize().height));
 
-    MenuItemImage* startButton = MenuItemImage::create("startgame.png",
-        "startgame-s.png",
+    MenuItemImage* startButton = MenuItemImage::create("play_button.png",
+        "play_button-s.png",
         CC_CALLBACK_1(MainMenu::startGameCall, this));
     startButton->setPosition(Vec2(gameTitle->getPositionX(),
-        gameTitle->getPositionY() - startButton->getContentSize().height));
-
+                                  gameTitle->getPositionY() - (startButton->getContentSize().height * 2.5)));
+    startButton->setScale(SCALE_FACTOR / 2);
+    
     Menu* menu = Menu::create(startButton, NULL);
     menu->setPosition(Vec2::ZERO);
 
