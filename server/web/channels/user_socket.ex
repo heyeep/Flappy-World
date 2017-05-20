@@ -3,6 +3,7 @@ defmodule Server.UserSocket do
 
   ## Channels
   channel "room:*", Server.RoomChannel
+  channel "leaderboard:*", Server.LeaderBoardChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
