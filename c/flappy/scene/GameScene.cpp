@@ -105,7 +105,7 @@ void GameScene::initMouseListeners() {
     this->mouseListener = EventListenerMouse::create();
     this->mouseListener->onMouseDown
         = CC_CALLBACK_1(GameScene::onMouseDown, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(
         mouseListener, this);
 }
 
@@ -115,7 +115,7 @@ void GameScene::initTouchListeners() {
         = CC_CALLBACK_2(GameScene::onTouchBegan, this);
     this->touchListener->onTouchEnded
         = CC_CALLBACK_2(GameScene::onTouchEnded, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(
         this->touchListener, this);
 }
 
