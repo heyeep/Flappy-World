@@ -144,7 +144,8 @@ set(PHX_SOCKET_LIB_HEADER
   lib/PhxSocketCPP/WebSocket.h
   lib/PhxSocketCPP/easylogging++.h
   lib/PhxSocketCPP/easywsclient.hpp
-  lib/PhxSocketCPP/json.hpp)
+  lib/PhxSocketCPP/json.hpp
+  lib/PhxSocketCPP/ThreadPool.h)
 
 set(GAME_MODELS_SRC
   model/Network.cpp

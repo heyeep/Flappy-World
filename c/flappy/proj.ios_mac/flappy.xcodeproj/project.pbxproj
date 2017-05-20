@@ -159,6 +159,7 @@
 		1A10CB8B1EC7D63A001ABBCA /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		1A10CB8C1EC7D63A001ABBCA /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuScene.cpp; sourceTree = "<group>"; };
 		1A10CB8D1EC7D63A001ABBCA /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		1A469A7B1ED0F990003AF89D /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadPool.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1ACB7B821EB98BF1002B47A5 /* easylogging++.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "easylogging++.cc"; sourceTree = "<group>"; };
@@ -362,6 +363,7 @@
 		1ACB7B811EB98BF1002B47A5 /* PhxSocketCPP */ = {
 			isa = PBXGroup;
 			children = (
+				1A469A7B1ED0F990003AF89D /* ThreadPool.h */,
 				1ACB7B821EB98BF1002B47A5 /* easylogging++.cc */,
 				1ACB7B831EB98BF1002B47A5 /* easylogging++.h */,
 				1ACB7B841EB98BF1002B47A5 /* EasySocket.cpp */,
