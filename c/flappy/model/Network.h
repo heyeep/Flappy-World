@@ -13,6 +13,7 @@ class PhxChannel;
 
 class Network : public std::enable_shared_from_this<PhxSocketDelegate>,
                 public PhxSocketDelegate {
+
 private:
     // PhxSocketDelegate
     void phxSocketDidOpen();
@@ -27,6 +28,15 @@ private:
     std::shared_ptr<PhxSocket> socket;
 
 public:
+    /**
+     *  \brief Network Singleton.
+     *
+     *  Return a Network singleton.
+     *
+     *  \return Network
+     */
+    static std::shared_ptr<Network> getInstance();
+
     /**
       *  \brief Trigger start of Network connection.
       *

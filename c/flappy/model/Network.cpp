@@ -5,6 +5,11 @@
 #include "easylogging++.h"
 #include <iostream>
 
+std::shared_ptr<Network> Network::getInstance() {
+    static std::shared_ptr<Network> instance = std::make_shared<Network>();
+    return instance;
+}
+
 void Network::start() {
     std::shared_ptr<PhxSocket::PhxSocket> sk
         = std::make_shared<PhxSocket::PhxSocket>(

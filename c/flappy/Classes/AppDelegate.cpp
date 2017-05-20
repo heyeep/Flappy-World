@@ -119,7 +119,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->runWithScene(scene);
 
     std::thread thread([this]() {
-        std::shared_ptr<Network> n = std::make_shared<Network>();
+        std::shared_ptr<Network> n = Network::getInstance();
         this->network = std::move(n);
         this->network->start();
     });
