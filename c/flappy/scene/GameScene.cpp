@@ -91,7 +91,7 @@ void GameScene::addPlayer() {
 
 void GameScene::initCamera() {
     this->cameraObject = Sprite::create();
-    cameraObject->setPosition(this->getStartingLocation());
+    this->cameraObject->setPosition(this->getStartingLocation());
     this->setCameraTarget(cameraObject);
     this->middleLayer->addChild(cameraObject);
 }
