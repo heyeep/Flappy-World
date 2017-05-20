@@ -164,11 +164,13 @@ set(GAME_SCENES_SRC
   scene/GameScene.cpp
   scene/MainMenuScene.cpp
   scene/QueueScene.cpp)
+  scene/LeaderboardScene.cpp)
 
 set(GAME_SCENES_HEADER
   scene/GameScene.h
   scene/MainMenuScene.h
   scene/QueueScene.h)
+  scene/LeaderboardScene.h)
 
 set(GAME_SRC
   ${PHX_SOCKET_LIB_SRC}

@@ -1,6 +1,7 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
 #include "QueueScene.h"
+#include "LeaderboardScene.h"
 #include "SimpleAudioEngine.h"
 #include "Network.h"
 
@@ -35,8 +36,12 @@ bool MainMenu::init() {
     // around.
     Sprite* playButton = Sprite::create("play_button.png");
     Sprite* playButtonSel = Sprite::create("play_button-s.png");
+    Sprite* leaderButton = Sprite::create("leaderboard.png");
+    Sprite* leaderButtonSel = Sprite::create("leaderboard-s.png");
     playButton->getTexture()->setAliasTexParameters();
     playButtonSel->getTexture()->setAliasTexParameters();
+    leaderButton->getTexture()->setAliasTexParameters();
+    leaderButtonSel->getTexture()->setAliasTexParameters();
 
     MenuItemSprite* startButton = MenuItemSprite::create(playButton,
         playButtonSel,
@@ -45,7 +50,16 @@ bool MainMenu::init() {
         Vec2(gameTitle->getPositionX(), visibleSize.height / 2));
     startButton->setScale(SCALE_FACTOR / 2);
 
-    Menu* menu = Menu::create(startButton, NULL);
+    MenuItemSprite* leaderboardButton = MenuItemSprite::create(leaderButton,
+        leaderButtonSel,
+        CC_CALLBACK_1(MainMenu::switchToLeaderboards, this));
+
+    leaderboardButton->setPosition(Vec2(startButton->getPositionX(),
+        startButton->getPositionY()
+            - (leaderboardButton->getContentSize().height) * SCALE_FACTOR));
+    leaderboardButton->setScale(SCALE_FACTOR / 2);
+    
+    Menu* menu = Menu::create(startButton, leaderboardButton, NULL);
     menu->setPosition(Vec2::ZERO);
 
     // Backdrop
@@ -78,7 +92,7 @@ void MainMenu::startGameCall(Ref* pSender) {
                                          j.at("x").get<float>(),
                                          j.at("y").get<float>()));
         }
-
+g
         Director::getInstance()
             ->getScheduler()
             ->performFunctionInCocosThread([pipes] {
@@ -92,6 +106,13 @@ void MainMenu::startGameCall(Ref* pSender) {
                 director->replaceScene(scene);
             });
     });
+}
+
+void MainMenu::switchToLeaderboards(Ref* refPointer) {
+    Director* director = Director::getInstance();
+    Scene* scene = LeaderboardScene::createScene();
+
+    director->replaceScene(scene);
 }
 
 void MainMenu::initAudio() {
