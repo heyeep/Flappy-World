@@ -2,6 +2,7 @@
 #define Network_H
 
 #include "PhxSocket.h"
+#include "ServerUpdate.h"
 #include <memory>
 
 /*!< Callback used for getting Leaderboard results.
@@ -56,6 +57,16 @@ public:
      *  \return void
      */
     void getLeaderboard(GetLeaderBoardCallback callback);
+
+    /**
+     *  \brief Push an update to channel.
+     *
+     *  Pushes an update to a Phoenix Channel.
+     *
+     *  \param update to push to server.
+     *  \return void
+     */
+    void updateServer(std::shared_ptr<ServerUpdate> update);
 };
 
 #endif // Network_H

@@ -15,6 +15,8 @@
 		1A10CB931EC7D63A001ABBCA /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A10CB8A1EC7D63A001ABBCA /* GameScene.cpp */; };
 		1A10CB941EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A10CB8C1EC7D63A001ABBCA /* MainMenuScene.cpp */; };
 		1A10CB951EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A10CB8C1EC7D63A001ABBCA /* MainMenuScene.cpp */; };
+		1A469A811ED15681003AF89D /* CoordinateUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A469A7E1ED15681003AF89D /* CoordinateUpdate.cpp */; };
+		1A469A821ED15681003AF89D /* CoordinateUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A469A7E1ED15681003AF89D /* CoordinateUpdate.cpp */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1ACB7B931EB98BF1002B47A5 /* easylogging++.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB7B821EB98BF1002B47A5 /* easylogging++.cc */; };
@@ -160,6 +162,9 @@
 		1A10CB8C1EC7D63A001ABBCA /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuScene.cpp; sourceTree = "<group>"; };
 		1A10CB8D1EC7D63A001ABBCA /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		1A469A7B1ED0F990003AF89D /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadPool.h; sourceTree = "<group>"; };
+		1A469A7E1ED15681003AF89D /* CoordinateUpdate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoordinateUpdate.cpp; sourceTree = "<group>"; };
+		1A469A7F1ED15681003AF89D /* CoordinateUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateUpdate.h; sourceTree = "<group>"; };
+		1A469A801ED15681003AF89D /* ServerUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUpdate.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1ACB7B821EB98BF1002B47A5 /* easylogging++.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "easylogging++.cc"; sourceTree = "<group>"; };
@@ -320,6 +325,9 @@
 		1A10CB841EC7D63A001ABBCA /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1A469A7E1ED15681003AF89D /* CoordinateUpdate.cpp */,
+				1A469A7F1ED15681003AF89D /* CoordinateUpdate.h */,
+				1A469A801ED15681003AF89D /* ServerUpdate.h */,
 				1A10CB851EC7D63A001ABBCA /* Network.cpp */,
 				1A10CB861EC7D63A001ABBCA /* Network.h */,
 				1A10CB871EC7D63A001ABBCA /* PlayerBird.cpp */,
@@ -754,6 +762,7 @@
 				1A10CB921EC7D63A001ABBCA /* GameScene.cpp in Sources */,
 				1ACB7B991EB98BF1002B47A5 /* PhxChannel.cpp in Sources */,
 				1A10CB941EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */,
+				1A469A811ED15681003AF89D /* CoordinateUpdate.cpp in Sources */,
 				1ACB7B971EB98BF1002B47A5 /* easywsclient.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1ACB7B951EB98BF1002B47A5 /* EasySocket.cpp in Sources */,
@@ -778,6 +787,7 @@
 				1ACB7B9C1EB98BF1002B47A5 /* PhxPush.cpp in Sources */,
 				1A10CB951EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */,
 				1A10CB911EC7D63A001ABBCA /* PlayerBird.cpp in Sources */,
+				1A469A821ED15681003AF89D /* CoordinateUpdate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

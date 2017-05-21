@@ -72,3 +72,12 @@ void Network::getLeaderboard(GetLeaderBoardCallback callback) {
             callback(false, nullptr);
         });
 }
+
+void Network::updateServer(std::shared_ptr<ServerUpdate> update) {
+    if (!this->socket->isConnected()) {
+        // Drop the update.
+        return;
+    }
+
+    this->channel->pushEvent(update->getType(), update->getPayload());
+}

@@ -1,4 +1,6 @@
 #include "GameScene.h"
+#include "CoordinateUpdate.h"
+#include "Network.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -141,6 +143,12 @@ void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event*) {
 void GameScene::updateScene(float dt) {
     this->cameraObject->setPositionX(this->player->getPositionX());
     this->updatePlayer(dt);
+
+    // FIXME: This hardcodes coordinate updates to the server.
+    // Use the player bird object to get the actual values.
+    std::shared_ptr<CoordinateUpdate> update
+        = std::make_shared<CoordinateUpdate>(0, 10, 10, 10, 10);
+    Network::getInstance()->updateServer(update);
 }
 
 void GameScene::updatePlayer(float dt) {

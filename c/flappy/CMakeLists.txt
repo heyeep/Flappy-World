@@ -148,12 +148,15 @@ set(PHX_SOCKET_LIB_HEADER
   lib/PhxSocketCPP/ThreadPool.h)
 
 set(GAME_MODELS_SRC
+  model/CoordinateUpdate.cpp
   model/Network.cpp
   model/PlayerBird.cpp)
 
 set(GAME_MODELS_HEADER
+  model/CoordinateUpdate.h
   model/Network.h
-  model/PlayerBird.h)
+  model/PlayerBird.h
+  model/ServerUpdate.h)
 
 set(GAME_SCENES_SRC
   scene/GameScene.cpp
