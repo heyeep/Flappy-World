@@ -2,6 +2,7 @@
 #include "CoordinateUpdate.h"
 #include "Network.h"
 #include "SimpleAudioEngine.h"
+#include <list>
 
 USING_NS_CC;
 
@@ -12,17 +13,22 @@ GameScene::~GameScene() {
     CC_SAFE_RELEASE_NULL(player);
 }
 
-Scene* GameScene::createScene() {
+Scene* GameScene::createScene(std::list<Pipe*> pipes) {
+    GameScene* layer = GameScene::create();
+    layer->loadStage(pipes);
+
     Scene* scene = Scene::createWithPhysics();
 
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     scene->getPhysicsWorld()->setGravity(Vec2(0.0f, -700.0f));
 
-    Layer* layer = GameScene::create();
-
     scene->addChild(layer);
 
     return scene;
+}
+
+Scene* GameScene::createScene() {
+    return createScene(std::list<Pipe*>());
 }
 
 bool GameScene::init() {
@@ -83,6 +89,13 @@ void GameScene::generateBottomLayer() {
 
 void GameScene::generateMiddleLayer() {
     this->middleLayer = Layer::create();
+}
+
+void GameScene::loadStage(std::list<Pipe*> pipes) {
+    for (Pipe* p : pipes) {
+        p->initPipe();
+        this->middleLayer->addChild(p, Z_MIDDLE_LAYER);
+    }
 }
 
 void GameScene::addPlayer() {

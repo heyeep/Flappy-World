@@ -28,12 +28,58 @@ void Network::start() {
     this->socket = std::move(sk);
 }
 
+void Network::setOnJoinedCallback(
+    std::function<void(std::list<Pipe*> pipes)> callback) {
+    this->onJoinedCallback = callback;
+}
+
 void Network::phxSocketDidOpen() {
     LOG(INFO) << "phxSocketDidOpen";
     this->channel->join()
         ->onReceive("ok",
-            [](nlohmann::json json) {
+            [this](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
+                std::list<Pipe*> pipes;
+                // replace pipe generation with whatever's in the json
+                float x = 1500.0f;
+                float xDelta = 400.0f;
+                float ySpacing = 200.0f;
+                float y = 0.0f;
+
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 100.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 400.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 50.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 150.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 500.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                x += xDelta;
+                y = 300.0f;
+                pipes.push_back(Pipe::create("top", x, y + ySpacing));
+                pipes.push_back(Pipe::create("bottom", x, y));
+
+                this->onJoinedCallback(pipes);
             })
         ->onReceive("error", [](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;

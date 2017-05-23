@@ -3,9 +3,11 @@
 
 #include "Constants.h"
 #include "MainMenuScene.h"
+#include "Pipe.h"
 #include "PlayerBird.h"
 #include "SimpleAudioEngine.h"
 #include "cocos2d.h"
+#include <list>
 #include <stdio.h>
 
 class GameScene : public cocos2d::Layer {
@@ -15,6 +17,7 @@ public:
      *
      *  \return cocos2d::Scene*
      */
+    static cocos2d::Scene* createScene(std::list<Pipe*> pipes);
     static cocos2d::Scene* createScene();
 
     /**
@@ -24,6 +27,8 @@ public:
      *  \return bool
      */
     virtual bool init();
+    
+    virtual void loadStage(std::list<Pipe*> pipes);
 
     /**
      *  \brief Initiates all sprites adding them to the SpriteFrameCache.

@@ -101,6 +101,8 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		894FBBD31ED47B9C003660E8 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 894FBBD11ED47B9C003660E8 /* Pipe.cpp */; };
+		894FBBD41ED47B9E003660E8 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 894FBBD11ED47B9C003660E8 /* Pipe.cpp */; };
 		9142A5EE1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
 		9142A5EF1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -242,6 +244,8 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		894FBBD11ED47B9C003660E8 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		894FBBD21ED47B9C003660E8 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bird_flap.mp3; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -325,6 +329,8 @@
 		1A10CB841EC7D63A001ABBCA /* model */ = {
 			isa = PBXGroup;
 			children = (
+				894FBBD11ED47B9C003660E8 /* Pipe.cpp */,
+				894FBBD21ED47B9C003660E8 /* Pipe.h */,
 				1A469A7E1ED15681003AF89D /* CoordinateUpdate.cpp */,
 				1A469A7F1ED15681003AF89D /* CoordinateUpdate.h */,
 				1A469A801ED15681003AF89D /* ServerUpdate.h */,
@@ -629,6 +635,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = JDFD67ZYBT;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flappy" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -760,6 +771,7 @@
 				1ACB7B931EB98BF1002B47A5 /* easylogging++.cc in Sources */,
 				1A10CB901EC7D63A001ABBCA /* PlayerBird.cpp in Sources */,
 				1A10CB921EC7D63A001ABBCA /* GameScene.cpp in Sources */,
+				894FBBD31ED47B9C003660E8 /* Pipe.cpp in Sources */,
 				1ACB7B991EB98BF1002B47A5 /* PhxChannel.cpp in Sources */,
 				1A10CB941EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */,
 				1A469A811ED15681003AF89D /* CoordinateUpdate.cpp in Sources */,
@@ -786,6 +798,7 @@
 				1A10CB931EC7D63A001ABBCA /* GameScene.cpp in Sources */,
 				1ACB7B9C1EB98BF1002B47A5 /* PhxPush.cpp in Sources */,
 				1A10CB951EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */,
+				894FBBD41ED47B9E003660E8 /* Pipe.cpp in Sources */,
 				1A10CB911EC7D63A001ABBCA /* PlayerBird.cpp in Sources */,
 				1A469A821ED15681003AF89D /* CoordinateUpdate.cpp in Sources */,
 			);
@@ -813,6 +826,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = JDFD67ZYBT;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -846,6 +860,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = JDFD67ZYBT;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

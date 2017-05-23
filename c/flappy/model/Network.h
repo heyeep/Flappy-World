@@ -3,6 +3,8 @@
 
 #include "PhxSocket.h"
 #include "ServerUpdate.h"
+#include "Pipe.h"
+#include <List>
 #include <memory>
 
 /*!< Callback used for getting Leaderboard results.
@@ -27,6 +29,8 @@ private:
 
     /*!< The socket used by the various Phoenix Channels game uses. */
     std::shared_ptr<PhxSocket> socket;
+
+    std::function<void(std::list<Pipe*> pipes)> onJoinedCallback;
 
 public:
     /**
@@ -67,6 +71,9 @@ public:
      *  \return void
      */
     void updateServer(std::shared_ptr<ServerUpdate> update);
+
+    void setOnJoinedCallback(
+        std::function<void(std::list<Pipe*> pipes)> callback);
 };
 
 #endif // Network_H

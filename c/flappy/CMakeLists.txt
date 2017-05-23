@@ -150,13 +150,15 @@ set(PHX_SOCKET_LIB_HEADER
 set(GAME_MODELS_SRC
   model/CoordinateUpdate.cpp
   model/Network.cpp
-  model/PlayerBird.cpp)
+  model/PlayerBird.cpp
+  model/Pipe.cpp)
 
 set(GAME_MODELS_HEADER
   model/CoordinateUpdate.h
   model/Network.h
   model/PlayerBird.h
-  model/ServerUpdate.h)
+  model/ServerUpdate.h
+  model/Pipe.h)
 
 set(GAME_SCENES_SRC
   scene/GameScene.cpp

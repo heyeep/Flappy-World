@@ -32,6 +32,8 @@ static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
+class Pipe;
+
 AppDelegate::AppDelegate() {
 }
 
@@ -121,6 +123,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::thread thread([this]() {
         std::shared_ptr<Network> n = Network::getInstance();
         this->network = std::move(n);
+        this->network->setOnJoinedCallback([this](std::list<Pipe*> pipes) {
+            Director::getInstance()
+                ->getScheduler()
+                ->performFunctionInCocosThread([pipes] {
+                    LOG(INFO) << "AppDelegate: onJoined()" << std::endl;
+                    auto director = Director::getInstance();
+                    Scene* scene = GameScene::createScene(pipes);
+                    director->replaceScene(scene);
+                });
+        });
         this->network->start();
     });
 
