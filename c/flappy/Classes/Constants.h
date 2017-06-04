@@ -14,10 +14,13 @@
 #define TAG_PIPE 2
 #define BITMAP_CONTACT 0xFFFFFFFF
 
+#define DEFAULT_PIPE_X_SPACING 400.0f
+#define DEFAULT_PIPE_Y_SPACING 200.0f
+
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON false
 #define DEBUG_DEATH_ON true
-#define DEBUG_QUEUE_ON true
+#define DEBUG_QUEUE_ON false
 #define DEBUG_ENABLE_MUSIC_ON false
 
 #endif /* Constants_h */

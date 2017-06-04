@@ -2,6 +2,7 @@
 #include "CoordinateUpdate.h"
 #include "Network.h"
 #include "SimpleAudioEngine.h"
+#include "Points.h"
 #include <list>
 
 USING_NS_CC;
@@ -113,6 +114,24 @@ void GameScene::loadStage(std::list<Pipe*> pipes) {
     for (Pipe* p : pipes) {
         p->initPipe();
         this->middleLayer->addChild(p, Z_MIDDLE_LAYER);
+    }
+    initPointsFromPipes(pipes);
+}
+
+void GameScene::initPointsFromPipes(std::list<Pipe*> pipes) {
+    std::list<float> xCoords;
+    for (Pipe* p : pipes) {
+        bool xCoordInList = std::find(std::begin(xCoords), std::end(xCoords), p->getXPos()) != std::end(xCoords);
+        CCLOG("ADDING: %f", p->getXPos());
+        if (!xCoordInList) {
+            CCLOG("FOUND: %f", p->getXPos());
+            xCoords.push_back(p->getXPos());
+        }
+    }
+    for (float xCoord : xCoords) {
+        Points* points = Points::create(1, xCoord);
+        points->initPoints();
+        this->middleLayer->addChild(points, Z_MIDDLE_LAYER);
     }
 }
 

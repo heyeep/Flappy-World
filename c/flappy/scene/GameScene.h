@@ -31,6 +31,16 @@ public:
     virtual void loadStage(std::list<Pipe*> pipes);
 
     /**
+     *
+     * \brief Initiates an invisible point object by using the X-Coords from the
+     *  pipes array. To take care of a point object appearing twice in a spot,
+     *  make sure to skip any pipes with a duplicate X-Coord.
+     *
+     * \return
+     */
+    virtual void initPointsFromPipes(std::list<Pipe*> pipes);
+
+    /**
      *  \brief Initiates all sprites adding them to the SpriteFrameCache.
      *
      *  \return void
