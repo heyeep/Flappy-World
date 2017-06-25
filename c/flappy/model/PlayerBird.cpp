@@ -31,6 +31,10 @@ PlayerBird* PlayerBird::create() {
     return NULL;
 }
 
+int PlayerBird::getServerId() {
+    return this->serverId;
+}
+
 cocos2d::Vector<SpriteFrame*> PlayerBird::getFrames() {
     SpriteFrameCache* cache = SpriteFrameCache::getInstance();
     Vector<SpriteFrame*> newFrames;

@@ -11,7 +11,14 @@ USING_NS_CC;
 const int NUMBER_OF_FRAMES = 3;
 
 class PlayerBird : public cocos2d::Sprite {
+private:
+    /*!< The serverId the server sets for this Bird. */
+    int serverId;
+
 public:
+    /*!< Getter for serverId. */
+    int getServerId();
+
     /*!< Maximum number of frames the player sprite has. */
     cocos2d::Animation* flapAnimation;
 
