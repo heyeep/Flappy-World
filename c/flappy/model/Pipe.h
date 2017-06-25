@@ -13,6 +13,12 @@ public:
 
     void initPipe();
     void update(float dt);
+    std::string getPipeType() const;
+    void setPipeType(std::string pipeType);
+    float getXPos() const;
+    void setXPos(float xPos);
+    float getYPos() const;
+    void setYPos(float yPos);
 
 private:
     std::string pipeType;

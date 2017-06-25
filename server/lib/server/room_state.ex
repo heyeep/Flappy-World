@@ -1,6 +1,7 @@
 defmodule Server.RoomState do
   use GenServer
   alias Server.PlayerList
+  alias Server.Stage
 
   @doc """
   Used by the supervisor to start the GenServer that will keep the game state
@@ -25,7 +26,11 @@ defmodule Server.RoomState do
         {:reply, room_states[room_id], room_states}
       _ ->
         {:ok, player_list} = PlayerList.start_link(%{})
-        room_state = %{player_list: player_list, room_id: room_id}
+        stage = %{pipes: [%{type: "top",    x: 1500.0, y: 200.0},
+                          %{type: "bottom", x: 1500.0, y:   0.0},
+                          %{type: "top",    x: 1900.0, y: 300.0},
+                          %{type: "bottom", x: 1900.0, y: 200.0}]}
+        room_state = %{player_list: player_list, room_id: room_id, stage: stage}
         new_room_states = Map.put(room_states, room_id, room_state)
         {:reply, room_state, new_room_states}
     end

@@ -8,8 +8,9 @@ defmodule Server.RoomChannel do
     player_list = room_id |> get_or_create_player_list
     new_player = PlayerList.new_player(player_list)
     other_players = PlayerList.get_other_players(player_list, new_player)
+    stage = room_id |> get_stage
 
-    resp = %{me: new_player, others: other_players}
+    resp = %{me: new_player, others: other_players, stage: stage}
     Logger.info("join() resp: #{inspect(resp)}")
     send(self, {:after_join, new_player})
     {:ok, resp, assign(socket, :room_id, room_id)}
@@ -48,5 +49,10 @@ defmodule Server.RoomChannel do
   defp get_or_create_player_list(room_id) do
     room_state = RoomState.get_or_create_room_state(room_id)
     room_state[:player_list]
+  end
+
+  defp get_stage(room_id) do
+    room_state = RoomState.get_or_create_room_state(room_id)
+    room_state[:stage]
   end
 end

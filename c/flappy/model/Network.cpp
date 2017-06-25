@@ -40,44 +40,11 @@ void Network::phxSocketDidOpen() {
             [this](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
                 std::list<Pipe*> pipes;
-                // replace pipe generation with whatever's in the json
-                float x = 1500.0f;
-                float xDelta = 400.0f;
-                float ySpacing = 200.0f;
-                float y = 0.0f;
-
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 100.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 400.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 50.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 150.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 500.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
-
-                x += xDelta;
-                y = 300.0f;
-                pipes.push_back(Pipe::create("top", x, y + ySpacing));
-                pipes.push_back(Pipe::create("bottom", x, y));
+                for (auto& j : json["stage"]["pipes"]) {
+                    pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
+                                                 j.at("x").get<float>(),
+                                                 j.at("y").get<float>()));
+                }
 
                 this->onJoinedCallback(pipes);
             })

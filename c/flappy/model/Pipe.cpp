@@ -91,5 +91,29 @@ void Pipe::initBottomPipe(const float xPos, const float yPos) {
     this->addChild(base);
 }
 
+std::string Pipe::getPipeType() const {
+    return this->pipeType;
+}
+
+void Pipe::setPipeType(std::string pipeType) {
+    this->pipeType = pipeType;
+}
+
+float Pipe::getXPos() const {
+    return this->xPos;
+}
+
+void Pipe::setXPos(float xPos) {
+    this->xPos = xPos;
+}
+
+float Pipe::getYPos() const {
+    return this->yPos;
+}
+
+void Pipe::setYPos(float yPos) {
+    this->yPos = yPos;
+}
+
 void Pipe::update(float dt) {
 }
