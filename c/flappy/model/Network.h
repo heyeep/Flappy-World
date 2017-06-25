@@ -6,6 +6,9 @@
 #include "Pipe.h"
 #include <memory>
 
+// Event Keys
+#define COORDINATES_UPDATE_KEY "coordinates_update"
+
 /*!< Callback used for getting Leaderboard results.
   If able to retrieve results, success will be true. */
 using GetLeaderBoardCallback
@@ -15,6 +18,9 @@ using GetLeaderBoardCallback
    If able to join results, success with be true, and json will hold room description */
 using JoinRoomCallback
     = std::function<void(bool success, nlohmann::json json)>;
+
+/*!< Typedef for callback used in Network pubsub. */
+using PubSubCallback = std::function<void(bool success, nlohmann::json json)>;
 
 class PhxChannel;
 
@@ -34,6 +40,8 @@ private:
     /*!< The socket used by the various Phoenix Channels game uses. */
     std::shared_ptr<PhxSocket> socket;
 
+    /*!< Map that maps events (keys) to array of callbacks. */
+    std::unordered_map<std::string, std::vector<PubSubCallback>> subscriberMap;
 public:
     /**
      *  \brief Network Singleton.
@@ -81,6 +89,22 @@ public:
      *  \return void
      */
     void updateServer(std::shared_ptr<ServerUpdate> update);
+
+    /**
+     *  \brief Pubsub entry point.
+     *
+     *  Allow callers to subscribe to event designated by key. When event is
+     *  triggered, callback is called.
+     *
+     *  \param key to subscribe to.
+     *  \param callback to run when event is triggered.
+     *  \return void
+     */
+    void subscribe(const std::string& key, PubSubCallback callback);
+
+    // TODO: Write unsubscribe.
+    // Probably have to pass in key, object, callback and unsubscribe off
+    // object.
 };
 
 #endif // Network_H

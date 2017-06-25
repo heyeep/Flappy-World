@@ -64,6 +64,16 @@ void Network::joinRoom(JoinRoomCallback callback) {
             LOG(INFO) << "Error joining: " << error << std::endl;
             callback(false, nullptr);
         });
+
+    this->roomChannel->onEvent(
+        "coordinates", [this](nlohmann::json message, int64_t ref) {
+            std::vector<PubSubCallback> arr
+                = this->subscriberMap[COORDINATES_UPDATE_KEY];
+            for (int i = 0; i < arr.size(); i++) {
+                PubSubCallback cb = arr[i];
+                cb(true, message);
+            }
+        });
 }
 
 void Network::getLeaderboard(GetLeaderBoardCallback callback) {
@@ -97,5 +107,18 @@ void Network::updateServer(std::shared_ptr<ServerUpdate> update) {
         return;
     }
 
-    this->roomChannel->pushEvent(update->getType(), update->getPayload());
+    if (this->roomChannel) {
+        this->roomChannel->pushEvent(update->getType(), update->getPayload());
+    }
+}
+
+void Network::subscribe(const std::string& key, PubSubCallback callback) {
+    if (this->subscriberMap.find(key) == this->subscriberMap.end()) {
+        std::vector<PubSubCallback> arr;
+        arr.push_back(callback);
+        this->subscriberMap[key] = arr;
+    } else {
+        std::vector<PubSubCallback> arr = this->subscriberMap[key];
+        arr.push_back(callback);
+    }
 }
