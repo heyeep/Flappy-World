@@ -23,3 +23,13 @@ nlohmann::json CoordinateUpdate::getPayload() {
     };
     // clang-format on
 }
+
+CoordinateUpdate CoordinateUpdate::fromPayload(nlohmann::json payload) {
+    int serverId = payload["server_id"];
+    int lv_x = payload["lv_x"];
+    int lv_y = payload["lv_y"];
+    int x = payload["x"];
+    int y = payload["y"];
+    CoordinateUpdate update(serverId, x, y, lv_x, lv_y);
+    return update;
+}
