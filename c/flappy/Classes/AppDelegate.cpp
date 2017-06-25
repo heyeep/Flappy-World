@@ -123,16 +123,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     std::thread thread([this]() {
         std::shared_ptr<Network> n = Network::getInstance();
         this->network = std::move(n);
-        this->network->setOnJoinedCallback([this](std::list<Pipe*> pipes) {
-            Director::getInstance()
-                ->getScheduler()
-                ->performFunctionInCocosThread([pipes] {
-                    LOG(INFO) << "AppDelegate: onJoined()" << std::endl;
-                    auto director = Director::getInstance();
-                    Scene* scene = GameScene::createScene(pipes);
-                    director->replaceScene(scene);
-                });
-        });
         this->network->start();
     });
 

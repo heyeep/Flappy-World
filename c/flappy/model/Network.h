@@ -4,12 +4,16 @@
 #include "PhxSocket.h"
 #include "ServerUpdate.h"
 #include "Pipe.h"
-#include <List>
 #include <memory>
 
 /*!< Callback used for getting Leaderboard results.
   If able to retrieve results, success will be true. */
 using GetLeaderBoardCallback
+    = std::function<void(bool success, nlohmann::json json)>;
+
+/*|< Callback used for joining a game room.
+   If able to join results, success with be true, and json will hold room description */
+using JoinRoomCallback
     = std::function<void(bool success, nlohmann::json json)>;
 
 class PhxChannel;
@@ -24,13 +28,11 @@ private:
     void phxSocketDidReceiveError(const std::string& error);
     // PhxSocketDelegate
 
-    /*!< This is the main entry point of communication over Phoenix Channels. */
-    std::shared_ptr<PhxChannel> channel;
+    /*!< This is the channel for the current room the player has joined. */
+    std::shared_ptr<PhxChannel> roomChannel;
 
     /*!< The socket used by the various Phoenix Channels game uses. */
     std::shared_ptr<PhxSocket> socket;
-
-    std::function<void(std::list<Pipe*> pipes)> onJoinedCallback;
 
 public:
     /**
@@ -53,6 +55,14 @@ public:
     void start();
 
     /**
+     * /brief Join Stage operation
+     *
+     * /param callback The callback call when stage joined
+     * /return void
+     */
+    void joinRoom(JoinRoomCallback callback);
+
+    /**
      *  \brief Get Leaderboard results.
      *
      *  Get Leaderboard results from server and return results in callback.
@@ -71,9 +81,6 @@ public:
      *  \return void
      */
     void updateServer(std::shared_ptr<ServerUpdate> update);
-
-    void setOnJoinedCallback(
-        std::function<void(std::list<Pipe*> pipes)> callback);
 };
 
 #endif // Network_H

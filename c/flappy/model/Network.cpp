@@ -16,41 +16,16 @@ void Network::start() {
             "ws://localhost:4000/socket/websocket", 1);
     sk->setDelegate(this->shared_from_this());
 
-    this->channel = std::make_shared<PhxChannel::PhxChannel>(
-        sk, "room:1", std::map<std::string, std::string>());
-    this->channel->bootstrap();
-
     // Instantiate the PhxChannel first before connecting on the socket.
     // This is because the connection can happen before the channel
     // is done instantiating.
     sk->connect();
 
     this->socket = std::move(sk);
-}
-
-void Network::setOnJoinedCallback(
-    std::function<void(std::list<Pipe*> pipes)> callback) {
-    this->onJoinedCallback = callback;
-}
+} 
 
 void Network::phxSocketDidOpen() {
     LOG(INFO) << "phxSocketDidOpen";
-    this->channel->join()
-        ->onReceive("ok",
-            [this](nlohmann::json json) {
-                LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
-                std::list<Pipe*> pipes;
-                for (auto& j : json["stage"]["pipes"]) {
-                    pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
-                                                 j.at("x").get<float>(),
-                                                 j.at("y").get<float>()));
-                }
-
-                this->onJoinedCallback(pipes);
-            })
-        ->onReceive("error", [](nlohmann::json error) {
-            LOG(INFO) << "Error joining: " << error << std::endl;
-        });
 }
 
 void Network::phxSocketDidClose(const std::string& event) {
@@ -59,6 +34,36 @@ void Network::phxSocketDidClose(const std::string& event) {
 
 void Network::phxSocketDidReceiveError(const std::string& error) {
     LOG(INFO) << "phxSocketDidReceiveError" << std::endl;
+}
+
+void Network::joinRoom(JoinRoomCallback callback) {
+    if (!this->socket->isConnected()) {
+        callback(false, nullptr);
+        return;
+    }
+    
+    // FIXME: Remove the :1 and represent it with a 'user id'.
+    // This problem occurs in more than one place.
+    this->roomChannel = std::make_shared<PhxChannel::PhxChannel>(this->socket,
+            "room:1",
+            std::map<std::string, std::string>());
+    this->roomChannel->bootstrap();
+    this->roomChannel->join()
+        ->onReceive("ok",
+            [callback](nlohmann::json json) {
+                LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
+                std::list<Pipe*> pipes;
+                for (auto& j : json["stage"]["pipes"]) {
+                    pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
+                                                 j.at("x").get<float>(),
+                                                 j.at("y").get<float>()));
+                }
+                callback(true, json);
+            })
+        ->onReceive("error", [callback](nlohmann::json error) {
+            LOG(INFO) << "Error joining: " << error << std::endl;
+            callback(false, nullptr);
+        });
 }
 
 void Network::getLeaderboard(GetLeaderBoardCallback callback) {
@@ -92,5 +97,5 @@ void Network::updateServer(std::shared_ptr<ServerUpdate> update) {
         return;
     }
 
-    this->channel->pushEvent(update->getType(), update->getPayload());
+    this->roomChannel->pushEvent(update->getType(), update->getPayload());
 }
