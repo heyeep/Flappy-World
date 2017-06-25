@@ -27,7 +27,7 @@ public:
      *  \return bool
      */
     virtual bool init();
-    
+
     virtual void loadStage(std::list<Pipe*> pipes);
 
     /**
@@ -82,6 +82,9 @@ public:
 private:
     /*!< Client's sprite. */
     PlayerBird* player;
+
+    /*!< Holds the list of players. */
+    std::vector<PlayerBird*> players;
 
     /*!< Current size of the graphical window. */
     cocos2d::Size windowSize;
