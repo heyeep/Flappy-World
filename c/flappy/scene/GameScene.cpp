@@ -48,6 +48,20 @@ bool GameScene::init() {
     this->preloadAudio();
     this->playBackgroundMusic();
 
+    Network::getInstance()->subscribe(
+        COORDINATES_UPDATE_KEY, [this](bool success, nlohmann::json json) {
+            CoordinateUpdate update = CoordinateUpdate::fromPayload(json);
+            for (PlayerBird* p : this->players) {
+                int playerServerId = p->getServerId();
+                if (playerServerId == update.serverId) {
+                    p->getPhysicsBody()->setPositionOffset(
+                        Vec2(update.x, update.y));
+                    p->getPhysicsBody()->setVelocity(
+                        Vec2(update.vx, update.vy));
+                }
+            }
+        });
+
     return true;
 }
 
