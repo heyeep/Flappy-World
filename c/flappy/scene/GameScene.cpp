@@ -157,10 +157,12 @@ void GameScene::updateScene(float dt) {
     this->cameraObject->setPositionX(this->player->getPositionX());
     this->updatePlayer(dt);
 
-    // FIXME: This hardcodes coordinate updates to the server.
-    // Use the player bird object to get the actual values.
     std::shared_ptr<CoordinateUpdate> update
-        = std::make_shared<CoordinateUpdate>(0, 10, 10, 10, 10);
+        = std::make_shared<CoordinateUpdate>(this->player->getServerId(),
+            this->player->getPositionX(),
+            this->player->getPositionY(),
+            this->player->getPhysicsBody()->getVelocity().x,
+            this->player->getPhysicsBody()->getVelocity().y);
     Network::getInstance()->updateServer(update);
 }
 
