@@ -2,8 +2,8 @@
 #define Network_H
 
 #include "PhxSocket.h"
-#include "ServerUpdate.h"
 #include "Pipe.h"
+#include "ServerUpdate.h"
 #include <memory>
 
 // Event Keys

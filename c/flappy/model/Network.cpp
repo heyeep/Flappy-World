@@ -22,7 +22,7 @@ void Network::start() {
     sk->connect();
 
     this->socket = std::move(sk);
-} 
+}
 
 void Network::phxSocketDidOpen() {
     LOG(INFO) << "phxSocketDidOpen";
@@ -41,12 +41,11 @@ void Network::joinRoom(JoinRoomCallback callback) {
         callback(false, nullptr);
         return;
     }
-    
+
     // FIXME: Remove the :1 and represent it with a 'user id'.
     // This problem occurs in more than one place.
-    this->roomChannel = std::make_shared<PhxChannel::PhxChannel>(this->socket,
-            "room:1",
-            std::map<std::string, std::string>());
+    this->roomChannel = std::make_shared<PhxChannel::PhxChannel>(
+        this->socket, "room:1", std::map<std::string, std::string>());
     this->roomChannel->bootstrap();
     this->roomChannel->join()
         ->onReceive("ok",
@@ -54,9 +53,10 @@ void Network::joinRoom(JoinRoomCallback callback) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
                 std::list<Pipe*> pipes;
                 for (auto& j : json["stage"]["pipes"]) {
-                    pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
-                                                 j.at("x").get<float>(),
-                                                 j.at("y").get<float>()));
+                    pipes.push_back(
+                        Pipe::create(j.at("type").get<std::string>(),
+                            j.at("x").get<float>(),
+                            j.at("y").get<float>()));
                 }
                 callback(true, json);
             })
