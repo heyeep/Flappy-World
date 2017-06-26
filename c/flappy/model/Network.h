@@ -15,9 +15,9 @@ using GetLeaderBoardCallback
     = std::function<void(bool success, nlohmann::json json)>;
 
 /*|< Callback used for joining a game room.
-   If able to join results, success with be true, and json will hold room description */
-using JoinRoomCallback
-    = std::function<void(bool success, nlohmann::json json)>;
+   If able to join results, success with be true, and json will hold room
+   description */
+using JoinRoomCallback = std::function<void(bool success, nlohmann::json json)>;
 
 /*!< Typedef for callback used in Network pubsub. */
 using PubSubCallback = std::function<void(bool success, nlohmann::json json)>;
