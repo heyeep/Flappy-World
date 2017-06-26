@@ -41,7 +41,10 @@ private:
     std::shared_ptr<PhxSocket> socket;
 
     /*!< Map that maps events (keys) to array of callbacks. */
-    std::unordered_map<std::string, std::vector<PubSubCallback>> subscriberMap;
+    std::unordered_map<std::string,
+        std::vector<std::tuple<void*, PubSubCallback>>>
+        subscriberMap;
+
 public:
     /**
      *  \brief Network Singleton.
@@ -97,14 +100,22 @@ public:
      *  triggered, callback is called.
      *
      *  \param key to subscribe to.
+     *  \param ref used to subscribe.
      *  \param callback to run when event is triggered.
      *  \return void
      */
-    void subscribe(const std::string& key, PubSubCallback callback);
+    void subscribe(const std::string& key, void* ref, PubSubCallback callback);
 
-    // TODO: Write unsubscribe.
-    // Probably have to pass in key, object, callback and unsubscribe off
-    // object.
+    /**
+     *  \brief Unsubscribe listener.
+     *
+     *  Detailed description
+     *
+     *  \param to unsubscribe from.
+     *  \param ref to unsubscribe.
+     *  \return void
+     */
+    void unsubscribe(const std::string& key, void* ref);
 };
 
 #endif // Network_H

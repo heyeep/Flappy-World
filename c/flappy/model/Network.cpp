@@ -76,10 +76,10 @@ void Network::joinRoom(JoinRoomCallback callback) {
 
     this->roomChannel->onEvent(
         "coordinates", [this](nlohmann::json message, int64_t ref) {
-            std::vector<PubSubCallback> arr
+            std::vector<std::tuple<void*, PubSubCallback>> arr
                 = this->subscriberMap[COORDINATES_UPDATE_KEY];
             for (int i = 0; i < arr.size(); i++) {
-                PubSubCallback cb = arr[i];
+                PubSubCallback cb = std::get<1>(arr[i]);
                 cb(true, message);
             }
         });
@@ -121,13 +121,41 @@ void Network::updateServer(std::shared_ptr<ServerUpdate> update) {
     }
 }
 
-void Network::subscribe(const std::string& key, PubSubCallback callback) {
+void Network::subscribe(
+    const std::string& key, void* ref, PubSubCallback callback) {
+
+    std::tuple<void*, PubSubCallback> refAndCallback(ref, callback);
+
     if (this->subscriberMap.find(key) == this->subscriberMap.end()) {
-        std::vector<PubSubCallback> arr;
-        arr.push_back(callback);
+        std::vector<std::tuple<void*, PubSubCallback>> arr;
+        arr.push_back(refAndCallback);
         this->subscriberMap[key] = arr;
     } else {
-        std::vector<PubSubCallback> arr = this->subscriberMap[key];
-        arr.push_back(callback);
+        std::vector<std::tuple<void*, PubSubCallback>> arr
+            = this->subscriberMap[key];
+        arr.push_back(refAndCallback);
+    }
+}
+
+void Network::unsubscribe(const std::string& key, void* ref) {
+    if (this->subscriberMap.find(key) == this->subscriberMap.end()) {
+        return;
+    }
+
+    std::vector<std::tuple<void*, PubSubCallback>> arr
+        = this->subscriberMap[key];
+
+    int foundPosition = -1;
+
+    for (int i = 0; i < arr.size(); i++) {
+        std::tuple<void*, PubSubCallback> tuple = arr[i];
+        if (std::get<0>(tuple) == ref) {
+            foundPosition = i;
+            break;
+        }
+    }
+
+    if (foundPosition >= 0) {
+        arr.erase(arr.begin() + foundPosition);
     }
 }

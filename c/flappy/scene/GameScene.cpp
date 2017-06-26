@@ -10,6 +10,7 @@ GameScene::GameScene() {
 }
 
 GameScene::~GameScene() {
+    Network::getInstance()->unsubscribe(COORDINATES_UPDATE_KEY, this);
     CC_SAFE_RELEASE_NULL(player);
 }
 
@@ -48,8 +49,9 @@ bool GameScene::init() {
     this->preloadAudio();
     this->playBackgroundMusic();
 
-    Network::getInstance()->subscribe(
-        COORDINATES_UPDATE_KEY, [this](bool success, nlohmann::json json) {
+    Network::getInstance()->subscribe(COORDINATES_UPDATE_KEY,
+        this,
+        [this](bool success, nlohmann::json json) {
             CoordinateUpdate update = CoordinateUpdate::fromPayload(json);
             for (PlayerBird* p : this->players) {
                 int playerServerId = p->getServerId();
