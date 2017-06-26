@@ -162,11 +162,13 @@ set(GAME_MODELS_HEADER
 
 set(GAME_SCENES_SRC
   scene/GameScene.cpp
-  scene/MainMenuScene.cpp)
+  scene/MainMenuScene.cpp
+  scene/QueueScene.cpp)
 
 set(GAME_SCENES_HEADER
   scene/GameScene.h
-  scene/MainMenuScene.h)
+  scene/MainMenuScene.h
+  scene/QueueScene.h)
 
 set(GAME_SRC
   ${PHX_SOCKET_LIB_SRC}

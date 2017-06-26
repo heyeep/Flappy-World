@@ -16,6 +16,8 @@ private:
     int serverId;
 
 public:
+    float x_velocity = 300;
+
     /*!< Getter for serverId. */
     int getServerId();
 
@@ -83,6 +85,14 @@ public:
      *  \return void
      */
     void animateFlapping();
+
+    /**
+     * \brief Plays the flapping animation over and over again. Used for the
+     *  QueueScene.
+     *
+     * \return void
+     */
+    void animateFlappingLoop();
 
     /**
      *  \brief Initiates the player's flapping animations.

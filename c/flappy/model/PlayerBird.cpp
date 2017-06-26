@@ -59,7 +59,7 @@ void PlayerBird::update(float dt) {
 
 void PlayerBird::updatePosition() {
     float y_velocity = this->getPhysicsBody()->getVelocity().y;
-    this->getPhysicsBody()->setVelocity(Vec2(300, y_velocity));
+    this->getPhysicsBody()->setVelocity(Vec2(x_velocity, y_velocity));
 }
 
 void PlayerBird::updateAngle(float dt) {
@@ -78,6 +78,10 @@ void PlayerBird::animateFlapping() {
     this->runAction(Animate::create(this->flapAnimation));
 }
 
+void PlayerBird::animateFlappingLoop() {
+    this->flapAnimation->setLoops(-1);
+    this->runAction(Animate::create(this->flapAnimation));
+}
 void PlayerBird::initFlapAnimation() {
     this->flapAnimation = Animation::createWithSpriteFrames(frames, 0.05f);
     this->flapAnimation->retain();

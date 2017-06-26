@@ -115,6 +115,10 @@
 		911001581ECD1BA700D3D9A4 /* get_ready.png in Resources */ = {isa = PBXBuildFile; fileRef = 9110014A1ECD1BA700D3D9A4 /* get_ready.png */; };
 		9142A5EE1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
 		9142A5EF1EC7BA9100FE688B /* bird_flap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */; };
+		919AE7F81F04573900AD4254 /* queueing.png in Resources */ = {isa = PBXBuildFile; fileRef = 919AE7F71F04573900AD4254 /* queueing.png */; };
+		919AE7F91F04573900AD4254 /* queueing.png in Resources */ = {isa = PBXBuildFile; fileRef = 919AE7F71F04573900AD4254 /* queueing.png */; };
+		91A3D40B1F0094C500FFC8C7 /* QueueScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91A3D4091F0094C500FFC8C7 /* QueueScene.cpp */; };
+		91A3D40C1F0094C500FFC8C7 /* QueueScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91A3D4091F0094C500FFC8C7 /* QueueScene.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -262,6 +266,9 @@
 		911001491ECD1BA700D3D9A4 /* game_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_over.png; sourceTree = "<group>"; };
 		9110014A1ECD1BA700D3D9A4 /* get_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_ready.png; sourceTree = "<group>"; };
 		9142A5ED1EC7BA9100FE688B /* bird_flap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bird_flap.mp3; sourceTree = "<group>"; };
+		919AE7F71F04573900AD4254 /* queueing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queueing.png; sourceTree = "<group>"; };
+		91A3D4091F0094C500FFC8C7 /* QueueScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QueueScene.cpp; sourceTree = "<group>"; };
+		91A3D40A1F0094C500FFC8C7 /* QueueScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueScene.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -365,6 +372,8 @@
 				1A10CB8B1EC7D63A001ABBCA /* GameScene.h */,
 				1A10CB8C1EC7D63A001ABBCA /* MainMenuScene.cpp */,
 				1A10CB8D1EC7D63A001ABBCA /* MainMenuScene.h */,
+				91A3D4091F0094C500FFC8C7 /* QueueScene.cpp */,
+				91A3D40A1F0094C500FFC8C7 /* QueueScene.h */,
 			);
 			name = scene;
 			path = ../scene;
@@ -590,6 +599,7 @@
 		911001421ECD1BA700D3D9A4 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				919AE7F71F04573900AD4254 /* queueing.png */,
 				911001431ECD1BA700D3D9A4 /* buttons */,
 				911001471ECD1BA700D3D9A4 /* endgame_scores.png */,
 				911001481ECD1BA700D3D9A4 /* flappybird_title.png */,
@@ -718,6 +728,7 @@
 			files = (
 				5147D5581EAADCBD00CE79E6 /* basic_night.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				919AE7F81F04573900AD4254 /* queueing.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				911001531ECD1BA700D3D9A4 /* flappybird_title.png in Resources */,
 				51338AB61EC25F590042FBF2 /* game_background.mp3 in Resources */,
@@ -782,6 +793,7 @@
 				51616F4D1EBA93A200F55BEE /* bird_blue.plist in Resources */,
 				9110014E1ECD1BA700D3D9A4 /* play_button.png in Resources */,
 				911001501ECD1BA700D3D9A4 /* tap_button.png in Resources */,
+				919AE7F91F04573900AD4254 /* queueing.png in Resources */,
 				5147D5591EAADCBD00CE79E6 /* basic_night.png in Resources */,
 				5147D5571EAADCBD00CE79E6 /* basic_day.png in Resources */,
 			);
@@ -797,6 +809,7 @@
 				1A10CB8E1EC7D63A001ABBCA /* Network.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				91A3D40B1F0094C500FFC8C7 /* QueueScene.cpp in Sources */,
 				1ACB7B9D1EB98BF1002B47A5 /* PhxSocket.cpp in Sources */,
 				1ACB7B931EB98BF1002B47A5 /* easylogging++.cc in Sources */,
 				1A10CB901EC7D63A001ABBCA /* PlayerBird.cpp in Sources */,
@@ -823,6 +836,7 @@
 				1ACB7B9E1EB98BF1002B47A5 /* PhxSocket.cpp in Sources */,
 				1ACB7B961EB98BF1002B47A5 /* EasySocket.cpp in Sources */,
 				1ACB7B981EB98BF1002B47A5 /* easywsclient.cpp in Sources */,
+				91A3D40C1F0094C500FFC8C7 /* QueueScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				1A10CB931EC7D63A001ABBCA /* GameScene.cpp in Sources */,

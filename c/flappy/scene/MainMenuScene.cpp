@@ -1,5 +1,6 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
+#include "QueueScene.h"
 #include "SimpleAudioEngine.h"
 #include "Network.h"
 
@@ -80,7 +81,12 @@ void MainMenu::startGameCall(Ref* pSender) {
             ->getScheduler()
             ->performFunctionInCocosThread([pipes] {
                 auto director = Director::getInstance();
-                Scene* scene = GameScene::createScene(pipes);
+                Scene* scene;
+                if (DEBUG_QUEUE_ON) {
+                    scene = QueueScene::createScene();
+                } else {
+                    scene = GameScene::createScene(pipes);
+                }
                 director->replaceScene(scene);
             });
     });

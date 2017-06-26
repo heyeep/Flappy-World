@@ -8,9 +8,12 @@
 #define Z_HUD_LAYER 3
 #define BIRD_SPEED 3
 #define BIRD_VELOCITY Vec2(0, 300)
+#define PLAYER_QUEUE_MAX 4
+#define DEFAULT_QUEUE_TIME 10.0f
 
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON false
 #define DEBUG_DEATH_ON true
+#define DEBUG_QUEUE_ON true
 
 #endif /* Constants_h */
