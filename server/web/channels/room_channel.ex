@@ -10,15 +10,27 @@ defmodule Server.RoomChannel do
     other_players = PlayerList.get_other_players(player_list, new_player)
     stage = room_id |> get_stage
 
-    resp = %{me: new_player, others: other_players, stage: stage}
+    resp = %{me: new_player, others: other_players}
     Logger.info("join() resp: #{inspect(resp)}")
     send(self, {:after_join, new_player})
+
+    num_players = PlayerList.get_num_players(player_list)
+    required_num_players_per_room = 1
+    if num_players >= required_num_players_per_room do
+      send(self, {:start, stage})
+    end
+
     {:ok, resp, assign(socket, :room_id, room_id)}
   end
 
   def handle_info({:after_join, new_player}, socket) do
     # Broadcast a Join event for the new player for those already in the channel.
     broadcast! socket, "new_player_joined", new_player
+    {:noreply, socket}
+  end
+
+  def handle_info({:start, stage}, socket) do
+    broadcast! socket, "start", %{stage: stage}
     {:noreply, socket}
   end
 

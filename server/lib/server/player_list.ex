@@ -25,6 +25,10 @@ defmodule Server.PlayerList do
     GenServer.call(pid, {:get_other_players, player})
   end
 
+  def get_num_players(pid) do
+    GenServer.call(pid, {:get_num_players})
+  end
+
   @doc """
   Return player given server_id.
   """
@@ -64,6 +68,11 @@ defmodule Server.PlayerList do
   def handle_call({:get_other_players, player}, _from, players) do
     other_players = Map.delete(players, player[:server_id])
     {:reply, other_players, players}
+  end
+
+  def handle_call({:get_num_players}, _from, players) do
+    num_players = map_size(players)
+    {:reply, num_players, players}
   end
 
   def handle_call({:get_player, server_id}, _from, players) do

@@ -51,18 +51,27 @@ void Network::joinRoom(JoinRoomCallback callback) {
         ->onReceive("ok",
             [callback](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
-                std::list<Pipe*> pipes;
-                for (auto& j : json["stage"]["pipes"]) {
-                    pipes.push_back(
-                        Pipe::create(j.at("type").get<std::string>(),
-                            j.at("x").get<float>(),
-                            j.at("y").get<float>()));
-                }
-                callback(true, json);
             })
         ->onReceive("error", [callback](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;
             callback(false, nullptr);
+        });
+
+    this->roomChannel->onEvent(
+        "start", [callback](nlohmann::json json, int64_t ref) {
+            LOG(INFO) << "Received START on join:" << json.dump() << std::endl;
+            std::list<Pipe*> pipes;
+            for (auto& j : json["stage"]["pipes"]) {
+                pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
+                    j.at("x").get<float>(),
+                    j.at("y").get<float>()));
+                }
+            callback(true, json);
+        });
+
+    this->roomChannel->onEvent(
+        "new_player_joined", [callback](nlohmann::json json, int64_t ref) {
+            LOG(INFO) << "Received NEW_PLAYER_JOINED message: " << json.dump() << std::endl;
         });
 
     this->roomChannel->onEvent(
