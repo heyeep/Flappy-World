@@ -92,7 +92,7 @@ void MainMenu::startGameCall(Ref* pSender) {
                                          j.at("x").get<float>(),
                                          j.at("y").get<float>()));
         }
-g
+
         Director::getInstance()
             ->getScheduler()
             ->performFunctionInCocosThread([pipes] {

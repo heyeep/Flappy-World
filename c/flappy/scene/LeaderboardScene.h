@@ -50,9 +50,6 @@ private:
     /*!< Current size of the graphical window. */
     cocos2d::Size windowSize;
 
-    /*!< Current network. */
-    std::shared_ptr<Network> network;
-
     /**
      *  \brief Connects to the scoreboard, grabs the data in json format, and
      *   then display the results. If a connection is not made, return to the

@@ -22,14 +22,14 @@ bool LeaderboardScene::init() {
     }
 
     this->windowSize = Director::getInstance()->getVisibleSize();
-    this->network = Network::getInstance();
     this->connectToScoreboard();
 
     return true;
 }
 
 void LeaderboardScene::connectToScoreboard() {
-    this->network->getLeaderboard(
+    std::shared_ptr<Network> network = Network::getInstance();
+    network->getLeaderboard(
         [this](bool success, nlohmann::json response) {
             if (success) {
                 json scores = response["list"];
