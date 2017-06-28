@@ -63,7 +63,9 @@ bool MainMenu::init() {
     this->addChild(gameTitle, 1);
     this->initAudio();
     this->preloadAudio();
-    this->playBackgroundMusic();
+    if (DEBUG_ENABLE_MUSIC_ON) {
+        this->playBackgroundMusic();
+    }
 
     return true;
 }
@@ -97,11 +99,11 @@ void MainMenu::initAudio() {
 }
 
 void MainMenu::preloadAudio() {
-    this->sceneAudio->preloadBackgroundMusic("start_background.mp3");
+    this->sceneAudio->preloadBackgroundMusic("start_background.wav");
 }
 
 void MainMenu::playBackgroundMusic() {
-    this->sceneAudio->playBackgroundMusic("start_background.mp3", false);
+    this->sceneAudio->playBackgroundMusic("start_background.wav", false);
 }
 
 void MainMenu::stopBackgroundMusic() {

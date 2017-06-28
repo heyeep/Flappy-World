@@ -15,5 +15,6 @@
 #define DEBUG_AUTOSTART_ON false
 #define DEBUG_DEATH_ON true
 #define DEBUG_QUEUE_ON true
+#define DEBUG_ENABLE_MUSIC_ON false
 
 #endif /* Constants_h */

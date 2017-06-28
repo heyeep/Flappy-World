@@ -47,7 +47,9 @@ bool GameScene::init() {
     this->initAudio();
     this->stopBackgroundMusic();
     this->preloadAudio();
-    this->playBackgroundMusic();
+    if (DEBUG_ENABLE_MUSIC_ON) {
+        this->playBackgroundMusic();
+    }
 
     Network::getInstance()->subscribe(COORDINATES_UPDATE_KEY,
         this,
@@ -166,7 +168,7 @@ bool GameScene::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
 
 void GameScene::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event*) {
     this->player->flap();
-    this->sceneAudio->playEffect("bird_flap.mp3");
+    this->sceneAudio->playEffect("bird_flap.wav");
 }
 
 void GameScene::updateScene(float dt) {
@@ -189,6 +191,7 @@ void GameScene::updatePlayer(float dt) {
 
 void GameScene::playerDeathCheck() {
     if (this->player->isDead(windowSize)) {
+        this->sceneAudio->playEffect("bird_hit.wav");
         if (DEBUG_DEATH_ON) {
             this->player->setPositionY(windowSize.height / 2);
             this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
@@ -211,12 +214,13 @@ void GameScene::initAudio() {
 }
 
 void GameScene::preloadAudio() {
-    this->sceneAudio->preloadBackgroundMusic("game_background.mp3");
-    this->sceneAudio->preloadEffect("bird_flap.mp3");
+    this->sceneAudio->preloadBackgroundMusic("game_background.wav");
+    this->sceneAudio->preloadEffect("bird_flap.wav");
+    this->sceneAudio->preloadEffect("bird_hit.wav");
 }
 
 void GameScene::playBackgroundMusic() {
-    this->sceneAudio->playBackgroundMusic("game_background.mp3");
+    this->sceneAudio->playBackgroundMusic("game_background.wav");
 }
 
 void GameScene::stopBackgroundMusic() {
