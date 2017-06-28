@@ -31,6 +31,13 @@ public:
     void startGameCall(cocos2d::Ref* pSender);
 
     /**
+     *  \brief Callback to start LeaderboardScene.
+     *
+     *  \return void
+     */
+    void switchToLeaderboards(cocos2d::Ref* refPointer);
+
+    /**
      *  \brief Implement the "static create()" method manually.
      *
      *  \return void
