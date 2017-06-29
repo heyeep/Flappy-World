@@ -68,9 +68,32 @@ void QueueScene::generateWorld() {
 }
 void QueueScene::startGameScene() {
     CCLOG("STARTING GAME");
+    /*
     Director* director = Director::getInstance();
     Scene* scene = GameScene::createScene();
     director->replaceScene(scene);
+    */
+    Network::getInstance()->joinRoom([this](bool success, nlohmann::json json) {
+        std::list<Pipe*> pipes;
+        for (auto& j : json["stage"]["pipes"]) {
+            pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
+                                         j.at("x").get<float>(),
+                                         j.at("y").get<float>()));
+        }
+
+        Director::getInstance()
+            ->getScheduler()
+            ->performFunctionInCocosThread([pipes] {
+                auto director = Director::getInstance();
+                Scene* scene;
+                if (DEBUG_QUEUE_ON) {
+                    scene = QueueScene::createScene();
+                } else {
+                    scene = GameScene::createScene(pipes);
+                }
+                director->replaceScene(scene);
+            });
+    });
 }
 
 void QueueScene::updateQueue(float dt) {
