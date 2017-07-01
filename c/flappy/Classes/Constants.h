@@ -19,6 +19,5 @@
 #define DEBUG_DEATH_ON true
 #define DEBUG_QUEUE_ON true
 #define DEBUG_ENABLE_MUSIC_ON false
-#define DEBUG_COLLISION_TEST false
 
 #endif /* Constants_h */

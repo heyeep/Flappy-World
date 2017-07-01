@@ -66,10 +66,6 @@ bool GameScene::init() {
             }
         });
 
-    if (DEBUG_COLLISION_TEST) {
-        this->initCollisionTest();
-    }
-
     return true;
 }
 

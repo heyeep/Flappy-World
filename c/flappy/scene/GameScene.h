@@ -242,14 +242,6 @@ private:
      *  \return void
      */
     void onMouseDown(cocos2d::Event* event);
-
-    /**
-     *  \brief Initializes collision testing by creating an object for the
-     *   player to collide into.
-     *
-     *  \return void
-     */
-    void initCollisionTest();
 };
 
 #endif /* GameScene_h */
