@@ -2,6 +2,7 @@
 #define PlayerBird_h
 
 #include "Constants.h"
+#include "MainMenuScene.h"
 #include "cocos2d.h"
 #include <stdio.h>
 
@@ -129,6 +130,27 @@ private:
 
     /*!< THe amount of degrees the bird must rotation to match animation. */
     float flapDegrees;
+
+    /**
+     *  \brief Initializes parameters for collision.
+     *
+     *  \return void
+     */
+    void initCollision();
+
+    /**
+     *  \brief The client's scene is switched to the start menu after dying.
+     *
+     *  \return void
+     */
+    void death();
+
+    /**
+    *  \brief Always returns true, grabs both objects that have collided.
+    *
+    *  \return bool status
+    */
+    bool onContactBegin(cocos2d::PhysicsContact& contact);
 };
 
 #endif /* PlayerBird_h */

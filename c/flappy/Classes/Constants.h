@@ -10,6 +10,9 @@
 #define BIRD_VELOCITY Vec2(0, 300)
 #define PLAYER_QUEUE_MAX 4
 #define DEFAULT_QUEUE_TIME 10.0f
+#define TAG_PLAYER 1
+#define TAG_PIPE 2
+#define BITMAP_CONTACT 0xFFFFFFFF
 
 // Debug Toggles
 #define DEBUG_AUTOSTART_ON false
