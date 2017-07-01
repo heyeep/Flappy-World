@@ -1,6 +1,8 @@
 #include "LeaderboardScene.h"
 #include "MainMenuScene.h"
 
+USING_NS_CC;
+
 LeaderboardScene::LeaderboardScene() {
 }
 
@@ -39,9 +41,13 @@ void LeaderboardScene::connectToScoreboard() {
                     LeaderboardScene::displayScores, this, scores));
             } else {
                 CCLOG("Error: Could not connect to server...");
-                Scheduler* scheduler = Director::getInstance()->getScheduler();
-                scheduler->performFunctionInCocosThread(
-                    CC_CALLBACK_0(LeaderboardScene::gotoMainMenu, this));
+
+                // Had to change this up, because gotoMainMenu was changed to
+                // work with the MenuBackButton.
+                Director* director = Director::getInstance();
+                Scene* scene = MainMenu::createScene();
+
+                director->replaceScene(scene);
             }
         });
 }
@@ -62,10 +68,26 @@ void LeaderboardScene::displayScores(nlohmann::json response) {
 
         this->addChild(name);
     }
+
+    Sprite* menuButton = Sprite::create("menu_button.png");
+    Sprite* menuButtonSel = Sprite::create("menu_button-s.png");
+    menuButton->getTexture()->setAliasTexParameters();
+    menuButtonSel->getTexture()->setAliasTexParameters();
+
+    MenuItemSprite* gotoMenuButton = MenuItemSprite::create(menuButton,
+        menuButtonSel,
+        CC_CALLBACK_1(LeaderboardScene::gotoMainMenu, this));
+    gotoMenuButton->setPosition(Vec2(windowSize.width - gotoMenuButton->getContentSize().width, windowSize.height - gotoMenuButton->getContentSize().height));
+    gotoMenuButton->setScale(SCALE_FACTOR / 2);
+
+    Menu* menu = Menu::create(gotoMenuButton, NULL);
+    menu->setPosition(Vec2::ZERO);
+
+    this->addChild(menu);
     this->addChild(leader);
 }
 
-void LeaderboardScene::gotoMainMenu() {
+void LeaderboardScene::gotoMainMenu(Ref* refPointer) {
     Director* director = Director::getInstance();
     Scene* scene = MainMenu::createScene();
 

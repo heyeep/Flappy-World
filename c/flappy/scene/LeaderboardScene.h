@@ -71,7 +71,7 @@ private:
      *
      *  \return void
      */
-    void gotoMainMenu();
+    void gotoMainMenu(Ref* refPointer);
 };
 
 #endif /* LeaderboardScene_h */

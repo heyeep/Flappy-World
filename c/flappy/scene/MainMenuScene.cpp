@@ -1,9 +1,9 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
-#include "QueueScene.h"
 #include "LeaderboardScene.h"
-#include "SimpleAudioEngine.h"
 #include "Network.h"
+#include "QueueScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -58,7 +58,7 @@ bool MainMenu::init() {
         startButton->getPositionY()
             - (leaderboardButton->getContentSize().height) * SCALE_FACTOR));
     leaderboardButton->setScale(SCALE_FACTOR / 2);
-    
+
     Menu* menu = Menu::create(startButton, leaderboardButton, NULL);
     menu->setPosition(Vec2::ZERO);
 
