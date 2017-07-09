@@ -45,8 +45,9 @@ void Pipe::initTopPipe(const float xPos, const float yPos) {
     body->setPositionOffset(cocos2d::Vec2(
         ((PIPE_W * SCALE_FACTOR) / 2.0f), ((PIPE_H * SCALE_FACTOR) / 2.0f)));
     body->setTag(TAG_PIPE);
-    body->setCollisionBitmask(BITMAP_CONTACT);
-    body->setContactTestBitmask(true);
+    body->setCategoryBitmask(0x01);
+    body->setCollisionBitmask(BITMASK_COLLISION_PASSABLE);
+    body->setContactTestBitmask(BITMASK_CONTACT_DEFAULT);
     this->setPhysicsBody(body);
     this->setScale(SCALE_FACTOR);
     this->setAnchorPoint(Point::ZERO);
@@ -75,8 +76,9 @@ void Pipe::initBottomPipe(const float xPos, const float yPos) {
     body->setPositionOffset(cocos2d::Vec2(((PIPE_W * SCALE_FACTOR) / 2.0f),
         -1.0f * ((PIPE_H * SCALE_FACTOR) / 2.0f)));
     body->setTag(TAG_PIPE);
-    body->setCollisionBitmask(BITMAP_CONTACT);
-    body->setContactTestBitmask(true);
+    body->setCategoryBitmask(0x01);
+    body->setCollisionBitmask(BITMASK_COLLISION_PASSABLE);
+    body->setContactTestBitmask(BITMASK_CONTACT_DEFAULT);
     this->setPhysicsBody(body);
     this->setScale(SCALE_FACTOR);
     this->setAnchorPoint(Point::ANCHOR_TOP_LEFT);

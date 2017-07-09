@@ -97,8 +97,9 @@ bool PlayerBird::isDead(cocos2d::Size windowSize) {
 
 void PlayerBird::initCollision() {
     this->getPhysicsBody()->setTag(TAG_PLAYER);
-    this->getPhysicsBody()->setCollisionBitmask(BITMAP_CONTACT);
-    this->getPhysicsBody()->setContactTestBitmask(true);
+    this->getPhysicsBody()->setCategoryBitmask(BITMASK_CATEGORY_DEFAULT);
+    this->getPhysicsBody()->setCollisionBitmask(BITMASK_COLLISION_DEFAULT);
+    this->getPhysicsBody()->setContactTestBitmask(BITMASK_CONTACT_DEFAULT);
     EventListenerPhysicsContact* contactListener
         = EventListenerPhysicsContact::create();
     contactListener->onContactBegin
@@ -111,10 +112,25 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
     PhysicsBody* bodyA = contact.getShapeA()->getBody();
     PhysicsBody* bodyB = contact.getShapeB()->getBody();
     if (bodyA && bodyB) {
-        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
-            || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
-            CCLOG("Collision Detected.");
-            this->death();
+        // Collision for dense objects
+        if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask()) == 1
+            || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+                == 1) {
+            if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
+                || (bodyB->getTag() == TAG_PIPE
+                       && bodyA->getTag() == TAG_PLAYER)) {
+                CCLOG("Collision Detected: Pipes");
+                this->death();
+            }
+            // Passable objects
+        } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask()) == 0
+            || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+                == 0) {
+            if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
+                || (bodyB->getTag() == TAG_POINTS
+                       && bodyA->getTag() == TAG_PLAYER)) {
+                CCLOG("Collision Detected: Points");
+            }
         }
     }
 
