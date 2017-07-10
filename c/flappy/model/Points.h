@@ -28,6 +28,7 @@ public:
      */
     void initPoints();
 
+    int getValue();
 private:
     /*!< How much each point object is worth. */
     int value;

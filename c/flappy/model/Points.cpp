@@ -30,3 +30,7 @@ void Points::initPoints() {
     this->setTextureRect(Rect(0, 0, 1, visibleSize.height));
     this->setColor(Color3B(255, 255, 255));
 }
+
+int Points::getValue() {
+    return value;;
+}

@@ -113,23 +113,34 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
     PhysicsBody* bodyB = contact.getShapeB()->getBody();
     if (bodyA && bodyB) {
         // Collision for dense objects
-        if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask()) == 1
+        if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+                == BITMASK_COLLISION_DENSE
             || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-                == 1) {
+                == BITMASK_COLLISION_DENSE) {
+            // Player <--> Pipes
             if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
-                || (bodyB->getTag() == TAG_PIPE
-                       && bodyA->getTag() == TAG_PLAYER)) {
+                || (bodyA->getTag() == TAG_PIPE
+                       && bodyB->getTag() == TAG_PLAYER)) {
                 CCLOG("Collision Detected: Pipes");
                 this->death();
             }
-            // Passable objects
-        } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask()) == 0
+        // Passable objects
+        } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+                == !BITMASK_COLLISION_DENSE
             || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-                == 0) {
+                == !BITMASK_COLLISION_DENSE) {
+            // Player <--> Point
             if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
-                || (bodyB->getTag() == TAG_POINTS
-                       && bodyA->getTag() == TAG_PLAYER)) {
+                || (bodyA->getTag() == TAG_POINTS
+                       && bodyB->getTag() == TAG_PLAYER)) {
                 CCLOG("Collision Detected: Points");
+                Node* pointN;
+                if (bodyA->getTag() == TAG_POINTS) pointN = bodyA->getNode();
+                if (bodyB->getTag() == TAG_POINTS) pointN = bodyB->getNode();
+                Points* pointP = dynamic_cast<Points*>(pointN);
+                if (pointP) {
+                    this->points += pointP->getValue();
+                }
             }
         }
     }
