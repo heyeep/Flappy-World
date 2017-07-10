@@ -141,6 +141,20 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
                 if (pointP) {
                     this->points += pointP->getValue();
                 }
+            // Player <--> Coin
+            } else if ((bodyA->getTag() == TAG_PLAYER
+                           && bodyB->getTag() == TAG_COIN)
+                || (bodyA->getTag() == TAG_COIN
+                       && bodyB->getTag() == TAG_PLAYER)) {
+                CCLOG("Collision Detected: Coins");
+                Node* coinN;
+                if (bodyA->getTag() == TAG_COIN) coinN = bodyA->getNode();
+                if (bodyB->getTag() == TAG_COIN) coinN = bodyB->getNode();
+                Coin* coinP = dynamic_cast<Coin*>(coinN);
+                if (coinP) {
+                    this->coins += coinP->getValue();
+                    coinP->removeFromParent();
+                }
             }
         }
     }

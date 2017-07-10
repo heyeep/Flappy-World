@@ -28,7 +28,13 @@ public:
      */
     void initPoints();
 
+    /** \brief Gets the value of the points.
+     *
+     *
+     * \ return int;
+     */
     int getValue();
+
 private:
     /*!< How much each point object is worth. */
     int value;

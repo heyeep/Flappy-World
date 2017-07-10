@@ -36,9 +36,19 @@ public:
      *  pipes array. To take care of a point object appearing twice in a spot,
      *  make sure to skip any pipes with a duplicate X-Coord.
      *
-     * \return
+     * \return void
      */
     virtual void initPointsFromPipes(std::list<Pipe*> pipes);
+
+    /**
+     *
+     * \brief Initiates a coin object between pipes. It does this by taking
+     *  taking two pipes and creating a coin between them. Continues this until
+     *  no pipes are left.
+     *
+     * \return void
+     */
+    virtual void initCoinFromPipes(std::list<Pipe*> pipes);
 
     /**
      *  \brief Initiates all sprites adding them to the SpriteFrameCache.

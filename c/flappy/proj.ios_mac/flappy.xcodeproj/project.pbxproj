@@ -114,6 +114,16 @@
 		9149E0111F08637D00F08134 /* menu_button-s.png in Resources */ = {isa = PBXBuildFile; fileRef = 9149E00E1F08637D00F08134 /* menu_button-s.png */; };
 		9149E0121F08637D00F08134 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9149E00F1F08637D00F08134 /* menu_button.png */; };
 		9149E0131F08637D00F08134 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9149E00F1F08637D00F08134 /* menu_button.png */; };
+		9190FC111EE4AC88007B2186 /* coin_bronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0E1EE4AC88007B2186 /* coin_bronze.png */; };
+		9190FC121EE4AC88007B2186 /* coin_bronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0E1EE4AC88007B2186 /* coin_bronze.png */; };
+		9190FC131EE4AC88007B2186 /* coin_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0F1EE4AC88007B2186 /* coin_gold.png */; };
+		9190FC141EE4AC88007B2186 /* coin_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0F1EE4AC88007B2186 /* coin_gold.png */; };
+		9190FC151EE4AC88007B2186 /* coin_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC101EE4AC88007B2186 /* coin_silver.png */; };
+		9190FC161EE4AC88007B2186 /* coin_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC101EE4AC88007B2186 /* coin_silver.png */; };
+		9190FC1A1EE4AD8A007B2186 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC181EE4AD8A007B2186 /* Coin.cpp */; };
+		9190FC1B1EE4AD8A007B2186 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC181EE4AD8A007B2186 /* Coin.cpp */; };
+		9190FC211EE4BF0C007B2186 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC1F1EE4BF0C007B2186 /* Points.cpp */; };
+		9190FC221EE4BF0C007B2186 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC1F1EE4BF0C007B2186 /* Points.cpp */; };
 		919AE7F81F04573900AD4254 /* queueing.png in Resources */ = {isa = PBXBuildFile; fileRef = 919AE7F71F04573900AD4254 /* queueing.png */; };
 		919AE7F91F04573900AD4254 /* queueing.png in Resources */ = {isa = PBXBuildFile; fileRef = 919AE7F71F04573900AD4254 /* queueing.png */; };
 		919AE8041F04661600AD4254 /* bird_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 919AE8001F04661600AD4254 /* bird_die.wav */; };
@@ -137,16 +147,6 @@
 		91A3D40C1F0094C500FFC8C7 /* QueueScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91A3D4091F0094C500FFC8C7 /* QueueScene.cpp */; };
 		91A66DDE1ED0D8DD00DBC6AA /* LeaderboardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91A66DDC1ED0D8DD00DBC6AA /* LeaderboardScene.cpp */; };
 		91A66DDF1ED0D8DD00DBC6AA /* LeaderboardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91A66DDC1ED0D8DD00DBC6AA /* LeaderboardScene.cpp */; };
-		9190FC111EE4AC88007B2186 /* coin_bronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0E1EE4AC88007B2186 /* coin_bronze.png */; };
-		9190FC121EE4AC88007B2186 /* coin_bronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0E1EE4AC88007B2186 /* coin_bronze.png */; };
-		9190FC131EE4AC88007B2186 /* coin_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0F1EE4AC88007B2186 /* coin_gold.png */; };
-		9190FC141EE4AC88007B2186 /* coin_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC0F1EE4AC88007B2186 /* coin_gold.png */; };
-		9190FC151EE4AC88007B2186 /* coin_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC101EE4AC88007B2186 /* coin_silver.png */; };
-		9190FC161EE4AC88007B2186 /* coin_silver.png in Resources */ = {isa = PBXBuildFile; fileRef = 9190FC101EE4AC88007B2186 /* coin_silver.png */; };
-		9190FC1A1EE4AD8A007B2186 /* Coins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC181EE4AD8A007B2186 /* Coins.cpp */; };
-		9190FC1B1EE4AD8A007B2186 /* Coins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC181EE4AD8A007B2186 /* Coins.cpp */; };
-		9190FC211EE4BF0C007B2186 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC1F1EE4BF0C007B2186 /* Points.cpp */; };
-		9190FC221EE4BF0C007B2186 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9190FC1F1EE4BF0C007B2186 /* Points.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -293,6 +293,13 @@
 		9110014A1ECD1BA700D3D9A4 /* get_ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_ready.png; sourceTree = "<group>"; };
 		9149E00E1F08637D00F08134 /* menu_button-s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button-s.png"; sourceTree = "<group>"; };
 		9149E00F1F08637D00F08134 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
+		9190FC0E1EE4AC88007B2186 /* coin_bronze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_bronze.png; sourceTree = "<group>"; };
+		9190FC0F1EE4AC88007B2186 /* coin_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_gold.png; sourceTree = "<group>"; };
+		9190FC101EE4AC88007B2186 /* coin_silver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_silver.png; sourceTree = "<group>"; };
+		9190FC181EE4AD8A007B2186 /* Coin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coin.cpp; sourceTree = "<group>"; };
+		9190FC191EE4AD8A007B2186 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coin.h; sourceTree = "<group>"; };
+		9190FC1F1EE4BF0C007B2186 /* Points.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Points.cpp; sourceTree = "<group>"; };
+		9190FC201EE4BF0C007B2186 /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		919AE7F71F04573900AD4254 /* queueing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queueing.png; sourceTree = "<group>"; };
 		919AE8001F04661600AD4254 /* bird_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird_die.wav; sourceTree = "<group>"; };
 		919AE8011F04661600AD4254 /* bird_flap2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird_flap2.wav; sourceTree = "<group>"; };
@@ -307,13 +314,6 @@
 		91A3D40A1F0094C500FFC8C7 /* QueueScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueScene.h; sourceTree = "<group>"; };
 		91A66DDC1ED0D8DD00DBC6AA /* LeaderboardScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeaderboardScene.cpp; sourceTree = "<group>"; };
 		91A66DDD1ED0D8DD00DBC6AA /* LeaderboardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardScene.h; sourceTree = "<group>"; };
-		9190FC0E1EE4AC88007B2186 /* coin_bronze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_bronze.png; sourceTree = "<group>"; };
-		9190FC0F1EE4AC88007B2186 /* coin_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_gold.png; sourceTree = "<group>"; };
-		9190FC101EE4AC88007B2186 /* coin_silver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_silver.png; sourceTree = "<group>"; };
-		9190FC181EE4AD8A007B2186 /* Coins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coins.cpp; sourceTree = "<group>"; };
-		9190FC191EE4AD8A007B2186 /* Coins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coins.h; sourceTree = "<group>"; };
-		9190FC1F1EE4BF0C007B2186 /* Points.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Points.cpp; sourceTree = "<group>"; };
-		9190FC201EE4BF0C007B2186 /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -405,8 +405,8 @@
 				1A10CB861EC7D63A001ABBCA /* Network.h */,
 				1A10CB871EC7D63A001ABBCA /* PlayerBird.cpp */,
 				1A10CB881EC7D63A001ABBCA /* PlayerBird.h */,
-				9190FC181EE4AD8A007B2186 /* Coins.cpp */,
-				9190FC191EE4AD8A007B2186 /* Coins.h */,
+				9190FC181EE4AD8A007B2186 /* Coin.cpp */,
+				9190FC191EE4AD8A007B2186 /* Coin.h */,
 				9190FC1F1EE4BF0C007B2186 /* Points.cpp */,
 				9190FC201EE4BF0C007B2186 /* Points.h */,
 			);
@@ -816,7 +816,6 @@
 				919AE8061F04661600AD4254 /* bird_flap2.wav in Resources */,
 				9110014B1ECD1BA700D3D9A4 /* play_button-s.png in Resources */,
 				9190FC131EE4AC88007B2186 /* coin_gold.png in Resources */,
-				517592C41EAE8B2E0018C613 /* startgame-s.png in Resources */,
 				5147D5641EAADD0D00CE79E6 /* pipe_green_base.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -914,7 +913,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				91A3D40B1F0094C500FFC8C7 /* QueueScene.cpp in Sources */,
 				1ACB7B9D1EB98BF1002B47A5 /* PhxSocket.cpp in Sources */,
-				9190FC1A1EE4AD8A007B2186 /* Coins.cpp in Sources */,
+				9190FC1A1EE4AD8A007B2186 /* Coin.cpp in Sources */,
 				1ACB7B931EB98BF1002B47A5 /* easylogging++.cc in Sources */,
 				1A10CB901EC7D63A001ABBCA /* PlayerBird.cpp in Sources */,
 				1A10CB921EC7D63A001ABBCA /* GameScene.cpp in Sources */,
@@ -948,7 +947,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				1A10CB931EC7D63A001ABBCA /* GameScene.cpp in Sources */,
-				9190FC1B1EE4AD8A007B2186 /* Coins.cpp in Sources */,
+				9190FC1B1EE4AD8A007B2186 /* Coin.cpp in Sources */,
 				1ACB7B9C1EB98BF1002B47A5 /* PhxPush.cpp in Sources */,
 				1A10CB951EC7D63A001ABBCA /* MainMenuScene.cpp in Sources */,
 				894FBBD41ED47B9E003660E8 /* Pipe.cpp in Sources */,

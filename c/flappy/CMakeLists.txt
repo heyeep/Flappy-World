@@ -152,7 +152,7 @@ set(GAME_MODELS_SRC
   model/Network.cpp
   model/PlayerBird.cpp
   model/Pipe.cpp
-  model/Coins.cpp
+  model/Coin.cpp
   model/Points.cpp)
 
 set(GAME_MODELS_HEADER
@@ -161,7 +161,7 @@ set(GAME_MODELS_HEADER
   model/PlayerBird.h
   model/ServerUpdate.h
   model/Pipe.h
-  model/Coins.h
+  model/Coin.h
   model/Points.h)
 
 set(GAME_SCENES_SRC

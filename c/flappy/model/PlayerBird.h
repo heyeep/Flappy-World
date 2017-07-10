@@ -4,6 +4,7 @@
 #include "Constants.h"
 #include "MainMenuScene.h"
 #include "Points.h"
+#include "Coin.h"
 #include "cocos2d.h"
 #include <stdio.h>
 
@@ -22,6 +23,10 @@ public:
 
     /*!< Points acquired. */
     int points;
+
+    /*!< Coins acquired. */
+
+    int coins;
 
     /*!< Getter for serverId. */
     int getServerId();

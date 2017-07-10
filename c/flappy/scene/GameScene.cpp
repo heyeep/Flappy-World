@@ -1,8 +1,9 @@
 #include "GameScene.h"
+#include "Coin.h"
 #include "CoordinateUpdate.h"
 #include "Network.h"
-#include "SimpleAudioEngine.h"
 #include "Points.h"
+#include "SimpleAudioEngine.h"
 #include <list>
 
 USING_NS_CC;
@@ -116,15 +117,14 @@ void GameScene::loadStage(std::list<Pipe*> pipes) {
         this->middleLayer->addChild(p, Z_MIDDLE_LAYER);
     }
     initPointsFromPipes(pipes);
+    initCoinFromPipes(pipes);
 }
 
 void GameScene::initPointsFromPipes(std::list<Pipe*> pipes) {
     std::list<float> xCoords;
     for (Pipe* p : pipes) {
         bool xCoordInList = std::find(std::begin(xCoords), std::end(xCoords), p->getXPos()) != std::end(xCoords);
-        CCLOG("ADDING: %f", p->getXPos());
         if (!xCoordInList) {
-            CCLOG("FOUND: %f", p->getXPos());
             xCoords.push_back(p->getXPos());
         }
     }
@@ -132,6 +132,27 @@ void GameScene::initPointsFromPipes(std::list<Pipe*> pipes) {
         Points* points = Points::create(1, xCoord);
         points->initPoints();
         this->middleLayer->addChild(points, Z_MIDDLE_LAYER);
+    }
+}
+
+void GameScene::initCoinFromPipes(std::list<Pipe*> pipes) {
+    std::vector<float> xCoords;
+    float hSize = windowSize.height / 8;
+    for (Pipe* p : pipes) {
+        bool xCoordInList
+            = std::find(std::begin(xCoords), std::end(xCoords), p->getXPos())
+            != std::end(xCoords);
+        if (!xCoordInList) {
+            xCoords.push_back(p->getXPos());
+        }
+    }
+    // Starts at 1 to avoid making a coin in front of the first pipe.
+    for (int i = 1; i < xCoords.size(); i++) {
+        float xPos = xCoords[i] - ((xCoords[i] - xCoords[i - 1]) / 2);
+        Coin* coin
+            = Coin::create(xPos, RandomHelper::random_int(hSize, hSize * 4));
+        coin->initCoin();
+        this->middleLayer->addChild(coin, Z_MIDDLE_LAYER + 1);
     }
 }
 
