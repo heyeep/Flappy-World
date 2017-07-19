@@ -193,6 +193,9 @@ void GameScene::initTouchListeners() {
 }
 
 void GameScene::onMouseDown(cocos2d::Event* event) {
+    if (this->gameOver) {
+        this->gotoMainMenu();
+    }
     this->player->flap();
 }
 
@@ -230,23 +233,26 @@ void GameScene::updatePlayer(float dt) {
 }
 
 void GameScene::playerDeathCheck() {
-    if (this->player->isDead(windowSize)) {
-        this->sceneAudio->playEffect("bird_hit.wav");
-        if (DEBUG_DEATH_ON) {
-            this->player->setPositionY(windowSize.height / 2);
-            this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
-            this->player->setRotation(0);
-        } else {
-            this->death();
+    if (!gameOver) {
+        if (this->player->isDead(windowSize)) {
+            this->sceneAudio->playEffect("bird_hit.wav");
+            if (DEBUG_DEATH_ON) {
+                this->player->setPositionY(windowSize.height / 2);
+                this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
+                this->player->setRotation(0);
+            } else {
+                this->death();
+            }
         }
     }
 }
 
 void GameScene::death() {
-    Director* director = Director::getInstance();
-    Scene* scene = MainMenu::createScene();
-
-    director->replaceScene(scene);
+    this->gameOver = true;
+    this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
+    this->player->getPhysicsBody()->setGravityEnable(false);
+    this->player->getPhysicsBody()->setDynamic(false);
+    this->displayScore();
 }
 
 void GameScene::initAudio() {
@@ -265,4 +271,14 @@ void GameScene::playBackgroundMusic() {
 
 void GameScene::stopBackgroundMusic() {
     this->sceneAudio->stopBackgroundMusic();
+}
+
+void GameScene::gotoMainMenu() {
+    Director* director = Director::getInstance();
+    Scene* scene = MainMenu::createScene();
+
+    director->replaceScene(scene);
+}
+void GameScene::displayScore() {
+
 }
