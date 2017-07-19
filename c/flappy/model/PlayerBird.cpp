@@ -55,8 +55,10 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player) {
 }
 
 void PlayerBird::update(float dt) {
-    this->updatePosition();
-    this->updateAngle(dt);
+    if (!this->dead) {
+        this->updatePosition();
+        this->updateAngle(dt);
+    }
 }
 
 void PlayerBird::updatePosition() {
