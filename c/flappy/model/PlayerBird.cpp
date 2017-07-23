@@ -163,7 +163,13 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
 
 void PlayerBird::death() {
     cocos2d::Scene* curScene = Director::getInstance()->getRunningScene();
-    cocos2d::Layer* curLayer = (cocos2d::Layer*)(curScene->getChildren().at(0));
-    GameScene* curGameScene = dynamic_cast<GameScene*>(curLayer);
-    curGameScene->death();
+    // HACK: This should be revised later.
+    for (int i = 0; i < curScene->getChildrenCount(); i++) {
+        cocos2d::Layer* layer
+            = (cocos2d::Layer*)(curScene->getChildren().at(i));
+        GameScene* curGameScene = dynamic_cast<GameScene*>(layer);
+        if (curGameScene) {
+            curGameScene->death();
+        }
+    }
 }
