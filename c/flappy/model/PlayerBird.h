@@ -21,6 +21,9 @@ private:
 public:
     float x_velocity = 300;
 
+    /*!< Bool for keeping track of wether the player is alive or not. */
+    bool dead = false;
+
     /*!< Points acquired. */
     int points;
 

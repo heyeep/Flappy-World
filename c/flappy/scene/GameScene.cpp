@@ -193,6 +193,9 @@ void GameScene::initTouchListeners() {
 }
 
 void GameScene::onMouseDown(cocos2d::Event* event) {
+    if (this->gameOver) {
+        this->gotoMainMenu();
+    }
     this->player->flap();
 }
 
@@ -230,23 +233,27 @@ void GameScene::updatePlayer(float dt) {
 }
 
 void GameScene::playerDeathCheck() {
-    if (this->player->isDead(windowSize)) {
-        this->sceneAudio->playEffect("bird_hit.wav");
-        if (DEBUG_DEATH_ON) {
-            this->player->setPositionY(windowSize.height / 2);
-            this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
-            this->player->setRotation(0);
-        } else {
-            this->death();
+    if (!gameOver) {
+        if (this->player->isDead(windowSize)) {
+            this->sceneAudio->playEffect("bird_hit.wav");
+            if (DEBUG_DEATH_ON) {
+                this->player->setPositionY(windowSize.height / 2);
+                this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
+                this->player->setRotation(0);
+            } else {
+                this->death();
+            }
         }
     }
 }
 
 void GameScene::death() {
-    Director* director = Director::getInstance();
-    Scene* scene = MainMenu::createScene();
-
-    director->replaceScene(scene);
+    this->gameOver = true;
+    this->player->dead = true;
+    this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
+    this->player->getPhysicsBody()->setGravityEnable(false);
+    this->player->getPhysicsBody()->setDynamic(false);
+    this->displayScore();
 }
 
 void GameScene::initAudio() {
@@ -265,4 +272,49 @@ void GameScene::playBackgroundMusic() {
 
 void GameScene::stopBackgroundMusic() {
     this->sceneAudio->stopBackgroundMusic();
+}
+
+void GameScene::gotoMainMenu() {
+    Director* director = Director::getInstance();
+    Scene* scene = MainMenu::createScene();
+
+    director->replaceScene(scene);
+}
+
+void GameScene::displayScore() {
+    Sprite* scoreBackground = Sprite::create("endgame_scores.png");
+    scoreBackground->setAnchorPoint(Vec2(0.5, 0.5));
+    scoreBackground->setPosition(
+        Vec2(this->player->getPositionX(), windowSize.height / 1.5));
+    scoreBackground->getTexture()->setAliasTexParameters();
+    scoreBackground->setScale(SCALE_FACTOR);
+    this->middleLayer->addChild(scoreBackground, 1);
+
+    std::string points = std::to_string(player->points);
+    Label* pointsTitle
+        = Label::createWithTTF("Points: " + points, "fonts/flappy.TTF", 50);
+    pointsTitle->setAnchorPoint(Point::ZERO);
+    pointsTitle->setPosition(Vec2(scoreBackground->getPositionX()
+            - (((scoreBackground->getContentSize().width / 2) * SCALE_FACTOR)
+                  - (pointsTitle->getContentSize().width / 5)),
+        (scoreBackground->getPositionY()
+         + (scoreBackground->getContentSize().height / 2))));
+    pointsTitle->enableShadow(Color4B(100, 100, 100, 100), Size(-3, -3), 0);
+    pointsTitle->enableOutline(Color4B(25, 25, 25, 255), 3);
+    pointsTitle->setColor(Color3B(255, 255, 255));
+    this->middleLayer->addChild(pointsTitle, 1);
+
+    std::string coins = std::to_string(player->coins);
+    Label* coinsTitle
+        = Label::createWithTTF("Coins: " + coins, "fonts/flappy.TTF", 50);
+    coinsTitle->setAnchorPoint(Vec2(0, 1));
+    coinsTitle->setPosition(Vec2(scoreBackground->getPositionX()
+            - (((scoreBackground->getContentSize().width / 2) * SCALE_FACTOR)
+                  - (pointsTitle->getContentSize().width / 5)),
+        (scoreBackground->getPositionY()
+         - (scoreBackground->getContentSize().height / 2))));
+    coinsTitle->enableShadow(Color4B(100, 100, 100, 100), Size(-3, -3), 0);
+    coinsTitle->enableOutline(Color4B(25, 25, 25, 255), 3);
+    coinsTitle->setColor(Color3B(255, 255, 255));
+    this->middleLayer->addChild(coinsTitle, 1);
 }

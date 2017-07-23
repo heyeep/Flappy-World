@@ -79,6 +79,13 @@ public:
     virtual void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
 
     /**
+     *  \brief Restarts the game.
+     *
+     *  \return void
+     */
+    void death();
+
+    /**
      *  \brief Implement the "static create()" method manually.
      *
      *  \return void
@@ -100,6 +107,9 @@ public:
     virtual ~GameScene();
 
 private:
+    /*!< Bool to determine if the round has ended */
+    bool gameOver = false;
+
     /*!< Client's sprite. */
     PlayerBird* player;
 
@@ -214,13 +224,6 @@ private:
     void playerDeathCheck();
 
     /**
-     *  \brief Restarts the game.
-     *
-     *  \return void
-     */
-    void death();
-
-    /**
      *  \brief Initializes the audio.
      *
      *  \return void
@@ -262,6 +265,20 @@ private:
      *  \return void
      */
     void onMouseDown(cocos2d::Event* event);
+
+    /**
+     *  \brief Goes back to the MainMenuScene.
+     *
+     *  \return void
+     */
+    void gotoMainMenu();
+
+    /**
+     *  \brief Shows the points and coins acquired at the end of the game.
+     *
+     *  \return void
+     */
+    void displayScore();
 };
 
 #endif /* GameScene_h */

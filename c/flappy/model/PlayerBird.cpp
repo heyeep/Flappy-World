@@ -1,4 +1,5 @@
 #include "PlayerBird.h"
+#include "GameScene.h"
 
 PlayerBird::PlayerBird() {
     this->speed = BIRD_SPEED;
@@ -54,8 +55,10 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player) {
 }
 
 void PlayerBird::update(float dt) {
-    this->updatePosition();
-    this->updateAngle(dt);
+    if (!this->dead) {
+        this->updatePosition();
+        this->updateAngle(dt);
+    }
 }
 
 void PlayerBird::updatePosition() {
@@ -163,8 +166,8 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
 }
 
 void PlayerBird::death() {
-    Director* director = Director::getInstance();
-    Scene* scene = MainMenu::createScene();
-
-    director->replaceScene(scene);
+    cocos2d::Scene* curScene = Director::getInstance()->getRunningScene();
+    cocos2d::Layer* curLayer = (cocos2d::Layer*)(curScene->getChildren().at(0));
+    GameScene* curGameScene = dynamic_cast<GameScene*>(curLayer);
+    curGameScene->death();
 }
