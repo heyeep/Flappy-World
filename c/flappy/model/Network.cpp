@@ -38,7 +38,7 @@ void Network::phxSocketDidReceiveError(const std::string& error) {
 
 void Network::joinRoom() {
     if (!this->socket->isConnected()) {
-        publish(JOIN_ROOM_KEY, false, nullptr);
+        this->publish(JOIN_ROOM_KEY, false, nullptr);
         return;
     }
 
@@ -54,13 +54,13 @@ void Network::joinRoom() {
             })
         ->onReceive("error", [this](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;
-            publish(JOIN_ROOM_KEY, false, error);
+            this->publish(JOIN_ROOM_KEY, false, error);
         });
 
     this->roomChannel->onEvent(
         "start", [this](nlohmann::json json, int64_t ref) {
             LOG(INFO) << "Received START on join:" << json.dump() << std::endl;
-            publish(JOIN_ROOM_KEY, true, json);
+            this->publish(JOIN_ROOM_KEY, true, json);
         });
 
     this->roomChannel->onEvent(
@@ -77,7 +77,7 @@ void Network::joinRoom() {
 
 void Network::getLeaderboard() {
     if (!this->socket->isConnected()) {
-        publish(GET_LEADERBOARD, false, nullptr);
+        this->publish(GET_LEADERBOARD, false, nullptr);
         return;
     }
 
@@ -92,11 +92,11 @@ void Network::getLeaderboard() {
         ->onReceive("ok",
             [this](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
-                publish(GET_LEADERBOARD, true, json);
+                this->publish(GET_LEADERBOARD, true, json);
             })
         ->onReceive("error", [this](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;
-            publish(GET_LEADERBOARD, false, nullptr);
+            this->publish(GET_LEADERBOARD, false, nullptr);
         });
 }
 
