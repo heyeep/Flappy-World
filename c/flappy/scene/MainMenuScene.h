@@ -44,6 +44,13 @@ public:
      */
     CREATE_FUNC(MainMenu);
 
+    /**
+     *  \brief Destructor
+     *
+     *  \return ~MainMenu
+     */
+    virtual ~MainMenu();
+
 private:
     /*!< Reference that holds the current audio in the scene. */
     CocosDenshion::SimpleAudioEngine* sceneAudio;

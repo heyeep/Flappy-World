@@ -36,9 +36,9 @@ void Network::phxSocketDidReceiveError(const std::string& error) {
     LOG(INFO) << "phxSocketDidReceiveError" << std::endl;
 }
 
-void Network::joinRoom(JoinRoomCallback callback) {
+void Network::joinRoom() {
     if (!this->socket->isConnected()) {
-        callback(false, nullptr);
+        publish(JOIN_ROOM_KEY, false, nullptr);
         return;
     }
 
@@ -49,16 +49,16 @@ void Network::joinRoom(JoinRoomCallback callback) {
     this->roomChannel->bootstrap();
     this->roomChannel->join()
         ->onReceive("ok",
-            [callback](nlohmann::json json) {
+            [this](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
             })
-        ->onReceive("error", [callback](nlohmann::json error) {
+        ->onReceive("error", [this](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;
-            callback(false, nullptr);
+            publish(JOIN_ROOM_KEY, false, error);
         });
 
     this->roomChannel->onEvent(
-        "start", [callback](nlohmann::json json, int64_t ref) {
+        "start", [this](nlohmann::json json, int64_t ref) {
             LOG(INFO) << "Received START on join:" << json.dump() << std::endl;
             std::list<Pipe*> pipes;
             for (auto& j : json["stage"]["pipes"]) {
@@ -66,11 +66,11 @@ void Network::joinRoom(JoinRoomCallback callback) {
                     j.at("x").get<float>(),
                     j.at("y").get<float>()));
             }
-            callback(true, json);
+            publish(JOIN_ROOM_KEY, true, json);
         });
 
     this->roomChannel->onEvent(
-        "new_player_joined", [callback](nlohmann::json json, int64_t ref) {
+        "new_player_joined", [](nlohmann::json json, int64_t ref) {
             LOG(INFO) << "Received NEW_PLAYER_JOINED message: " << json.dump()
                       << std::endl;
         });
@@ -81,9 +81,9 @@ void Network::joinRoom(JoinRoomCallback callback) {
         });
 }
 
-void Network::getLeaderboard(GetLeaderBoardCallback callback) {
+void Network::getLeaderboard() {
     if (!this->socket->isConnected()) {
-        callback(false, nullptr);
+        publish(GET_LEADERBOARD, false, nullptr);
         return;
     }
 
@@ -96,13 +96,13 @@ void Network::getLeaderboard(GetLeaderBoardCallback callback) {
     leaderBoardChannel->bootstrap();
     leaderBoardChannel->join()
         ->onReceive("ok",
-            [callback](nlohmann::json json) {
+            [this](nlohmann::json json) {
                 LOG(INFO) << "Received OK on join:" << json.dump() << std::endl;
-                callback(true, json);
+                publish(GET_LEADERBOARD, true, json);
             })
-        ->onReceive("error", [callback](nlohmann::json error) {
+        ->onReceive("error", [this](nlohmann::json error) {
             LOG(INFO) << "Error joining: " << error << std::endl;
-            callback(false, nullptr);
+            publish(GET_LEADERBOARD, false, nullptr);
         });
 }
 

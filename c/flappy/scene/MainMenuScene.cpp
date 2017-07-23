@@ -7,6 +7,10 @@
 
 USING_NS_CC;
 
+MainMenu::~MainMenu() {
+    Network::getInstance()->unsubscribe(JOIN_ROOM_KEY, this);
+}
+
 Scene* MainMenu::createScene() {
     Scene* scene = Scene::create();
     Layer* layer = MainMenu::create();
@@ -85,27 +89,30 @@ bool MainMenu::init() {
 }
 
 void MainMenu::startGameCall(Ref* pSender) {
-    Network::getInstance()->joinRoom([this](bool success, nlohmann::json json) {
-        std::list<Pipe*> pipes;
-        for (auto& j : json["stage"]["pipes"]) {
-            pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
-                                         j.at("x").get<float>(),
-                                         j.at("y").get<float>()));
-        }
+    Network::getInstance()->subscribe(JOIN_ROOM_KEY, this,
+        [this](bool success, nlohmann::json json) {
+            std::list<Pipe*> pipes;
+            for (auto& j : json["stage"]["pipes"]) {
+                pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
+                                             j.at("x").get<float>(),
+                                             j.at("y").get<float>()));
+            }
 
-        Director::getInstance()
-            ->getScheduler()
-            ->performFunctionInCocosThread([pipes] {
-                auto director = Director::getInstance();
-                Scene* scene;
-                if (DEBUG_QUEUE_ON) {
-                    scene = QueueScene::createScene();
-                } else {
-                    scene = GameScene::createScene(pipes);
-                }
-                director->replaceScene(scene);
-            });
-    });
+            Director::getInstance()
+                ->getScheduler()
+                ->performFunctionInCocosThread([pipes] {
+                    auto director = Director::getInstance();
+                    Scene* scene;
+                    if (DEBUG_QUEUE_ON) {
+                        scene = QueueScene::createScene();
+                    } else {
+                        scene = GameScene::createScene(pipes);
+                    }
+                    director->replaceScene(scene);
+                });
+        });
+
+    Network::getInstance()->joinRoom();
 }
 
 void MainMenu::switchToLeaderboards(Ref* refPointer) {

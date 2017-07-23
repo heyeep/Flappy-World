@@ -8,16 +8,8 @@
 
 // Event Keys
 #define COORDINATES_UPDATE_KEY "coordinates_update"
-
-/*!< Callback used for getting Leaderboard results.
-  If able to retrieve results, success will be true. */
-using GetLeaderBoardCallback
-    = std::function<void(bool success, nlohmann::json json)>;
-
-/*|< Callback used for joining a game room.
-   If able to join results, success with be true, and json will hold room
-   description */
-using JoinRoomCallback = std::function<void(bool success, nlohmann::json json)>;
+#define JOIN_ROOM_KEY "join_room"
+#define GET_LEADERBOARD "get_leaderboard"
 
 /*!< Typedef for callback used in Network pubsub. */
 using PubSubCallback = std::function<void(bool success, nlohmann::json json)>;
@@ -60,7 +52,6 @@ public:
       *
       *  Detailed description
       *
-      *  \param param
       *  \return return type
       */
     void start();
@@ -68,20 +59,18 @@ public:
     /**
      * /brief Join Stage operation
      *
-     * /param callback The callback call when stage joined
      * /return void
      */
-    void joinRoom(JoinRoomCallback callback);
+    void joinRoom();
 
     /**
      *  \brief Get Leaderboard results.
      *
      *  Get Leaderboard results from server and return results in callback.
      *
-     *  \param callback The callback called when results are retrieved.
      *  \return void
      */
-    void getLeaderboard(GetLeaderBoardCallback callback);
+    void getLeaderboard();
 
     /**
      *  \brief Push an update to channel.

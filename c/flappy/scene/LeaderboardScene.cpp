@@ -7,6 +7,7 @@ LeaderboardScene::LeaderboardScene() {
 }
 
 LeaderboardScene::~LeaderboardScene() {
+    Network::getInstance()->unsubscribe(GET_LEADERBOARD, this);
 }
 
 Scene* LeaderboardScene::createScene() {
@@ -31,7 +32,7 @@ bool LeaderboardScene::init() {
 
 void LeaderboardScene::connectToScoreboard() {
     std::shared_ptr<Network> network = Network::getInstance();
-    network->getLeaderboard(
+    network->subscribe(GET_LEADERBOARD, this,
         [this](bool success, nlohmann::json response) {
             if (success) {
                 json scores = response["list"];
@@ -50,6 +51,7 @@ void LeaderboardScene::connectToScoreboard() {
                 director->replaceScene(scene);
             }
         });
+    network->getLeaderboard();
 }
 
 void LeaderboardScene::displayScores(nlohmann::json response) {
