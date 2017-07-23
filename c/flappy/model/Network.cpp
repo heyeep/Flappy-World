@@ -77,7 +77,7 @@ void Network::joinRoom(JoinRoomCallback callback) {
 
     this->roomChannel->onEvent(
         "coordinates", [this](nlohmann::json message, int64_t ref) {
-            publish(COORDINATES_UPDATE_KEY, true, message);
+            this->publish(COORDINATES_UPDATE_KEY, true, message);
         });
 }
 
