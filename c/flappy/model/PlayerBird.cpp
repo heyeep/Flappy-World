@@ -141,9 +141,7 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
             if (bodyB->getTag() == TAG_POINTS)
                 pointN = bodyB->getNode();
             Points* pointP = dynamic_cast<Points*>(pointN);
-            if (pointP) {
-                this->points += pointP->getValue();
-            }
+            this->points += pointP->getValue();
             // Player <--> Coin
         } else if ((bodyA->getTag() == TAG_PLAYER
                        && bodyB->getTag() == TAG_COIN)
@@ -155,10 +153,8 @@ bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
             if (bodyB->getTag() == TAG_COIN)
                 coinN = bodyB->getNode();
             Coin* coinP = dynamic_cast<Coin*>(coinN);
-            if (coinP) {
-                this->coins += coinP->getValue();
-                coinP->removeFromParent();
-            }
+            this->coins += coinP->getValue();
+            coinP->removeFromParent();
         }
     }
 
