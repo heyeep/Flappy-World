@@ -114,50 +114,50 @@ void PlayerBird::initCollision() {
 bool PlayerBird::onContactBegin(cocos2d::PhysicsContact& contact) {
     PhysicsBody* bodyA = contact.getShapeA()->getBody();
     PhysicsBody* bodyB = contact.getShapeB()->getBody();
-    if (bodyA && bodyB) {
-        // Collision for dense objects
-        if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
-                == BITMASK_COLLISION_DENSE
-            || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-                == BITMASK_COLLISION_DENSE) {
-            // Player <--> Pipes
-            if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
-                || (bodyA->getTag() == TAG_PIPE
-                       && bodyB->getTag() == TAG_PLAYER)) {
-                CCLOG("Collision Detected: Pipes");
-                this->death();
-            }
+    // Collision for dense objects
+    if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+            == BITMASK_COLLISION_DENSE
+        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+            == BITMASK_COLLISION_DENSE) {
+        // Player <--> Pipes
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
+            || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Pipes");
+            this->death();
+        }
         // Passable objects
-        } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
-                == !BITMASK_COLLISION_DENSE
-            || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-                == !BITMASK_COLLISION_DENSE) {
-            // Player <--> Point
-            if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
-                || (bodyA->getTag() == TAG_POINTS
-                       && bodyB->getTag() == TAG_PLAYER)) {
-                CCLOG("Collision Detected: Points");
-                Node* pointN;
-                if (bodyA->getTag() == TAG_POINTS) pointN = bodyA->getNode();
-                if (bodyB->getTag() == TAG_POINTS) pointN = bodyB->getNode();
-                Points* pointP = dynamic_cast<Points*>(pointN);
-                if (pointP) {
-                    this->points += pointP->getValue();
-                }
+    } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+            == !BITMASK_COLLISION_DENSE
+        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+            == !BITMASK_COLLISION_DENSE) {
+        // Player <--> Point
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
+            || (bodyA->getTag() == TAG_POINTS
+                   && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Points");
+            Node* pointN;
+            if (bodyA->getTag() == TAG_POINTS)
+                pointN = bodyA->getNode();
+            if (bodyB->getTag() == TAG_POINTS)
+                pointN = bodyB->getNode();
+            Points* pointP = dynamic_cast<Points*>(pointN);
+            if (pointP) {
+                this->points += pointP->getValue();
+            }
             // Player <--> Coin
-            } else if ((bodyA->getTag() == TAG_PLAYER
-                           && bodyB->getTag() == TAG_COIN)
-                || (bodyA->getTag() == TAG_COIN
-                       && bodyB->getTag() == TAG_PLAYER)) {
-                CCLOG("Collision Detected: Coins");
-                Node* coinN;
-                if (bodyA->getTag() == TAG_COIN) coinN = bodyA->getNode();
-                if (bodyB->getTag() == TAG_COIN) coinN = bodyB->getNode();
-                Coin* coinP = dynamic_cast<Coin*>(coinN);
-                if (coinP) {
-                    this->coins += coinP->getValue();
-                    coinP->removeFromParent();
-                }
+        } else if ((bodyA->getTag() == TAG_PLAYER
+                       && bodyB->getTag() == TAG_COIN)
+            || (bodyA->getTag() == TAG_COIN && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Coins");
+            Node* coinN;
+            if (bodyA->getTag() == TAG_COIN)
+                coinN = bodyA->getNode();
+            if (bodyB->getTag() == TAG_COIN)
+                coinN = bodyB->getNode();
+            Coin* coinP = dynamic_cast<Coin*>(coinN);
+            if (coinP) {
+                this->coins += coinP->getValue();
+                coinP->removeFromParent();
             }
         }
     }
