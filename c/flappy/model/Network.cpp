@@ -65,13 +65,14 @@ void Network::joinRoom(JoinRoomCallback callback) {
                 pipes.push_back(Pipe::create(j.at("type").get<std::string>(),
                     j.at("x").get<float>(),
                     j.at("y").get<float>()));
-                }
+            }
             callback(true, json);
         });
 
     this->roomChannel->onEvent(
         "new_player_joined", [callback](nlohmann::json json, int64_t ref) {
-            LOG(INFO) << "Received NEW_PLAYER_JOINED message: " << json.dump() << std::endl;
+            LOG(INFO) << "Received NEW_PLAYER_JOINED message: " << json.dump()
+                      << std::endl;
         });
 
     this->roomChannel->onEvent(
@@ -155,8 +156,10 @@ void Network::unsubscribe(const std::string& key, void* ref) {
     }
 }
 
-void Network::publish(const std::string& key, bool success, nlohmann::json json) {
-    std::vector<std::tuple<void*, PubSubCallback>> subscribers = this->subscriberMap[key];
+void Network::publish(
+    const std::string& key, bool success, nlohmann::json json) {
+    std::vector<std::tuple<void*, PubSubCallback>> subscribers
+        = this->subscriberMap[key];
     for (int i = 0; i < subscribers.size(); i++) {
         PubSubCallback cb = std::get<1>(subscribers[i]);
         cb(true, json);
