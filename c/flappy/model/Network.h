@@ -116,6 +116,17 @@ public:
      *  \return void
      */
     void unsubscribe(const std::string& key, void* ref);
+
+    /**
+     *  /brief publish to topic
+     *
+     *  Detailed description
+     *
+     *  /param key to publish to
+     *  /param success whether or to indicate successful callback
+     *  /param json the payload returned in publish
+     */
+    void publish(const std::string& key, bool success, nlohmann::json json);
 };
 
 #endif // Network_H

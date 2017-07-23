@@ -76,12 +76,7 @@ void Network::joinRoom(JoinRoomCallback callback) {
 
     this->roomChannel->onEvent(
         "coordinates", [this](nlohmann::json message, int64_t ref) {
-            std::vector<std::tuple<void*, PubSubCallback>> arr
-                = this->subscriberMap[COORDINATES_UPDATE_KEY];
-            for (int i = 0; i < arr.size(); i++) {
-                PubSubCallback cb = std::get<1>(arr[i]);
-                cb(true, message);
-            }
+            publish(COORDINATES_UPDATE_KEY, true, message);
         });
 }
 
@@ -157,5 +152,13 @@ void Network::unsubscribe(const std::string& key, void* ref) {
 
     if (foundPosition >= 0) {
         arr.erase(arr.begin() + foundPosition);
+    }
+}
+
+void Network::publish(const std::string& key, bool success, nlohmann::json json) {
+    std::vector<std::tuple<void*, PubSubCallback>> subscribers = this->subscriberMap[key];
+    for (int i = 0; i < subscribers.size(); i++) {
+        PubSubCallback cb = std::get<1>(subscribers[i]);
+        cb(true, json);
     }
 }
