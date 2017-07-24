@@ -123,7 +123,9 @@ void GameScene::loadStage(std::list<Pipe*> pipes) {
 void GameScene::initPointsFromPipes(std::list<Pipe*> pipes) {
     std::list<float> xCoords;
     for (Pipe* p : pipes) {
-        bool xCoordInList = std::find(std::begin(xCoords), std::end(xCoords), p->getXPos()) != std::end(xCoords);
+        bool xCoordInList
+            = std::find(std::begin(xCoords), std::end(xCoords), p->getXPos())
+            != std::end(xCoords);
         if (!xCoordInList) {
             xCoords.push_back(p->getXPos());
         }
@@ -298,7 +300,7 @@ void GameScene::displayScore() {
             - (((scoreBackground->getContentSize().width / 2) * SCALE_FACTOR)
                   - (pointsTitle->getContentSize().width / 5)),
         (scoreBackground->getPositionY()
-         + (scoreBackground->getContentSize().height / 2))));
+            + (scoreBackground->getContentSize().height / 2))));
     pointsTitle->enableShadow(Color4B(100, 100, 100, 100), Size(-3, -3), 0);
     pointsTitle->enableOutline(Color4B(25, 25, 25, 255), 3);
     pointsTitle->setColor(Color3B(255, 255, 255));
@@ -312,7 +314,7 @@ void GameScene::displayScore() {
             - (((scoreBackground->getContentSize().width / 2) * SCALE_FACTOR)
                   - (pointsTitle->getContentSize().width / 5)),
         (scoreBackground->getPositionY()
-         - (scoreBackground->getContentSize().height / 2))));
+            - (scoreBackground->getContentSize().height / 2))));
     coinsTitle->enableShadow(Color4B(100, 100, 100, 100), Size(-3, -3), 0);
     coinsTitle->enableOutline(Color4B(25, 25, 25, 255), 3);
     coinsTitle->setColor(Color3B(255, 255, 255));

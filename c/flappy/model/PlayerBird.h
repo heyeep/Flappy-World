@@ -1,10 +1,10 @@
 #ifndef PlayerBird_h
 #define PlayerBird_h
 
+#include "Coin.h"
 #include "Constants.h"
 #include "MainMenuScene.h"
 #include "Points.h"
-#include "Coin.h"
 #include "cocos2d.h"
 #include <stdio.h>
 
