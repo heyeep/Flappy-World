@@ -255,7 +255,6 @@ void GameScene::death() {
     this->player->dead = true;
     this->player->getPhysicsBody()->setVelocity(Vec2(0, 0));
     this->player->getPhysicsBody()->setGravityEnable(false);
-    this->player->getPhysicsBody()->setDynamic(false);
     this->displayScore();
 }
 
@@ -327,6 +326,8 @@ void GameScene::initCollisionDetectionSystem() {
         = EventListenerPhysicsContact::create();
     contactListener->onContactBegin
         = CC_CALLBACK_1(GameScene::onContactBegin, this);
+    contactListener->onContactPostSolve
+        = CC_CALLBACK_1(GameScene::onContactPostSolve, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(
         contactListener, this);
 }
@@ -339,10 +340,6 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
         if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
             || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
             CCLOG("Collision Detected: Pipes");
-
-            // FIXME: This probably needs to be done in the PostStep callback as
-            // it's crashing right now.
-            this->death();
         }
 
         return true;
@@ -388,6 +385,18 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
     }
 
     return false;
+}
+
+bool GameScene::onContactPostSolve(cocos2d::PhysicsContact& contact) {
+    PhysicsBody* bodyA = contact.getShapeA()->getBody();
+    PhysicsBody* bodyB = contact.getShapeB()->getBody();
+    if (this->isDenseObjectCollision(bodyA, bodyB)) {
+        // Player <--> Pipes
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
+            || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
+            this->death();
+        }
+    }
 }
 
 bool GameScene::isDenseObjectCollision(PhysicsBody* A, PhysicsBody* B) {

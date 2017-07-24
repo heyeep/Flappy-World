@@ -300,6 +300,13 @@ private:
      */
     bool onContactBegin(cocos2d::PhysicsContact& contact);
 
+    /**
+     *  \brief Callback triggered once a collision happens.
+     *
+     *  \return void
+     */
+    bool onContactPostSolve(cocos2d::PhysicsContact& contact);
+
     // Functions to detect type of Collision.
 
     /**
