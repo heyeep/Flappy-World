@@ -356,10 +356,14 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
                    && bodyB->getTag() == TAG_PLAYER)) {
             CCLOG("Collision Detected: Points");
             Node* pointN;
-            if (bodyA->getTag() == TAG_POINTS)
+            if (bodyA->getTag() == TAG_POINTS) {
                 pointN = bodyA->getNode();
-            if (bodyB->getTag() == TAG_POINTS)
+            }
+
+            if (bodyB->getTag() == TAG_POINTS) {
                 pointN = bodyB->getNode();
+            }
+
             Points* pointP = dynamic_cast<Points*>(pointN);
             this->points += pointP->getValue();
             // Player <--> Coin
@@ -368,10 +372,14 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
             || (bodyA->getTag() == TAG_COIN && bodyB->getTag() == TAG_PLAYER)) {
             CCLOG("Collision Detected: Coins");
             Node* coinN;
-            if (bodyA->getTag() == TAG_COIN)
+            if (bodyA->getTag() == TAG_COIN) {
                 coinN = bodyA->getNode();
-            if (bodyB->getTag() == TAG_COIN)
+            }
+
+            if (bodyB->getTag() == TAG_COIN) {
                 coinN = bodyB->getNode();
+            }
+
             Coin* coinP = dynamic_cast<Coin*>(coinN);
             this->coins += coinP->getValue();
             coinP->removeFromParent();
