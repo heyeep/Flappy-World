@@ -339,6 +339,9 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
         if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
             || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
             CCLOG("Collision Detected: Pipes");
+
+            // FIXME: This probably needs to be done in the PostStep callback as
+            // it's crashing right now.
             this->death();
         }
 
