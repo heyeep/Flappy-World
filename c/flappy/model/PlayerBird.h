@@ -24,13 +24,6 @@ public:
     /*!< Bool for keeping track of wether the player is alive or not. */
     bool dead = false;
 
-    /*!< Points acquired. */
-    int points;
-
-    /*!< Coins acquired. */
-
-    int coins;
-
     /*!< Getter for serverId. */
     int getServerId();
 
@@ -149,20 +142,6 @@ private:
      *  \return void
      */
     void initCollision();
-
-    /**
-     *  \brief The client's scene is switched to the start menu after dying.
-     *
-     *  \return void
-     */
-    void death();
-
-    /**
-    *  \brief Always returns true, grabs both objects that have collided.
-    *
-    *  \return bool status
-    */
-    bool onContactBegin(cocos2d::PhysicsContact& contact);
 };
 
 #endif /* PlayerBird_h */

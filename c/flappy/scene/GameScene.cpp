@@ -19,6 +19,7 @@ GameScene::~GameScene() {
 Scene* GameScene::createScene(std::list<Pipe*> pipes) {
     GameScene* layer = GameScene::create();
     layer->loadStage(pipes);
+    layer->initCollisionDetectionSystem();
 
     Scene* scene = Scene::createWithPhysics();
 
@@ -292,7 +293,7 @@ void GameScene::displayScore() {
     scoreBackground->setScale(SCALE_FACTOR);
     this->middleLayer->addChild(scoreBackground, 1);
 
-    std::string points = std::to_string(player->points);
+    std::string points = std::to_string(this->points);
     Label* pointsTitle
         = Label::createWithTTF("Points: " + points, "fonts/flappy.TTF", 50);
     pointsTitle->setAnchorPoint(Point::ZERO);
@@ -306,7 +307,7 @@ void GameScene::displayScore() {
     pointsTitle->setColor(Color3B(255, 255, 255));
     this->middleLayer->addChild(pointsTitle, 1);
 
-    std::string coins = std::to_string(player->coins);
+    std::string coins = std::to_string(this->coins);
     Label* coinsTitle
         = Label::createWithTTF("Coins: " + coins, "fonts/flappy.TTF", 50);
     coinsTitle->setAnchorPoint(Vec2(0, 1));
@@ -319,4 +320,63 @@ void GameScene::displayScore() {
     coinsTitle->enableOutline(Color4B(25, 25, 25, 255), 3);
     coinsTitle->setColor(Color3B(255, 255, 255));
     this->middleLayer->addChild(coinsTitle, 1);
+}
+
+void GameScene::initCollisionDetectionSystem() {
+    EventListenerPhysicsContact* contactListener
+        = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin
+        = CC_CALLBACK_1(GameScene::onContactBegin, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(
+        contactListener, this);
+}
+
+bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
+    PhysicsBody* bodyA = contact.getShapeA()->getBody();
+    PhysicsBody* bodyB = contact.getShapeB()->getBody();
+    // Collision for dense objects
+    if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+            == BITMASK_COLLISION_DENSE
+        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+            == BITMASK_COLLISION_DENSE) {
+        // Player <--> Pipes
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
+            || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Pipes");
+            this->death();
+        }
+        // Passable objects
+    } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
+            == !BITMASK_COLLISION_DENSE
+        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
+            == !BITMASK_COLLISION_DENSE) {
+        // Player <--> Point
+        if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
+            || (bodyA->getTag() == TAG_POINTS
+                   && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Points");
+            Node* pointN;
+            if (bodyA->getTag() == TAG_POINTS)
+                pointN = bodyA->getNode();
+            if (bodyB->getTag() == TAG_POINTS)
+                pointN = bodyB->getNode();
+            Points* pointP = dynamic_cast<Points*>(pointN);
+            this->points += pointP->getValue();
+            // Player <--> Coin
+        } else if ((bodyA->getTag() == TAG_PLAYER
+                       && bodyB->getTag() == TAG_COIN)
+            || (bodyA->getTag() == TAG_COIN && bodyB->getTag() == TAG_PLAYER)) {
+            CCLOG("Collision Detected: Coins");
+            Node* coinN;
+            if (bodyA->getTag() == TAG_COIN)
+                coinN = bodyA->getNode();
+            if (bodyB->getTag() == TAG_COIN)
+                coinN = bodyB->getNode();
+            Coin* coinP = dynamic_cast<Coin*>(coinN);
+            this->coins += coinP->getValue();
+            coinP->removeFromParent();
+        }
+    }
+
+    return true;
 }

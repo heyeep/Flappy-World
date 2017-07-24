@@ -12,6 +12,12 @@
 
 class GameScene : public cocos2d::Layer {
 public:
+    /*!< Points acquired. */
+    int points;
+
+    /*!< Coins acquired. */
+    int coins;
+
     /**
      *  \brief Creates a scene with built-in physics.
      *
@@ -279,6 +285,20 @@ private:
      *  \return void
      */
     void displayScore();
+
+    /**
+     *  \brief Initializes handling of collision.
+     *
+     *  \return void
+     */
+    void initCollisionDetectionSystem();
+
+    /**
+     *  \brief Callback triggered when collision is detected.
+     *
+     *  \return void
+     */
+    bool onContactBegin(cocos2d::PhysicsContact& contact);
 };
 
 #endif /* GameScene_h */
