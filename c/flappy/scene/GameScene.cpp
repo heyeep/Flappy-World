@@ -334,22 +334,18 @@ void GameScene::initCollisionDetectionSystem() {
 bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
     PhysicsBody* bodyA = contact.getShapeA()->getBody();
     PhysicsBody* bodyB = contact.getShapeB()->getBody();
-    // Collision for dense objects
-    if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
-            == BITMASK_COLLISION_DENSE
-        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-            == BITMASK_COLLISION_DENSE) {
+    if (this->isDenseObjectCollision(bodyA, bodyB)) {
         // Player <--> Pipes
         if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_PIPE)
             || (bodyA->getTag() == TAG_PIPE && bodyB->getTag() == TAG_PLAYER)) {
             CCLOG("Collision Detected: Pipes");
             this->death();
         }
-        // Passable objects
-    } else if ((bodyA->getCategoryBitmask() & bodyB->getCollisionBitmask())
-            == !BITMASK_COLLISION_DENSE
-        || (bodyB->getCategoryBitmask() & bodyA->getCollisionBitmask())
-            == !BITMASK_COLLISION_DENSE) {
+
+        return true;
+    }
+
+    if (this->isPassableObjectCollision(bodyA, bodyB)) {
         // Player <--> Point
         if ((bodyA->getTag() == TAG_PLAYER && bodyB->getTag() == TAG_POINTS)
             || (bodyA->getTag() == TAG_POINTS
@@ -384,7 +380,23 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
             this->coins += coinP->getValue();
             coinP->removeFromParent();
         }
+
+        return true;
     }
 
-    return true;
+    return false;
+}
+
+bool GameScene::isDenseObjectCollision(PhysicsBody* A, PhysicsBody* B) {
+    return (A->getCategoryBitmask() & B->getCollisionBitmask())
+        == BITMASK_COLLISION_DENSE
+        || (B->getCategoryBitmask() & A->getCollisionBitmask())
+        == BITMASK_COLLISION_DENSE;
+}
+
+bool GameScene::isPassableObjectCollision(PhysicsBody* A, PhysicsBody* B) {
+    return (A->getCategoryBitmask() & B->getCollisionBitmask())
+        == !BITMASK_COLLISION_DENSE
+        || (B->getCategoryBitmask() & A->getCollisionBitmask())
+        == !BITMASK_COLLISION_DENSE;
 }

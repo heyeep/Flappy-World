@@ -299,6 +299,28 @@ private:
      *  \return void
      */
     bool onContactBegin(cocos2d::PhysicsContact& contact);
+
+    // Functions to detect type of Collision.
+
+    /**
+     *  \brief Check if collision included a Dense object.
+     *
+     *  This should be called from onContactBegin. This assumes A has collided
+     *  with B.
+     *
+     *  \return Whether or not A or B was a Dense object.
+     */
+    bool isDenseObjectCollision(PhysicsBody* A, PhysicsBody* B);
+
+    /**
+     *  \brief Check if collision included a Passable object.
+     *
+     *  This should be called from onContactBegin. This assumes A has collided
+     *  with B.
+     *
+     *  \return Whether or not A or B was a Passable object.
+     */
+    bool isPassableObjectCollision(PhysicsBody* A, PhysicsBody* B);
 };
 
 #endif /* GameScene_h */
