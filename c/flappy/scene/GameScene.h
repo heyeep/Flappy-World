@@ -13,10 +13,10 @@
 class GameScene : public cocos2d::Layer {
 public:
     /*!< Points acquired. */
-    int points;
+    int points = 0;
 
     /*!< Coins acquired. */
-    int coins;
+    int coins = 0;
 
     /**
      *  \brief Creates a scene with built-in physics.
