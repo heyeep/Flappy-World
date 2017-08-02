@@ -18,6 +18,9 @@ private:
     /*!< The serverId the server sets for this Bird. */
     int serverId;
 
+    /*!< The color of the bird. */
+    cocos2d::Color3B color;
+
 public:
     float x_velocity = 300;
 
@@ -55,6 +58,13 @@ public:
      *  \return SpriteFrame
      */
     static cocos2d::Vector<cocos2d::SpriteFrame*> getFrames();
+
+    /**
+     *  \brief Creates a random color scheme.
+     *
+     *  \return Color3B
+     */
+   static  cocos2d::Color3B getRandomColor();
 
     /**
      *  \brief Updates the player's position, status, angle, etc.

@@ -22,6 +22,8 @@ PlayerBird* PlayerBird::create() {
         player->setAnchorPoint(Vec2(0.5, 0.5));
         player->setScale(SCALE_FACTOR);
         player->initCollision();
+        player->color = getRandomColor();
+        player->setColor(player->color);
 
         // Using the bird's speed and radius to determine how much the bird
         // should turn seemed the most reasonable. I went from 0-100 as the
@@ -52,6 +54,12 @@ cocos2d::PhysicsBody* PlayerBird::createPhysicsBody(PlayerBird* player) {
     cocos2d::PhysicsBody* pBody = PhysicsBody::createCircle(
         player->getContentSize().width / 2, PhysicsMaterial(0, 1, 0));
     return pBody;
+}
+
+cocos2d::Color3B PlayerBird::getRandomColor() {
+    return Color3B(cocos2d::RandomHelper::random_int(0, 255),
+                   cocos2d::RandomHelper::random_int(0, 255),
+                   cocos2d::RandomHelper::random_int(0, 255));
 }
 
 void PlayerBird::update(float dt) {
