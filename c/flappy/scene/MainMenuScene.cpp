@@ -116,6 +116,7 @@ void MainMenu::startGameCall(Ref* pSender) {
 }
 
 void MainMenu::switchToLeaderboards(Ref* refPointer) {
+    this->stopBackgroundMusic();
     Director* director = Director::getInstance();
     Scene* scene = LeaderboardScene::createScene();
 

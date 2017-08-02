@@ -197,6 +197,7 @@ void GameScene::initTouchListeners() {
 
 void GameScene::onMouseDown(cocos2d::Event* event) {
     if (this->gameOver) {
+        this->stopBackgroundMusic();
         this->gotoMainMenu();
     }
     this->player->flap();
