@@ -1,3 +1,4 @@
 .DS_STORE
 log.txt
 /c/flappy/compile_commands.json
+/c/flappy/cocos2d/build/cocos2d_libs.xcodeproj/xcuserdata/hiep.xcuserdatad/xcschemes/xcschememanagement.plist

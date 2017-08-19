@@ -305,7 +305,7 @@ private:
      *
      *  \return void
      */
-    bool onContactPostSolve(cocos2d::PhysicsContact& contact);
+    void onContactPostSolve(cocos2d::PhysicsContact& contact);
 
     // Functions to detect type of Collision.
 

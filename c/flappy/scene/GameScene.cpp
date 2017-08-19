@@ -388,7 +388,7 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact& contact) {
     return false;
 }
 
-bool GameScene::onContactPostSolve(cocos2d::PhysicsContact& contact) {
+void GameScene::onContactPostSolve(cocos2d::PhysicsContact& contact) {
     PhysicsBody* bodyA = contact.getShapeA()->getBody();
     PhysicsBody* bodyB = contact.getShapeB()->getBody();
     if (this->isDenseObjectCollision(bodyA, bodyB)) {
