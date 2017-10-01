@@ -2,7 +2,7 @@ defmodule Server.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:*", Server.RoomChannel
+  channel "game:*", Server.GameChannel
   channel "leaderboard:*", Server.LeaderBoardChannel
 
   ## Transports

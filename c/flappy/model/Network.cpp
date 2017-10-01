@@ -45,7 +45,7 @@ void Network::joinRoom() {
     // FIXME: Remove the :1 and represent it with a 'user id'.
     // This problem occurs in more than one place.
     this->roomChannel = std::make_shared<PhxChannel::PhxChannel>(
-        this->socket, "room:1", std::map<std::string, std::string>());
+        this->socket, "game:1", std::map<std::string, std::string>());
     this->roomChannel->bootstrap();
     this->roomChannel->join()
         ->onReceive("ok",

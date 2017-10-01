@@ -1,26 +1,26 @@
-defmodule Server.RoomChannel do
+defmodule Server.GameChannel do
   use Server.Web, :channel
-  alias Server.RoomState
+  alias Server.GameState
   alias Server.PlayerList
   require Logger
 
-  def join("room:" <> room_id, _params, socket) do
-    player_list = room_id |> get_or_create_player_list
+  def join("game:" <> game_id, _params, socket) do
+    player_list = game_id |> get_or_create_player_list
     new_player = PlayerList.new_player(player_list)
     other_players = PlayerList.get_other_players(player_list, new_player)
-    stage = room_id |> get_stage
+    stage = game_id |> get_stage
 
     resp = %{me: new_player, others: other_players}
     Logger.info("join() resp: #{inspect(resp)}")
     send(self, {:after_join, new_player})
 
     num_players = PlayerList.get_num_players(player_list)
-    required_num_players_per_room = 1
-    if num_players >= required_num_players_per_room do
+    required_num_players_per_game = 1
+    if num_players >= required_num_players_per_game do
       send(self, {:start, stage})
     end
 
-    {:ok, resp, assign(socket, :room_id, room_id)}
+    {:ok, resp, assign(socket, :game_id, game_id)}
   end
 
   def handle_info({:after_join, new_player}, socket) do
@@ -40,7 +40,7 @@ defmodule Server.RoomChannel do
   end
 
   def handle_in(user, "coordinates", params, socket) do
-    player_list = get_or_create_player_list(socket.assigns[:room_id])
+    player_list = get_or_create_player_list(socket.assigns[:game_id])
 
     player = PlayerList.get_player(player_list, params["server_id"])
     Logger.debug("handle_in:coordinates params: #{inspect(params)}")
@@ -58,13 +58,13 @@ defmodule Server.RoomChannel do
     {:noreply, socket}
   end
 
-  defp get_or_create_player_list(room_id) do
-    room_state = RoomState.get_or_create_room_state(room_id)
-    room_state[:player_list]
+  defp get_or_create_player_list(game_id) do
+    game_state = GameState.get_or_create_game_state(game_id)
+    game_state[:player_list]
   end
 
-  defp get_stage(room_id) do
-    room_state = RoomState.get_or_create_room_state(room_id)
-    room_state[:stage]
+  defp get_stage(game_id) do
+    game_state = GameState.get_or_create_game_state(game_id)
+    game_state[:stage]
   end
 end

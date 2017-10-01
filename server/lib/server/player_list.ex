@@ -1,6 +1,6 @@
 defmodule Server.PlayerList do
   @moduledoc """
-  A module to persist the list of players per RoomChannel.
+  A module to persist the list of players per GameChannel.
   """
   use GenServer
 

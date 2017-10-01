@@ -12,9 +12,9 @@ local self = {}
 local ws = require("websockets.phx_socket").new(nil, nil, self)
 local channel_factory = require("websockets.phx_channel")
 
--- The room will hit RoomChannel on our server.
+-- The room will hit GameChannel on our server.
 -- The 1 is hardcoded for now but is intended to be the room id.
-local room_phxchan = channel_factory.new(ws, "room:1", nil)
+local room_phxchan = channel_factory.new(ws, "game:1", nil)
 
 -- Websocket Callbacks
 -- Kicks off bootstrapping and joining of the Phoenix Channel.
